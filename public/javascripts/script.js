@@ -3,6 +3,11 @@ fetch("../json/scrape.json")
     return response.json();
   })
   .then(function (j) {
-    console.log(j.scrapedAt);
+    let now = new Date();
+    let then = new Date(j.scrapedAt);
+
+    let timeDiff = new Date(now - then).toISOString().slice(11, 19);
+
+    console.log(timeDiff);
     console.table(j.athletes);
   });
