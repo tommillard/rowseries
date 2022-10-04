@@ -1,0 +1,3 @@
+scraper = require("./scraper");
+
+scraper();
