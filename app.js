@@ -43,7 +43,7 @@ app.use(function (err, req, res, next) {
 console.log("booting up");
 
 // schedule tasks to be run on the server
-cron.schedule("5 * * * *", function () {
+cron.schedule("*/20 * * * *", function () {
   console.log("scraping");
   scraper();
 });

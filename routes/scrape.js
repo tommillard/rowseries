@@ -6,7 +6,7 @@ var scraper = require("../scraper/scraper");
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   scraper();
-  res.send("respond with a resource");
+  res.send("Row Series Data Updated");
 });
 
 module.exports = router;
