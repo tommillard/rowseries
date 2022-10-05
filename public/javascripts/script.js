@@ -28,8 +28,17 @@ fetch("../json/scrape.json")
 
 function drawGrid() {
   let presentationData = formatData(rawData);
+  let count = 1;
   for (let athlete of presentationData) {
-    rsElem("div", wrapper, "row", athlete.name);
+    let row = rsElem("div", wrapper, "row");
+    let rank = rsElem("span", wrapper, "col col-Rank", count);
+    let name = rsElem("span", wrapper, "col col-Name", athlete.name);
+    let score1A = rsElem("span", wrapper, "col col-Score", athlete.score1A);
+    let score1B = rsElem("span", wrapper, "col col-Score", athlete.score1B);
+    let score2A = rsElem("span", wrapper, "col col-Score", athlete.score2A);
+    let score2B = rsElem("span", wrapper, "col col-Score", athlete.score2B);
+    let division = rsElem("span", wrapper, "col col-Div", athlete.category);
+    count++;
   }
 }
 
