@@ -146,13 +146,13 @@ function formatData(raw) {
     return raw;
 }
 
-function calculateOverallPositions(data:IAthlete[]) {
-        this.tableData = this.tableData.sort((a, b) => {
-            return parseInt(a.toPar) - parseInt(b.toPar);
+function calculateOverallPositions(data:IAthlete[], orderingProp: string):IAthelete[] {
+        data = data.sort((a, b) => {
+            return a[orderingProp] - b[orderingProp];
         });
 
-        let scoreSplit = this.tableData.reduce(
-            (accumulator: any[], current: IPro) => {
+        let scoreSplit = data.reduce(
+            (accumulator: any[], current: IAthlete) => {
                 let matchingScore = accumulator.find(
                     (scoreSet) =>
                         scoreSet.TotalScore === parseInt(current.toPar)
