@@ -15,5 +15,11 @@
     "morgan": "~1.9.1",
     "node-cron": "^3.0.2",
     "puppeteer": "^18.0.5"
-  }
+  },
+  "prettier": {
+        "tabWidth": 4,
+        "arrowParens": "always",
+        "trailingComma": "es5",
+        "htmlWhitespaceSensitivity": "ignore"
+    }
 }
