@@ -145,3 +145,45 @@ function calculatePace(scoreString: string, distanceOrTime: string): {scoreStrin
 function formatData(raw) {
     return raw;
 }
+
+function calculateOverallPositions(data:IAthlete[]) {
+        this.tableData = this.tableData.sort((a, b) => {
+            return parseInt(a.toPar) - parseInt(b.toPar);
+        });
+
+        let scoreSplit = this.tableData.reduce(
+            (accumulator: any[], current: IPro) => {
+                let matchingScore = accumulator.find(
+                    (scoreSet) =>
+                        scoreSet.TotalScore === parseInt(current.toPar)
+                );
+
+                if (!matchingScore) {
+                    matchingScore = {
+                        TotalScore: parseInt(current.toPar),
+                        pros: [],
+                    };
+                    accumulator.push(matchingScore);
+                }
+
+                matchingScore.users.push(current);
+                return accumulator;
+            },
+            []
+        );
+
+        scoreSplit.sort((a, b) => {
+            return a.toPar - b.toPar;
+        });
+
+        let prosSoFar = 0;
+        scoreSplit.forEach((scoreBracket) => {
+            scoreBracket.pros.forEach((pro: IPro) => {
+                pro.Position = (prosSoFar + 1).toString();
+                if (scoreBracket.pros.length > 1) {
+                    pro.Position = "T" + pro.Position;
+                }
+            });
+            prosSoFar += scoreBracket.pros.length;
+        });
+    }
