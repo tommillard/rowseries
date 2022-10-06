@@ -39,12 +39,13 @@ interface IAthlete {
     name: string;
     posOverall: IPosition;
     pointsOverall: number;
+    category: string;
     score1A: IScore;
     score1B: IScore;
-    score1: IScore;
-    score2a: IScore;
-    score2b: IScore;
-    score2: IScore;
+    score1: IPosition;
+    score2A: IScore;
+    score2B: IScore;
+    score2: IPosition;
     tdr?: boolean;
 }
 
@@ -98,11 +99,31 @@ function processData(raw: IRawAthlete[]): IAthlete[] {
     return raw.map((athlete) => {
         return {
             name: athlete.name,
+            category: athlete.category,
+            tdr: false,
             score1: {
-                raw: athlete.score1A,
+                display: "",
+                index: 0
             },
+            score2: {
+                display: "",
+                index: 0
+            },
+            score1A: generateScore("1A",athlete.score1A),
+            score1B: generateScore("1B",athlete.score1B),
+            score2A: generateScore("2A",athlete.score2A),
+            score2B: generateScore("2B", athlete.score2B)
         };
     });
+}
+
+generateScore(scoreString: string):IScore {
+    return {
+        raw: scoreString,
+        paceString: scoreString,
+        paceSeconds: 45667,
+        position:0
+    }
 }
 
 function formatData(raw) {
