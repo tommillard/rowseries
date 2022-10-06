@@ -96,7 +96,7 @@ function drawGrid() {
 }
 
 function processData(raw: IRawAthlete[]): IAthlete[] {
-    return raw.map((athlete) => {
+    let scoredData = raw.map((athlete) => {
         return {
             name: athlete.name,
             category: athlete.category,
@@ -109,20 +109,36 @@ function processData(raw: IRawAthlete[]): IAthlete[] {
                 display: "",
                 index: 0
             },
-            score1A: generateScore("1A",athlete.score1A),
-            score1B: generateScore("1B",athlete.score1B),
-            score2A: generateScore("2A",athlete.score2A),
-            score2B: generateScore("2B", athlete.score2B)
+            score1A: generateScore(athlete.score1A, "400m"), 
+            score1B: generateScore(athlete.score1B, "400m"),
+            score2A: generateScore(athlete.score2A, "30:00"),
+            score2B: generateScore(athlete.score2B, "6:00")
         };
     });
+    
+    // loop through data, adding positions for each score...
 }
 
-generateScore(scoreString: string):IScore {
+function generateScore(scoreString: string, distanceOrTime: string):IScore {
     return {
         raw: scoreString,
-        paceString: scoreString,
-        paceSeconds: 45667,
+        paceString: calculatePace(scoreString, distanceOrTime).string,
+        paceSeconds: calculatePace(scoreString, distanceOrTime).seconds,
         position:0
+    }
+}
+
+function calculatePace(scoreString: string, distanceOrTime: string): {scoreString: string, seconds:number} {
+    if(distanceOrTime.contains(":")) {
+        return {
+            paceString: "",
+            paceSeconds: ""
+        }
+    } else {
+        return {
+            paceString: "",
+            paceSeconds: ""
+        }
     }
 }
 
