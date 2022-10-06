@@ -1,11 +1,12 @@
 // source data
-let rawData: string[] = [];
+let rawData: IRawAthlete[] = [];
 
 // data with points, converted times etc.
 let processedData: IAthlete[] = [];
 
 // data with sorts, filters applied.
 let presentationData: IAthlete[] = [];
+
 let wrapper = document.getElementById("wrapper");
 
 let settings = {
@@ -16,6 +17,15 @@ let settings = {
 interface IPosition {
     display: string;
     index: number;
+}
+
+interface IRawAthlete {
+    name: string;
+    score1A: string;
+    score1B: string;
+    score2A: string;
+    score2B: string;
+    category: string;
 }
 
 interface IScore {
@@ -84,8 +94,15 @@ function drawGrid() {
     }
 }
 
-function processData(raw) {
-    return raw;
+function processData(raw: IRawAthlete[]): IAthlete[] {
+    return raw.map((athlete) => {
+        return {
+            name: athlete.name,
+            score1: {
+                raw: athlete.score1A,
+            },
+        };
+    });
 }
 
 function formatData(raw) {
