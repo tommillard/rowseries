@@ -80,12 +80,13 @@ function processData(raw) {
         var athlete = scoredData_1[_i];
         athlete.score1.points = athlete.score1A.points + athlete.score1B.points;
         athlete.score2.points = athlete.score2A.points + athlete.score2B.points;
-        athlete.scoreOverall.paceSeconds =
+        athlete.scoreOverall.points =
             athlete.score1.points + athlete.score2.points;
     }
     calculatePositions(scoredData, "score1");
     calculatePositions(scoredData, "score2");
     calculatePositions(scoredData, "scoreOverall");
+    console.table(scoredData);
     return scoredData;
     // loop through data, adding positions for each score...
 }
