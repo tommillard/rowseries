@@ -29,7 +29,6 @@ fetch("../json/scrape.json")
     .then(function (j) {
         rawData = j.athletes;
         drawGrid();
-        console.table(j.athletes);
     });
 function drawGrid() {
     var processedData = processData(rawData);
@@ -135,10 +134,10 @@ function calculatePace(scoreString, distanceOrTime) {
     }
 }
 function formatData(raw) {
+console.log(raw);
     return raw;
 }
 function calculatePositions(data, orderingScore) {
-    console.log(data);
     data = data.sort(function (a, b) {
         var aScore = a[orderingScore];
         var bScore = b[orderingScore];
@@ -154,17 +153,13 @@ function calculatePositions(data, orderingScore) {
             console.log("no data");
             continue;
         }
-        console.log("good");
         var thisScore = data[i][orderingScore];
         if (!thisScore) {
-            console.log(data[i]);
             continue;
         }
         thisScore.position.index = i;
         if (thisScore.paceSeconds === score) {
             if (!data[i - 1]) {
-                console.log(data[i - 1]);
-                console.log(i);
                 continue;
             }
             var prevScore = data[i - 1][orderingScore];
