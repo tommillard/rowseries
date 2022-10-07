@@ -40,8 +40,10 @@ function drawGrid() {
         rsElem("span", header, "cell cell-Name", "Athlete");
         rsElem("span", header, "cell cell-Score", "1A");
         rsElem("span", header, "cell cell-Score", "1B");
+        rsElem("span", header, "cell cell-Score", "1");
         rsElem("span", header, "cell cell-Score", "2A");
         rsElem("span", header, "cell cell-Score", "2B");
+        rsElem("span", header, "cell cell-Score", "2");
         rsElem("span", header, "cell cell-Div", "Division");
     
     for (
@@ -55,8 +57,10 @@ function drawGrid() {
         var name_1 = rsElem("span", row, "cell cell-Name", athlete.name);
         var score1A = rsElem("span", row, "cell cell-Score", athlete.score1A.paceString);
         var score1B = rsElem("span", row, "cell cell-Score", athlete.score1B.paceString);
+          var score1 = rsElem("span", row, "cell cell-Score", athlete.score1.points);
         var score2A = rsElem("span", row, "cell cell-Score", athlete.score2A.paceString);
         var score2B = rsElem("span", row, "cell cell-Score", athlete.score2B.paceString);
+          var score2 = rsElem("span", row, "cell cell-Score", athlete.score2.points);
         var division = rsElem("span", row, "cell cell-Div", athlete.category);
         count++;
     }
