@@ -14,41 +14,6 @@ let settings = {
     filter: [],
 };
 
-interface IPosition {
-    display: string;
-    index: number;
-}
-
-interface IRawAthlete {
-    name: string;
-    score1A: string;
-    score1B: string;
-    score2A: string;
-    score2B: string;
-    category: string;
-}
-
-interface IScore {
-    raw: string;
-    paceSeconds: number;
-    paceString: string;
-    position: IPosition;
-}
-
-interface IAthlete {
-    name: string;
-    posOverall: IPosition;
-    pointsOverall: number;
-    category: string;
-    score1A: IScore;
-    score1B: IScore;
-    score1: IPosition;
-    score2A: IScore;
-    score2B: IScore;
-    score2: IPosition;
-    tdr?: boolean;
-}
-
 function rsElem(
     type: string,
     appendTo: HTMLElement | null,
@@ -101,44 +66,78 @@ function processData(raw: IRawAthlete[]): IAthlete[] {
             name: athlete.name,
             category: athlete.category,
             tdr: false,
-            score1: {
-                display: "",
-                index: 0
-            },
-            score2: {
-                display: "",
-                index: 0
-            },
-            score1A: generateScore(athlete.score1A, "400m"), 
+            pointsOverall: 0,
+            scoreOverall: newIScore(),
+            score1: newIScore(),
+            score2: newIScore(),
+            score1A: generateScore(athlete.score1A, "400m"),
             score1B: generateScore(athlete.score1B, "400m"),
             score2A: generateScore(athlete.score2A, "30:00"),
-            score2B: generateScore(athlete.score2B, "6:00")
+            score2B: generateScore(athlete.score2B, "6:00"),
         };
     });
-    
+
+    calculatePositions(scoredData, "score1A");
+    calculatePositions(scoredData, "score1B");
+    calculatePositions(scoredData, "score2A");
+    calculatePositions(scoredData, "score2B");
+
+    for (let athlete of scoredData) {
+        athlete.score1.points = athlete.score1A.points + athlete.score1B.points;
+
+        athlete.score2.points = athlete.score2A.points + athlete.score2B.points;
+
+        athlete.scoreOverall.paceSeconds =
+            athlete.score1.points + athlete.score2.points;
+    }
+
+    calculatePositions(scoredData, "score1");
+    calculatePositions(scoredData, "score2");
+    calculatePositions(scoredData, "scoreOverall");
+
+    return scoredData;
+
     // loop through data, adding positions for each score...
 }
 
-function generateScore(scoreString: string, distanceOrTime: string):IScore {
+function generateScore(scoreString: string, distanceOrTime: string): IScore {
     return {
         raw: scoreString,
         paceString: calculatePace(scoreString, distanceOrTime).string,
         paceSeconds: calculatePace(scoreString, distanceOrTime).seconds,
-        position:0
-    }
+        points: 0,
+        position: {
+            display: "",
+            index: 0,
+        },
+    };
 }
 
-function calculatePace(scoreString: string, distanceOrTime: string): {scoreString: string, seconds:number} {
-    if(distanceOrTime.contains(":")) {
+function calculatePace(
+    scoreString: string,
+    distanceOrTime: string
+): { string: string; seconds: number } {
+    let duration, distance, paceSeconds;
+    if (distanceOrTime.indexOf(":") >= 0) {
+        duration = convertTimeStringToTenths(distanceOrTime);
+        distance = parseInt(scoreString);
+        paceSeconds = duration / (distance / 500);
         return {
-            paceString: "",
-            paceSeconds: ""
-        }
+            string: `${Math.floor(paceSeconds / 600)}:${
+                Math.floor(paceSeconds / 10) % 60
+            }.${Math.round(paceSeconds / 10) % 10}`,
+            seconds: paceSeconds / 10,
+        };
     } else {
+        duration = convertTimeStringToTenths(scoreString);
+        distance = parseInt(distanceOrTime);
+        paceSeconds = duration / (distance / 500);
         return {
-            paceString: "",
-            paceSeconds: ""
-        }
+            string: `${Math.floor(paceSeconds / 600)}:${
+                Math.floor(paceSeconds / 10) % 60
+            }.${Math.round(paceSeconds / 10) % 10}`,
+            seconds: paceSeconds / 10,
+        };
     }
 }
 
@@ -146,44 +145,115 @@ function formatData(raw) {
     return raw;
 }
 
-function calculateOverallPositions(data:IAthlete[], orderingProp: string):IAthelete[] {
-        data = data.sort((a, b) => {
-            return a[orderingProp] - b[orderingProp];
-        });
-
-        let scoreSplit = data.reduce(
-            (accumulator: any[], current: IAthlete) => {
-                let matchingScore = accumulator.find(
-                    (scoreSet) =>
-                        scoreSet.TotalScore === parseInt(current.toPar)
-                );
-
-                if (!matchingScore) {
-                    matchingScore = {
-                        TotalScore: parseInt(current.toPar),
-                        pros: [],
-                    };
-                    accumulator.push(matchingScore);
-                }
-
-                matchingScore.users.push(current);
-                return accumulator;
-            },
-            []
+function calculatePositions(
+    data: IAthlete[],
+    orderingScore: keyof IAthlete
+): IAthlete[] {
+    data = data.sort((a, b) => {
+        let aScore = a[orderingScore] as IScore;
+        let bScore = a[orderingScore] as IScore;
+        return (
+            (aScore.paceSeconds || aScore.points) -
+            (bScore.paceSeconds || bScore.points)
         );
+    });
 
-        scoreSplit.sort((a, b) => {
-            return a.toPar - b.toPar;
-        });
+    let position = 0;
+    let score = 0;
 
-        let prosSoFar = 0;
-        scoreSplit.forEach((scoreBracket) => {
-            scoreBracket.pros.forEach((pro: IPro) => {
-                pro.Position = (prosSoFar + 1).toString();
-                if (scoreBracket.pros.length > 1) {
-                    pro.Position = "T" + pro.Position;
-                }
-            });
-            prosSoFar += scoreBracket.pros.length;
-        });
+    for (let i = 0; i <= data.length; i++) {
+        let thisScore = data[i][orderingScore] as IScore;
+        thisScore.position.index = i;
+        if (thisScore.paceSeconds === score) {
+            let prevScore = data[i - 1][orderingScore] as IScore;
+            thisScore.position.display = `T${position}`;
+            prevScore.position.display = `T${position}`;
+        } else {
+            score = thisScore.paceSeconds;
+            position = i + 1;
+            thisScore.position.display = position.toString();
+        }
+        thisScore.points = score;
     }
+
+    return data;
+}
+function convertTimeStringToTenths(
+    timeString: string | undefined
+): number | undefined {
+    // 13:12.9
+    // 1:13:12.9
+    // 5
+    // :30
+    // 8.5
+    if (!timeString) {
+        return 0;
+    }
+    let splitString = timeString.split(":");
+
+    splitString = splitString.filter((item) => item.length);
+
+    if (splitString.length === 3) {
+        return (
+            parseInt(splitString[0]) * 60 * 60 * 10 +
+            parseInt(splitString[1]) * 60 * 10 +
+            parseFloat(splitString[2]) * 10
+        );
+    } else if (splitString.length === 2) {
+        return (
+            parseInt(splitString[0]) * 60 * 10 +
+            parseFloat(splitString[1].slice(0, 2)) * 10
+        );
+    } else if (splitString.length === 1) {
+        return parseFloat(splitString[0]) * 60 * 10;
+    }
+
+    return undefined;
+}
+
+interface IRawAthlete {
+    name: string;
+    score1A: string;
+    score1B: string;
+    score2A: string;
+    score2B: string;
+    category: string;
+}
+
+interface IScore {
+    raw: string;
+    paceSeconds: number;
+    points: number;
+    paceString: string;
+    position: {
+        display: string;
+        index: number;
+    };
+}
+
+interface IAthlete {
+    name: string;
+    scoreOverall: IScore;
+    pointsOverall: number;
+    category: string;
+    score1A: IScore;
+    score1B: IScore;
+    score1: IScore;
+    score2A: IScore;
+    score2B: IScore;
+    score2: IScore;
+    tdr?: boolean;
+}
+
+function newIScore(): IScore {
+    return {
+        raw: "",
+        points: 0,
+        paceSeconds: 0,
+        paceString: "",
+        position: {
+            display: "",
+            index: 0,
+        },
+    };
+}
