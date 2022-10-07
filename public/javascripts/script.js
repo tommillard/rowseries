@@ -161,8 +161,10 @@ function paceToString(pace) {
 }
 
 function formatData(raw) {
-    console.log(raw);
-    return raw;
+    let presentedData = raw.sort((a,b) => {
+        return a["score1"].position.index - b["score1"].position.index;
+    });
+    return presentedData;
 }
 function calculatePositions(data, orderingScore, calcPoints) {
     data = data.sort(function (a, b) {
