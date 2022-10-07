@@ -35,7 +35,7 @@ function drawGrid() {
     var presentationData = formatData(processedData);
     var count = 1;
     
-     var header = rsElem("div", wrapper, "header");
+     var header = rsElem("div", wrapper, "header row");
         rsElem("span", header, "cell cell-Rank", "Rank");
         rsElem("span", header, "cell cell-Name", "Athlete");
         rsElem("span", header, "cell cell-Score", "1A");
@@ -124,10 +124,7 @@ function calculatePace(scoreString, distanceOrTime) {
         distance = parseInt(scoreString);
         paceSeconds = duration / (distance / 500);
         return {
-            string: ""
-                .concat(Math.floor(paceSeconds / 600), ":")
-                .concat(Math.floor(paceSeconds / 10) % 60, ".")
-                .concat(Math.round(paceSeconds / 10) % 10),
+            string: paceToString(paceSeconds),
             seconds: paceSeconds / 10,
         };
     } else {
@@ -135,16 +132,21 @@ function calculatePace(scoreString, distanceOrTime) {
         distance = parseInt(distanceOrTime);
         paceSeconds = duration / (distance / 500);
         return {
-            string: ""
-                .concat(Math.floor(paceSeconds / 600), ":")
-                .concat(Math.floor(paceSeconds / 10) % 60, ".")
-                .concat(Math.round(paceSeconds / 10) % 10),
+            string: paceToString(paceSeconds),
             seconds: paceSeconds / 10,
         };
     }
 }
+function paceToString(pace) {
+    let mins = Math.floor(pace / 600);
+    let secs = Math.floor((pace/10) % 60);
+    let tenths = Math.round(pace) - (mins * 600) - (secs * 10);
+    
+    return mins + ":" + secs.toString().padStart(2,"0") + tenths;
+}
+
 function formatData(raw) {
-console.log(raw);
+    console.log(raw);
     return raw;
 }
 function calculatePositions(data, orderingScore) {
