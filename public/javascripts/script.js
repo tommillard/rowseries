@@ -34,6 +34,16 @@ function drawGrid() {
     var processedData = processData(rawData);
     var presentationData = formatData(processedData);
     var count = 1;
+    
+     var header = rsElem("div", wrapper, "header");
+        rsElem("span", header, "cell cell-Rank", "Rank");
+        rsElem("span", header, "cell cell-Name", "Athlete");
+        rsElem("span", header, "cell cell-Score", "1A");
+        rsElem("span", header, "cell cell-Score", "1B");
+        rsElem("span", header, "cell cell-Score", "2A");
+        rsElem("span", header, "cell cell-Score", "2B");
+        rsElem("span", header, "cell cell-Div", "Division");
+    
     for (
         var _i = 0, presentationData_1 = presentationData;
         _i < presentationData_1.length;
@@ -41,7 +51,7 @@ function drawGrid() {
     ) {
         var athlete = presentationData_1[_i];
         var row = rsElem("div", wrapper, "row");
-        var rank = rsElem("span", row, "cell cell-Rank", count.toString());
+        var rank = rsElem("span", row, "cell cell-Rank", athlete.scoreOverall.position.display);
         var name_1 = rsElem("span", row, "cell cell-Name", athlete.name);
         var score1A = rsElem("span", row, "cell cell-Score", athlete.score1A.paceString);
         var score1B = rsElem("span", row, "cell cell-Score", athlete.score1B.paceString);
