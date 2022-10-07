@@ -39,10 +39,23 @@ fetch("../json/scrape.json")
         rawData = j.athletes;
         drawGrid();
     });
+    
+    
 function drawGrid() {
     var processedData = processData(rawData);
     var presentationData = formatData(processedData);
     var count = 1;
+    
+    var header = rsElem("div", wrapper, "header row");
+        rsElem("span", header, "cell cell-Rank", "Rank");
+        rsElem("span", header, "cell cell-Name", "Athlete");
+        rsElem("span", header, "cell cell-Score", "1A");
+        rsElem("span", header, "cell cell-Score", "1B");
+        rsElem("span", header, "cell cell-Score", "R1");
+        rsElem("span", header, "cell cell-Score", "2A");
+        rsElem("span", header, "cell cell-Score", "2B");
+        rsElem("span", header, "cell cell-Score", "R2");
+        rsElem("span", header, "cell cell-Div", "Division");
     
     for (
         var _i = 0, presentationData_1 = presentationData;
