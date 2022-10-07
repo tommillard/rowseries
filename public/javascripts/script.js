@@ -43,10 +43,10 @@ function drawGrid() {
         var row = rsElem("div", wrapper, "row");
         var rank = rsElem("span", wrapper, "col col-Rank", count.toString());
         var name_1 = rsElem("span", wrapper, "col col-Name", athlete.name);
-        var score1A = rsElem("span", wrapper, "col col-Score", athlete.score1A);
-        var score1B = rsElem("span", wrapper, "col col-Score", athlete.score1B);
-        var score2A = rsElem("span", wrapper, "col col-Score", athlete.score2A);
-        var score2B = rsElem("span", wrapper, "col col-Score", athlete.score2B);
+        var score1A = rsElem("span", wrapper, "col col-Score", athlete.score1A.paceString);
+        var score1B = rsElem("span", wrapper, "col col-Score", athlete.score1B.paceString);
+        var score2A = rsElem("span", wrapper, "col col-Score", athlete.score2A.paceString);
+        var score2B = rsElem("span", wrapper, "col col-Score", athlete.score2B.paceString);
         var division = rsElem("span", wrapper, "col col-Div", athlete.category);
         count++;
     }
