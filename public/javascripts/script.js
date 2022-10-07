@@ -6,16 +6,94 @@ var processedData = [];
 var presentationData = [];
 var wrapper = document.getElementById("wrapper");
 var settings = {
-    sortBy: "overall",
+    sortBy: "Overall",
     filter: [],
 };
+
+const tdrMembers = [
+    "Tom Millard",
+    "Carnivore.Trucker.Ben",
+    "jdmad7",
+    "Starks",
+    "Richard  Wood",
+    "Matt Fuller",
+    "Tony Maddocks",
+];
+
+const divisions = [
+    {
+        title: "Open Male (over 80kg)",
+        titleShort: "Open Hwt M",
+        colour: "#D10046",
+    },
+    {
+        title: "40-49 Male (over 80kg)",
+        titleShort: "40+ Hwt M",
+        colour: "#428BCA",
+    },
+    {
+        title: "50+ Male (over 80kg)",
+        titleShort: "50+ Hwt M",
+        colour: "#F0AD4E",
+    },
+    {
+        title: "40-49 Male Lwt (80kg and under)",
+        titleShort: "40+ Lwt M",
+        colour: "#D695BE",
+    },
+    {
+        title: "Open Male Lwt (80kg and under)",
+        titleShort: "Open Lwt M",
+        colour: "#7F8C8D",
+    },
+    {
+        title: "50+ Male Lwt (80kg and under)",
+        titleShort: "50+ Lwt M",
+        colour: "#8E44AD",
+    },
+    {
+        title: "40-49 Female (over 65kg)",
+        titleShort: "40+ Hwt F",
+        colour: "#AD4363",
+    },
+    {
+        title: "50+ Female (over 65kg)",
+        titleShort: "50+ Hwt F",
+        colour: "#D1D100",
+    },
+    {
+        title: "Open Female (over 65kg)",
+        titleShort: "Open Hwt F",
+        colour: "#AD8D43",
+    },
+    {
+        title: "40-49 Female Lwt (65kg and under)",
+        titleShort: "40+ Lwt F",
+        colour: "#D10046",
+    },
+    {
+        title: "50+ Female Lwt (65kg and under)",
+        titleShort: "50+ Lwt F",
+        colour: "#D10046",
+    },
+    {
+        title: "Open Female Lwt (65kg and under)",
+        titleShort: "Open Lwt F",
+        colour: "#D10046",
+    },
+];
+
+drawHeader();
 
 wrapper.addEventListener("click", function (e) {
     let sortProp = e.target.getAttribute("data-sort-prop");
     if (sortProp) {
+        let activeSort = document.body.querySelector(".sort-Active");
+        activeSort?.classList.remove("sort-Active");
+        e.target.classList.add("sort-Active");
         settings.sortBy = sortProp;
+        drawGrid();
     }
-    drawGrid();
 });
 
 function rsElem(type, appendTo, classNames, innerHTML) {
@@ -41,32 +119,44 @@ fetch("../json/scrape.json")
         drawGrid();
     });
 
-function drawGrid() {
-    var processedData = processData(rawData);
-    var presentationData = formatData(processedData);
-
+function drawHeader() {
     var header = rsElem("div", wrapper, "header row");
     let rankHeader = rsElem(
         "span",
         header,
-        "cell cell-Rank sort sort-Overall",
+        "cell cell-Rank sort sort-Active",
         "Rank"
     );
     rankHeader.setAttribute("data-sort-prop", "Overall");
     rsElem("span", header, "cell cell-Name", "Athlete");
-    let a1Header = rsElem("span", header, "cell cell-Score sort sort-1A", "1A");
+    let a1Header = rsElem("span", header, "cell cell-Score sort", "1A");
     a1Header.setAttribute("data-sort-prop", "1A");
-    let b1Header = rsElem("span", header, "cell cell-Score sort sort-1B", "1B");
+    let b1Header = rsElem("span", header, "cell cell-Score sort", "1B");
     b1Header.setAttribute("data-sort-prop", "1B");
-    let r1Header = rsElem("span", header, "cell cell-Score sort sort-1", "R1");
+    let r1Header = rsElem("span", header, "cell cell-Score sort", "R1");
     r1Header.setAttribute("data-sort-prop", "1");
-    let a2Header = rsElem("span", header, "cell cell-Score sort sort-2A", "2A");
+    let a2Header = rsElem("span", header, "cell cell-Score sort", "2A");
     a2Header.setAttribute("data-sort-prop", "2A");
-    let b2Header = rsElem("span", header, "cell cell-Score sort sort-2B", "2B");
+    let b2Header = rsElem("span", header, "cell cell-Score sort", "2B");
     b2Header.setAttribute("data-sort-prop", "2B");
-    let r2Header = rsElem("span", header, "cell cell-Score sort sort-2", "R2");
+    let r2Header = rsElem("span", header, "cell cell-Score sort", "R2");
     r2Header.setAttribute("data-sort-prop", "2");
-    rsElem("span", header, "cell cell-Div", "Division");
+}
+
+function cell(data1, data2, classList, appendTo) {
+    let wrapper = rsElem("div", appendTo, classList + " cell");
+    rsElem("p", wrapper, "", data1);
+    rsElem("span", wrapper, "", data2);
+    return wrapper;
+}
+
+function drawGrid() {
+    var processedData = processData(rawData);
+    var presentationData = formatData(processedData);
+
+    for (var j = wrapper.children.length - 1; j > 0; j--) {
+        wrapper.removeChild(wrapper.children[j]);
+    }
 
     for (
         var _i = 0, presentationData_1 = presentationData;
@@ -75,62 +165,57 @@ function drawGrid() {
     ) {
         var athlete = presentationData_1[_i];
         var row = rsElem("div", wrapper, "row");
-        var rank = rsElem(
-            "span",
-            row,
-            "cell cell-Rank",
-            athlete.scoreOverall.position.display +
-                " (" +
-                athlete.scoreOverall.points +
-                ")"
+        if (athlete.tdr) {
+            row.classList.add("tdr");
+        }
+        cell(
+            athlete.scoreOverall.position.display,
+            `${athlete.scoreOverall.points}pts`,
+            "overall",
+            row
         );
-        var name_1 = rsElem("span", row, "cell cell-Name", athlete.name);
-        var score1A = rsElem(
-            "span",
-            row,
-            "cell cell-Score",
-            athlete.score1A.paceString
+
+        let nameCell = cell(
+            athlete.name,
+            athlete.category.titleShort,
+            "name",
+            row
         );
-        var score1B = rsElem(
-            "span",
-            row,
-            "cell cell-Score",
-            athlete.score1B.paceString
+        nameCell.style.setProperty("--catColour", athlete.category.colour);
+
+        cell(athlete.score1A.paceString, athlete.score1A.raw, "score", row);
+
+        cell(athlete.score1B.paceString, athlete.score1B.raw, "score", row);
+
+        cell(
+            athlete.score1.position.display,
+            athlete.score1.points,
+            "score",
+            row
         );
-        var score1 = rsElem(
-            "span",
-            row,
-            "cell cell-Score",
-            athlete.score1.points
+
+        cell(athlete.score2A.paceString, athlete.score2A.raw, "score", row);
+
+        cell(athlete.score2B.paceString, athlete.score2B.raw, "score", row);
+
+        cell(
+            athlete.score2.position.display,
+            athlete.score2.points,
+            "score",
+            row
         );
-        var score2A = rsElem(
-            "span",
-            row,
-            "cell cell-Score",
-            athlete.score2A.paceString
-        );
-        var score2B = rsElem(
-            "span",
-            row,
-            "cell cell-Score",
-            athlete.score2B.paceString
-        );
-        var score2 = rsElem(
-            "span",
-            row,
-            "cell cell-Score",
-            athlete.score2.points
-        );
-        var division = rsElem("span", row, "cell cell-Div", athlete.category);
-        count++;
     }
 }
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
+        console.log(athlete.name);
+        console.log(tdrMembers.indexOf(athlete.name));
         return {
             name: athlete.name,
-            category: athlete.category,
-            tdr: false,
+            category: divisions.find(
+                (division) => athlete.category === division.title
+            ),
+            tdr: tdrMembers.indexOf(athlete.name) >= 0,
             pointsOverall: 0,
             scoreOverall: newIScore(),
             score1: newIScore(),
@@ -145,6 +230,7 @@ function processData(raw) {
     calculatePositions(scoredData, "score1B", true);
     calculatePositions(scoredData, "score2A", true);
     calculatePositions(scoredData, "score2B", true);
+
     for (
         var _i = 0, scoredData_1 = scoredData;
         _i < scoredData_1.length;
@@ -159,7 +245,6 @@ function processData(raw) {
     calculatePositions(scoredData, "score1");
     calculatePositions(scoredData, "score2");
     calculatePositions(scoredData, "scoreOverall");
-    console.table(scoredData);
     return scoredData;
     // loop through data, adding positions for each score...
 }
@@ -211,7 +296,10 @@ function paceToString(pace) {
 
 function formatData(raw) {
     let presentedData = raw.sort((a, b) => {
-        return a[settings.sortBy].points - b[settings.sortBy].points;
+        return (
+            a["score" + settings.sortBy].points -
+            b["score" + settings.sortBy].points
+        );
     });
     return presentedData;
 }
@@ -228,7 +316,6 @@ function calculatePositions(data, orderingScore, calcPoints) {
     var score = -1;
     for (var i = 0; i <= data.length - 1; i++) {
         if (!data[i]) {
-            console.log("no data");
             continue;
         }
         var thisScore = data[i][orderingScore];
