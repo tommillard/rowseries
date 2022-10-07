@@ -142,7 +142,7 @@ function paceToString(pace) {
     let secs = Math.floor((pace/10) % 60);
     let tenths = Math.round(pace) - (mins * 600) - (secs * 10);
     
-    return mins + ":" + secs.toString().padStart(2,"0") + tenths;
+    return mins + ":" + secs.toString().padStart(2,"0") + "." + tenths;
 }
 
 function formatData(raw) {
