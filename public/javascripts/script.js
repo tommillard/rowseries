@@ -77,10 +77,10 @@ function processData(raw) {
             score2B: generateScore(athlete.score2B, "6:00"),
         };
     });
-    calculatePositions(scoredData, "score1A");
-    calculatePositions(scoredData, "score1B");
-    calculatePositions(scoredData, "score2A");
-    calculatePositions(scoredData, "score2B");
+    calculatePositions(scoredData, "score1A", true);
+    calculatePositions(scoredData, "score1B", true);
+    calculatePositions(scoredData, "score2A", true);
+    calculatePositions(scoredData, "score2B", true);
     for (
         var _i = 0, scoredData_1 = scoredData;
         _i < scoredData_1.length;
@@ -149,7 +149,7 @@ function formatData(raw) {
     console.log(raw);
     return raw;
 }
-function calculatePositions(data, orderingScore) {
+function calculatePositions(data, orderingScore, calcPoints) {
     data = data.sort(function (a, b) {
         var aScore = a[orderingScore];
         var bScore = b[orderingScore];
@@ -183,7 +183,9 @@ function calculatePositions(data, orderingScore) {
             position = i + 1;
             thisScore.position.display = position.toString();
         }
-        thisScore.points = position;
+        if(calcPoints) {
+            thisScore.points = position;
+        }  
     }
     return data;
 }
