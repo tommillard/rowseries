@@ -11,7 +11,7 @@ var settings = {
 };
 
 wrapper.addEventListener("click", function(e) {
-    if(e.target.closest(".header .cell")){
+    if(e.target.classList.contains("sort")){
         settings.sortBy = e.target.textContent;
         console.log(settings);
     }
@@ -31,6 +31,7 @@ function rsElem(type, appendTo, classNames, innerHTML) {
     }
     return elem;
 }
+
 fetch("../json/scrape.json")
     .then(function (response) {
         return response.json();
@@ -47,14 +48,14 @@ function drawGrid() {
     var count = 1;
     
     var header = rsElem("div", wrapper, "header row");
-        rsElem("span", header, "cell cell-Rank", "Rank");
+        rsElem("span", header, "cell cell-Rank sort sort-Overall", "Rank");
         rsElem("span", header, "cell cell-Name", "Athlete");
-        rsElem("span", header, "cell cell-Score", "1A");
-        rsElem("span", header, "cell cell-Score", "1B");
-        rsElem("span", header, "cell cell-Score", "R1");
-        rsElem("span", header, "cell cell-Score", "2A");
-        rsElem("span", header, "cell cell-Score", "2B");
-        rsElem("span", header, "cell cell-Score", "R2");
+        rsElem("span", header, "cell cell-Score sort sort-1A", "1A");
+        rsElem("span", header, "cell cell-Score sort sort-1B", "1B");
+        rsElem("span", header, "cell cell-Score sort sort-1", "R1");
+        rsElem("span", header, "cell cell-Score sort sort-2A", "2A");
+        rsElem("span", header, "cell cell-Score sort sort-2B", "2B");
+        rsElem("span", header, "cell cell-Score sort sort-2", "R2");
         rsElem("span", header, "cell cell-Div", "Division");
     
     for (
@@ -162,7 +163,7 @@ function paceToString(pace) {
 
 function formatData(raw) {
     let presentedData = raw.sort((a,b) => {
-        return a["score1"].points - b["score1"].points;
+        return a[settings.sortBy].points - b[settings.sortBy].points;
     });
     return presentedData;
 }
