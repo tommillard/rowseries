@@ -9,6 +9,15 @@ var settings = {
     sortBy: "overall",
     filter: [],
 };
+
+wrapper.addEventListener("click", function (e) {
+    let sortProp = e.target.getAttribute("data-sort-prop");
+    if (sortProp) {
+        settings.sortBy = sortProp;
+    }
+    drawGrid();
+});
+
 function rsElem(type, appendTo, classNames, innerHTML) {
     var elem = document.createElement(type);
     if (classNames) {
@@ -22,6 +31,7 @@ function rsElem(type, appendTo, classNames, innerHTML) {
     }
     return elem;
 }
+
 fetch("../json/scrape.json")
     .then(function (response) {
         return response.json();
@@ -29,12 +39,35 @@ fetch("../json/scrape.json")
     .then(function (j) {
         rawData = j.athletes;
         drawGrid();
-        console.table(j.athletes);
     });
+
 function drawGrid() {
     var processedData = processData(rawData);
     var presentationData = formatData(processedData);
-    var count = 1;
+
+    var header = rsElem("div", wrapper, "header row");
+    let rankHeader = rsElem(
+        "span",
+        header,
+        "cell cell-Rank sort sort-Overall",
+        "Rank"
+    );
+    rankHeader.setAttribute("data-sort-prop", "Overall");
+    rsElem("span", header, "cell cell-Name", "Athlete");
+    let a1Header = rsElem("span", header, "cell cell-Score sort sort-1A", "1A");
+    a1Header.setAttribute("data-sort-prop", "1A");
+    let b1Header = rsElem("span", header, "cell cell-Score sort sort-1B", "1B");
+    b1Header.setAttribute("data-sort-prop", "1B");
+    let r1Header = rsElem("span", header, "cell cell-Score sort sort-1", "R1");
+    r1Header.setAttribute("data-sort-prop", "1");
+    let a2Header = rsElem("span", header, "cell cell-Score sort sort-2A", "2A");
+    a2Header.setAttribute("data-sort-prop", "2A");
+    let b2Header = rsElem("span", header, "cell cell-Score sort sort-2B", "2B");
+    b2Header.setAttribute("data-sort-prop", "2B");
+    let r2Header = rsElem("span", header, "cell cell-Score sort sort-2", "R2");
+    r2Header.setAttribute("data-sort-prop", "2");
+    rsElem("span", header, "cell cell-Div", "Division");
+
     for (
         var _i = 0, presentationData_1 = presentationData;
         _i < presentationData_1.length;
@@ -42,33 +75,53 @@ function drawGrid() {
     ) {
         var athlete = presentationData_1[_i];
         var row = rsElem("div", wrapper, "row");
-        var rank = rsElem("span", wrapper, "col col-Rank", count.toString());
-        var name_1 = rsElem("span", wrapper, "col col-Name", athlete.name);
+        var rank = rsElem(
+            "span",
+            row,
+            "cell cell-Rank",
+            athlete.scoreOverall.position.display +
+                " (" +
+                athlete.scoreOverall.points +
+                ")"
+        );
+        var name_1 = rsElem("span", row, "cell cell-Name", athlete.name);
         var score1A = rsElem(
             "span",
-            wrapper,
-            "col col-Score",
+            row,
+            "cell cell-Score",
             athlete.score1A.paceString
         );
         var score1B = rsElem(
             "span",
-            wrapper,
-            "col col-Score",
+            row,
+            "cell cell-Score",
             athlete.score1B.paceString
+        );
+        var score1 = rsElem(
+            "span",
+            row,
+            "cell cell-Score",
+            athlete.score1.points
         );
         var score2A = rsElem(
             "span",
-            wrapper,
-            "col col-Score",
+            row,
+            "cell cell-Score",
             athlete.score2A.paceString
         );
         var score2B = rsElem(
             "span",
-            wrapper,
-            "col col-Score",
+            row,
+            "cell cell-Score",
             athlete.score2B.paceString
         );
-        var division = rsElem("span", wrapper, "col col-Div", athlete.category);
+        var score2 = rsElem(
+            "span",
+            row,
+            "cell cell-Score",
+            athlete.score2.points
+        );
+        var division = rsElem("span", row, "cell cell-Div", athlete.category);
         count++;
     }
 }
@@ -88,10 +141,10 @@ function processData(raw) {
             score2B: generateScore(athlete.score2B, "6:00"),
         };
     });
-    calculatePositions(scoredData, "score1A");
-    calculatePositions(scoredData, "score1B");
-    calculatePositions(scoredData, "score2A");
-    calculatePositions(scoredData, "score2B");
+    calculatePositions(scoredData, "score1A", true);
+    calculatePositions(scoredData, "score1B", true);
+    calculatePositions(scoredData, "score2A", true);
+    calculatePositions(scoredData, "score2B", true);
     for (
         var _i = 0, scoredData_1 = scoredData;
         _i < scoredData_1.length;
@@ -100,12 +153,13 @@ function processData(raw) {
         var athlete = scoredData_1[_i];
         athlete.score1.points = athlete.score1A.points + athlete.score1B.points;
         athlete.score2.points = athlete.score2A.points + athlete.score2B.points;
-        athlete.scoreOverall.paceSeconds =
+        athlete.scoreOverall.points =
             athlete.score1.points + athlete.score2.points;
     }
     calculatePositions(scoredData, "score1");
     calculatePositions(scoredData, "score2");
     calculatePositions(scoredData, "scoreOverall");
+    console.table(scoredData);
     return scoredData;
     // loop through data, adding positions for each score...
 }
@@ -123,15 +177,18 @@ function generateScore(scoreString, distanceOrTime) {
 }
 function calculatePace(scoreString, distanceOrTime) {
     var duration, distance, paceSeconds;
+    if (scoreString === "--") {
+        return {
+            string: "--",
+            seconds: Infinity,
+        };
+    }
     if (distanceOrTime.indexOf(":") >= 0) {
         duration = convertTimeStringToTenths(distanceOrTime);
         distance = parseInt(scoreString);
         paceSeconds = duration / (distance / 500);
         return {
-            string: ""
-                .concat(Math.floor(paceSeconds / 600), ":")
-                .concat(Math.floor(paceSeconds / 10) % 60, ".")
-                .concat(Math.round(paceSeconds / 10) % 10),
+            string: paceToString(paceSeconds),
             seconds: paceSeconds / 10,
         };
     } else {
@@ -139,19 +196,26 @@ function calculatePace(scoreString, distanceOrTime) {
         distance = parseInt(distanceOrTime);
         paceSeconds = duration / (distance / 500);
         return {
-            string: ""
-                .concat(Math.floor(paceSeconds / 600), ":")
-                .concat(Math.floor(paceSeconds / 10) % 60, ".")
-                .concat(Math.round(paceSeconds / 10) % 10),
+            string: paceToString(paceSeconds),
             seconds: paceSeconds / 10,
         };
     }
 }
-function formatData(raw) {
-    return raw;
+function paceToString(pace) {
+    let mins = Math.floor(pace / 600);
+    let secs = Math.floor((pace / 10) % 60);
+    let tenths = Math.floor(pace) - mins * 600 - secs * 10;
+
+    return mins + ":" + secs.toString().padStart(2, "0") + "." + tenths;
 }
-function calculatePositions(data, orderingScore) {
-    console.log(data);
+
+function formatData(raw) {
+    let presentedData = raw.sort((a, b) => {
+        return a[settings.sortBy].points - b[settings.sortBy].points;
+    });
+    return presentedData;
+}
+function calculatePositions(data, orderingScore, calcPoints) {
     data = data.sort(function (a, b) {
         var aScore = a[orderingScore];
         var bScore = b[orderingScore];
@@ -162,33 +226,32 @@ function calculatePositions(data, orderingScore) {
     });
     var position = 0;
     var score = -1;
-    for (var i = 0; i <= data.length; i++) {
+    for (var i = 0; i <= data.length - 1; i++) {
         if (!data[i]) {
             console.log("no data");
             continue;
         }
-        console.log("good");
         var thisScore = data[i][orderingScore];
         if (!thisScore) {
-            console.log(data[i]);
             continue;
         }
         thisScore.position.index = i;
-        if (thisScore.paceSeconds === score) {
+        let scoreToUse = thisScore.paceSeconds || thisScore.points;
+        if (scoreToUse === score) {
             if (!data[i - 1]) {
-                console.log(data[i - 1]);
-                console.log(i);
                 continue;
             }
             var prevScore = data[i - 1][orderingScore];
             thisScore.position.display = "T".concat(position);
             prevScore.position.display = "T".concat(position);
         } else {
-            score = thisScore.paceSeconds;
+            score = scoreToUse;
             position = i + 1;
             thisScore.position.display = position.toString();
         }
-        thisScore.points = score;
+        if (calcPoints) {
+            thisScore.points = position;
+        }
     }
     return data;
 }
@@ -201,6 +264,7 @@ function convertTimeStringToTenths(timeString) {
     if (!timeString) {
         return 0;
     }
+
     var splitString = timeString.split(":");
     splitString = splitString.filter(function (item) {
         return item.length;
@@ -213,8 +277,7 @@ function convertTimeStringToTenths(timeString) {
         );
     } else if (splitString.length === 2) {
         return (
-            parseInt(splitString[0]) * 60 * 10 +
-            parseFloat(splitString[1].slice(0, 2)) * 10
+            parseInt(splitString[0]) * 60 * 10 + parseFloat(splitString[1]) * 10
         );
     } else if (splitString.length === 1) {
         return parseFloat(splitString[0]) * 60 * 10;

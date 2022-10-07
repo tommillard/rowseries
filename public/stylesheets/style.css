@@ -1,8 +1,25 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 3vw;
+  font: 14px monospace, Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+#wrapper {
+    width: 100%;
+    overflow-x: auto;
+    display: table;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+    padding: 10px;
+}
+.cell-Name {
+    max-width: 150px;
+}
+.cell-Div {
+    display: none;
 }
