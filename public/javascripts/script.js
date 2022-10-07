@@ -170,7 +170,8 @@ function calculatePositions(data, orderingScore) {
             continue;
         }
         thisScore.position.index = i;
-        if (thisScore.paceSeconds === score) {
+        let scoreToUse = thisScore.paceSeconds -- thisScore.points;
+        if (scoreToUse === score) {
             if (!data[i - 1]) {
                 continue;
             }
@@ -178,7 +179,7 @@ function calculatePositions(data, orderingScore) {
             thisScore.position.display = "T".concat(position);
             prevScore.position.display = "T".concat(position);
         } else {
-            score = thisScore.paceSeconds;
+            score = scoreToUse;
             position = i + 1;
             thisScore.position.display = position.toString();
         }
