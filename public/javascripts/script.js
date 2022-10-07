@@ -162,7 +162,7 @@ function paceToString(pace) {
 
 function formatData(raw) {
     let presentedData = raw.sort((a,b) => {
-        return a["score1"].position.index - b["score1"].position.index;
+        return a["score1"].points - b["score1"].points;
     });
     return presentedData;
 }
