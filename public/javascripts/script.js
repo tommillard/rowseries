@@ -103,6 +103,12 @@ function generateScore(scoreString, distanceOrTime) {
 }
 function calculatePace(scoreString, distanceOrTime) {
     var duration, distance, paceSeconds;
+     if(scoreString === "--") {
+         return {
+             string: "--",
+             seconds: Infinity
+         };
+     }
     if (distanceOrTime.indexOf(":") >= 0) {
         duration = convertTimeStringToTenths(distanceOrTime);
         distance = parseInt(scoreString);
@@ -181,6 +187,7 @@ function convertTimeStringToTenths(timeString) {
     if (!timeString) {
         return 0;
     }
+
     var splitString = timeString.split(":");
     splitString = splitString.filter(function (item) {
         return item.length;
@@ -194,7 +201,7 @@ function convertTimeStringToTenths(timeString) {
     } else if (splitString.length === 2) {
         return (
             parseInt(splitString[0]) * 60 * 10 +
-            parseFloat(splitString[1].slice(0, 2)) * 10
+            parseFloat(splitString[1]) * 10
         );
     } else if (splitString.length === 1) {
         return parseFloat(splitString[0]) * 60 * 10;
