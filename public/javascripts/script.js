@@ -170,7 +170,7 @@ function calculatePositions(data, orderingScore) {
             continue;
         }
         thisScore.position.index = i;
-        let scoreToUse = thisScore.paceSeconds -- thisScore.points;
+        let scoreToUse = thisScore.paceSeconds || thisScore.points;
         if (scoreToUse === score) {
             if (!data[i - 1]) {
                 continue;
