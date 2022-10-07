@@ -6,10 +6,13 @@ body {
 #wrapper {
     width: 100%;
     overflow-x: auto;
+    display: table;
 }
 
 .row {
-    width: 100%;
-    display: grid;
-    grid-auto-columns: 100px;
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
 }

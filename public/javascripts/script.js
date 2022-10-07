@@ -41,13 +41,13 @@ function drawGrid() {
     ) {
         var athlete = presentationData_1[_i];
         var row = rsElem("div", wrapper, "row");
-        var rank = rsElem("span", row, "col col-Rank", count.toString());
-        var name_1 = rsElem("span", row, "col col-Name", athlete.name);
-        var score1A = rsElem("span", row, "col col-Score", athlete.score1A.paceString);
-        var score1B = rsElem("span", row, "col col-Score", athlete.score1B.paceString);
-        var score2A = rsElem("span", row, "col col-Score", athlete.score2A.paceString);
-        var score2B = rsElem("span", row, "col col-Score", athlete.score2B.paceString);
-        var division = rsElem("span", row, "col col-Div", athlete.category);
+        var rank = rsElem("span", row, "cell cell-Rank", count.toString());
+        var name_1 = rsElem("span", row, "cell cell-Name", athlete.name);
+        var score1A = rsElem("span", row, "cell cell-Score", athlete.score1A.paceString);
+        var score1B = rsElem("span", row, "cell cell-Score", athlete.score1B.paceString);
+        var score2A = rsElem("span", row, "cell cell-Score", athlete.score2A.paceString);
+        var score2B = rsElem("span", row, "cell cell-Score", athlete.score2B.paceString);
+        var division = rsElem("span", row, "cell cell-Div", athlete.category);
         count++;
     }
 }
