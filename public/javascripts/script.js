@@ -51,7 +51,7 @@ function drawGrid() {
     ) {
         var athlete = presentationData_1[_i];
         var row = rsElem("div", wrapper, "row");
-        var rank = rsElem("span", row, "cell cell-Rank", athlete.scoreOverall.position.display);
+        var rank = rsElem("span", row, "cell cell-Rank", athlete.scoreOverall.position.display + " (athlete.scoreOverall.points)");
         var name_1 = rsElem("span", row, "cell cell-Name", athlete.name);
         var score1A = rsElem("span", row, "cell cell-Score", athlete.score1A.paceString);
         var score1B = rsElem("span", row, "cell cell-Score", athlete.score1B.paceString);
