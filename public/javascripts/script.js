@@ -11,7 +11,7 @@ var settings = {
 };
 
 wrapper.addEventListener("click", function(e) {
-    if(e.target.closest(".header .cell"){
+    if(e.target.closest(".header .cell")){
         settings.sortBy = e.target.textContent;
         console.log(settings);
     }
