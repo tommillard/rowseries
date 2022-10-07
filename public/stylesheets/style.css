@@ -71,5 +71,9 @@ body {
 }
 .sort-Active {
     font-weight: 700;
-    color: #abe4e4;
+    color: white;
+    background:  #abe4e4;
+}
+.sort-Active:after {
+    content: v
 }
