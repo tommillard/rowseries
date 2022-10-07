@@ -15,4 +15,11 @@ body {
 
 .cell {
     display: table-cell;
+    padding: 10px;
+}
+.cell-Name {
+    max-width: 150px;
+}
+.cell-Div {
+    display: none;
 }
