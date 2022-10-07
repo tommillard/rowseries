@@ -160,7 +160,7 @@ function calculatePositions(data, orderingScore) {
     });
     var position = 0;
     var score = -1;
-    for (var i = 0; i <= data.length; i++) {
+    for (var i = 0; i <= data.length- 1; i++) {
         if (!data[i]) {
             console.log("no data");
             continue;
@@ -182,7 +182,7 @@ function calculatePositions(data, orderingScore) {
             position = i + 1;
             thisScore.position.display = position.toString();
         }
-        thisScore.points = score;
+        thisScore.points = position;
     }
     return data;
 }
