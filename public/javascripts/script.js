@@ -140,7 +140,7 @@ function calculatePace(scoreString, distanceOrTime) {
 function paceToString(pace) {
     let mins = Math.floor(pace / 600);
     let secs = Math.floor((pace/10) % 60);
-    let tenths = Math.round(pace) - (mins * 600) - (secs * 10);
+    let tenths = Math.floor(pace) - (mins * 600) - (secs * 10);
     
     return mins + ":" + secs.toString().padStart(2,"0") + "." + tenths;
 }
