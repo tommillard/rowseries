@@ -58,6 +58,8 @@ h1 {
     background: #555;
     color: white;
     height: 45px;
+    position: sticky;
+    top: 0;
 }
 
 .cell {

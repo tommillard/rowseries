@@ -237,7 +237,7 @@ function drawGrid() {
 
         cell(
             athlete.score1.position.display,
-            athlete.score1.points,
+            athlete.score1.points + "pts",
             "score",
             row
         );
@@ -248,7 +248,7 @@ function drawGrid() {
 
         cell(
             athlete.score2.position.display,
-            athlete.score2.points,
+            athlete.score2.points + "pts",
             "score",
             row
         );
