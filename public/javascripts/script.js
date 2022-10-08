@@ -4,10 +4,9 @@ var rawData = [];
 var processedData = [];
 // data with sorts, filters applied.
 var presentationData = [];
-var wrapper = document.getElementById("wrapper");
 var settings = {
     sortBy: "Overall",
-    filter: [],
+    filter: "all",
 };
 
 const tdrMembers = [
@@ -18,6 +17,10 @@ const tdrMembers = [
     "Richard  Wood",
     "Matt Fuller",
     "Tony Maddocks",
+    "Andrew Firth",
+    "Sven Wittchen TDR",
+    "Samuel Fuller",
+    "Alex Wright",
 ];
 
 const divisions = [
@@ -25,73 +28,99 @@ const divisions = [
         title: "Open Male (over 80kg)",
         titleShort: "Open Hwt M",
         colour: "#D10046",
+        id: "hmo",
     },
     {
         title: "40-49 Male (over 80kg)",
         titleShort: "40+ Hwt M",
         colour: "#428BCA",
+        id: "hm40",
     },
     {
         title: "50+ Male (over 80kg)",
         titleShort: "50+ Hwt M",
         colour: "#F0AD4E",
+        id: "hm50",
     },
     {
         title: "40-49 Male Lwt (80kg and under)",
         titleShort: "40+ Lwt M",
         colour: "#D695BE",
+        id: "lm40",
     },
     {
         title: "Open Male Lwt (80kg and under)",
         titleShort: "Open Lwt M",
         colour: "#7F8C8D",
+        id: "lmo",
     },
     {
         title: "50+ Male Lwt (80kg and under)",
         titleShort: "50+ Lwt M",
         colour: "#8E44AD",
+        id: "lm50",
     },
     {
         title: "40-49 Female (over 65kg)",
         titleShort: "40+ Hwt F",
         colour: "#AD4363",
+        id: "hf40",
     },
     {
         title: "50+ Female (over 65kg)",
         titleShort: "50+ Hwt F",
         colour: "#D1D100",
+        id: "hf50",
     },
     {
         title: "Open Female (over 65kg)",
         titleShort: "Open Hwt F",
         colour: "#AD8D43",
+        id: "hfo",
     },
     {
         title: "40-49 Female Lwt (65kg and under)",
         titleShort: "40+ Lwt F",
         colour: "#D10046",
+        id: "lf40",
     },
     {
         title: "50+ Female Lwt (65kg and under)",
         titleShort: "50+ Lwt F",
         colour: "#D10046",
+        id: "lf50",
     },
     {
         title: "Open Female Lwt (65kg and under)",
         titleShort: "Open Lwt F",
         colour: "#D10046",
+        id: "lfo",
     },
 ];
 
+var filterBar = rsElem("div", document.body, "filters");
+let table = rsElem("div", document.body, "table");
+drawFilters();
 drawHeader();
 
-wrapper.addEventListener("click", function (e) {
+table.addEventListener("click", function (e) {
     let sortProp = e.target.getAttribute("data-sort-prop");
     if (sortProp) {
         let activeSort = document.body.querySelector(".sort-Active");
         activeSort?.classList.remove("sort-Active");
         e.target.classList.add("sort-Active");
         settings.sortBy = sortProp;
+        drawGrid();
+    }
+});
+
+filterBar.addEventListener("click", function (e) {
+    let filterProp = e.target.getAttribute("data-filter");
+    if (filterProp) {
+        let activeSort = document.body.querySelector(".filters .active");
+        activeSort?.classList.remove("active");
+        e.target.classList.add("active");
+        settings.filter = filterProp;
         drawGrid();
     }
 });
@@ -115,21 +144,34 @@ fetch("../json/scrape.json")
         return response.json();
     })
     .then(function (j) {
-        rawData = j.athletes;
+        rawData = addDivisions(j.athletes);
         drawGrid();
     });
 
+function drawFilters() {
+    let all = rsElem("a", filterBar, "all active", "All");
+    all.setAttribute("data-filter", "all");
+
+    let tdr = rsElem("a", filterBar, "tdr", "TDR");
+    tdr.setAttribute("data-filter", "tdr");
+
+    for (let division of divisions) {
+        let filter = rsElem("a", filterBar, division.id, division.titleShort);
+        filter.setAttribute("data-filter", division.id);
+    }
+}
+
 function drawHeader() {
-    var header = rsElem("div", wrapper, "header row");
+    var header = rsElem("div", table, "header row");
     let rankHeader = rsElem(
         "span",
         header,
-        "cell cell-Rank sort sort-Active",
+        "cell cell-Overall sort sort-Active",
         "Rank"
     );
     rankHeader.setAttribute("data-sort-prop", "Overall");
     rsElem("span", header, "cell cell-Name", "Athlete");
-    let a1Header = rsElem("span", header, "cell cell-Score sort", "1A");
+    let a1Header = rsElem("span", header, "cell sort", "1A");
     a1Header.setAttribute("data-sort-prop", "1A");
     let b1Header = rsElem("span", header, "cell cell-Score sort", "1B");
     b1Header.setAttribute("data-sort-prop", "1B");
@@ -151,11 +193,12 @@ function cell(data1, data2, classList, appendTo) {
 }
 
 function drawGrid() {
-    var processedData = processData(rawData);
+    var filteredData = filterData(rawData);
+    var processedData = processData(filteredData);
     var presentationData = formatData(processedData);
 
-    for (var j = wrapper.children.length - 1; j > 0; j--) {
-        wrapper.removeChild(wrapper.children[j]);
+    for (var j = table.children.length - 1; j > 0; j--) {
+        table.removeChild(table.children[j]);
     }
 
     for (
@@ -164,14 +207,14 @@ function drawGrid() {
         _i++
     ) {
         var athlete = presentationData_1[_i];
-        var row = rsElem("div", wrapper, "row");
+        var row = rsElem("div", table, "row");
         if (athlete.tdr) {
             row.classList.add("tdr");
         }
         cell(
             athlete.scoreOverall.position.display,
             `${athlete.scoreOverall.points}pts`,
-            "overall",
+            "cell-Overall",
             row
         );
 
@@ -183,7 +226,12 @@ function drawGrid() {
         );
         nameCell.style.setProperty("--catColour", athlete.category.colour);
 
-        cell(athlete.score1A.paceString, athlete.score1A.raw, "score", row);
+        cell(
+            athlete.score1A.paceString,
+            athlete.score1A.raw,
+            "cell-Overall",
+            row
+        );
 
         cell(athlete.score1B.paceString, athlete.score1B.raw, "score", row);
 
@@ -206,16 +254,24 @@ function drawGrid() {
         );
     }
 }
+
+function addDivisions(raw) {
+    var divisionedData = raw.map(function (athlete) {
+        athlete.category = divisions.find(
+            (division) => athlete.category === division.title
+        );
+        athlete.tdr = tdrMembers.indexOf(athlete.name) >= 0;
+        return athlete;
+    });
+
+    return divisionedData;
+}
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
-        console.log(athlete.name);
-        console.log(tdrMembers.indexOf(athlete.name));
         return {
             name: athlete.name,
-            category: divisions.find(
-                (division) => athlete.category === division.title
-            ),
-            tdr: tdrMembers.indexOf(athlete.name) >= 0,
+            category: athlete.category,
+            tdr: athlete.tdr,
             pointsOverall: 0,
             scoreOverall: newIScore(),
             score1: newIScore(),
@@ -301,8 +357,26 @@ function formatData(raw) {
             b["score" + settings.sortBy].points
         );
     });
+
+    presentationData = presentationData.filter((athlete) => {});
     return presentedData;
 }
+
+function filterData(raw) {
+    let filteredData = raw.filter((athlete) => {
+        console.log(athlete);
+        console.log(settings.filter);
+        if (settings.filter === "all") {
+            return true;
+        }
+        if (settings.filter === "tdr" && athlete.tdr) {
+            return true;
+        }
+        return settings.filter === athlete.category.id;
+    });
+    return filteredData;
+}
+
 function calculatePositions(data, orderingScore, calcPoints) {
     data = data.sort(function (a, b) {
         var aScore = a[orderingScore];
@@ -329,18 +403,42 @@ function calculatePositions(data, orderingScore, calcPoints) {
                 continue;
             }
             var prevScore = data[i - 1][orderingScore];
-            thisScore.position.display = "T".concat(position);
-            prevScore.position.display = "T".concat(position);
+            thisScore.position.display = "T" + position;
+            prevScore.position.display = "T" + position;
         } else {
             score = scoreToUse;
             position = i + 1;
-            thisScore.position.display = position.toString();
+            thisScore.position.display = position;
         }
         if (calcPoints) {
             thisScore.points = position;
         }
     }
     return data;
+}
+function genPositionString(num) {
+    let splitNumString = num.toString().split("");
+    console.log(num.toString().slice(-1));
+    let end;
+    switch (num.toString().slice(-1)) {
+        case "1":
+            end = "st";
+            break;
+
+        case "2":
+            end = "nd";
+            break;
+
+        case "3":
+            end = "rd";
+            break;
+
+        default:
+            end = "th";
+            break;
+    }
+    console.log(end);
+    return num.toString() + end;
 }
 function convertTimeStringToTenths(timeString) {
     // 13:12.9
@@ -351,7 +449,7 @@ function convertTimeStringToTenths(timeString) {
     if (!timeString) {
         return 0;
     }
-
+    console.log(timeString);
     var splitString = timeString.split(":");
     splitString = splitString.filter(function (item) {
         return item.length;

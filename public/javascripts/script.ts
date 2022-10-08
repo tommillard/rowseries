@@ -48,14 +48,14 @@ function drawGrid() {
     let presentationData = formatData(processedData);
     let count = 1;
     for (let athlete of presentationData) {
-        let row = rsElem("div", wrapper, "row");
-        let rank = rsElem("span", wrapper, "col col-Rank", count.toString());
-        let name = rsElem("span", wrapper, "col col-Name", athlete.name);
-        let score1A = rsElem("span", wrapper, "col col-Score", athlete.score1A);
-        let score1B = rsElem("span", wrapper, "col col-Score", athlete.score1B);
-        let score2A = rsElem("span", wrapper, "col col-Score", athlete.score2A);
-        let score2B = rsElem("span", wrapper, "col col-Score", athlete.score2B);
-        let division = rsElem("span", wrapper, "col col-Div", athlete.category);
+        let row = rsElem("div", table, "row");
+        let rank = rsElem("span", table, "col col-Rank", count.toString());
+        let name = rsElem("span", table, "col col-Name", athlete.name);
+        let score1A = rsElem("span", table, "col col-Score", athlete.score1A);
+        let score1B = rsElem("span", table, "col col-Score", athlete.score1B);
+        let score2A = rsElem("span", table, "col col-Score", athlete.score2A);
+        let score2B = rsElem("span", table, "col col-Score", athlete.score2B);
+        let division = rsElem("span", table, "col col-Div", athlete.category);
         count++;
     }
 }
