@@ -12,6 +12,7 @@ var settings = {
 const tdrMembers = [
     "Tom Millard",
     "Carnivore.Trucker.Ben",
+    "Troy Frerichs",
     "jdmad7",
     "Starks",
     "Richard  Wood",
