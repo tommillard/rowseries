@@ -258,9 +258,6 @@ function drawGrid() {
 
 function addDivisions(raw) {
     var divisionedData = raw.map(function (athlete) {
-        if (athlete.name.split(" ")[0] == "Sven") {
-            alert(athlete.name);
-        }
         athlete.category = divisions.find(
             (division) => athlete.category === division.title
         );
