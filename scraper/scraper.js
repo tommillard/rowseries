@@ -57,6 +57,12 @@ module.exports = function () {
             score2B: item
               .querySelectorAll(".leaderboard-item__score--workout")[3]
               .textContent.trim(),
+              score3A: item
+              .querySelectorAll(".leaderboard-item__score--workout")[4]
+              .textContent.trim(),
+            score3B: item
+              .querySelectorAll(".leaderboard-item__score--workout")[5]
+              .textContent.trim(),
             category: item
               .closest(".competition-leaderboard")
               .querySelector(".detail-header")
