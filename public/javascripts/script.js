@@ -172,18 +172,24 @@ function drawHeader() {
     );
     rankHeader.setAttribute("data-sort-prop", "Overall");
     rsElem("span", header, "cell cell-Name", "Athlete");
-    let a1Header = rsElem("span", header, "cell sort", "1A");
-    a1Header.setAttribute("data-sort-prop", "1A");
-    let b1Header = rsElem("span", header, "cell cell-Score sort", "1B");
-    b1Header.setAttribute("data-sort-prop", "1B");
-    let r1Header = rsElem("span", header, "cell cell-Score sort", "R1");
-    r1Header.setAttribute("data-sort-prop", "1");
+    let a3Header = rsElem("span", header, "cell cell-Score sort", "3A");
+    a3Header.setAttribute("data-sort-prop", "3A");
+    let b3Header = rsElem("span", header, "cell cell-Score sort", "3B");
+    b3Header.setAttribute("data-sort-prop", "3B");
+    let r3Header = rsElem("span", header, "cell cell-Score sort", "R3");
+    r3Header.setAttribute("data-sort-prop", "3");
     let a2Header = rsElem("span", header, "cell cell-Score sort", "2A");
     a2Header.setAttribute("data-sort-prop", "2A");
     let b2Header = rsElem("span", header, "cell cell-Score sort", "2B");
     b2Header.setAttribute("data-sort-prop", "2B");
     let r2Header = rsElem("span", header, "cell cell-Score sort", "R2");
     r2Header.setAttribute("data-sort-prop", "2");
+    let a1Header = rsElem("span", header, "cell sort", "1A");
+    a1Header.setAttribute("data-sort-prop", "1A");
+    let b1Header = rsElem("span", header, "cell cell-Score sort", "1B");
+    b1Header.setAttribute("data-sort-prop", "1B");
+    let r1Header = rsElem("span", header, "cell cell-Score sort", "R1");
+    r1Header.setAttribute("data-sort-prop", "1");
 }
 
 function cell(data1, data2, classList, appendTo) {
@@ -227,6 +233,28 @@ function drawGrid() {
         );
         nameCell.style.setProperty("--catColour", athlete.category.colour);
 
+        cell(athlete.score3A.paceString, athlete.score3A.raw, "score", row);
+
+        cell(athlete.score3B.paceString, athlete.score3B.raw, "score", row);
+
+        cell(
+            athlete.score3.position.display,
+            athlete.score3.points + "pts",
+            "score",
+            row
+        );
+
+        cell(athlete.score2A.paceString, athlete.score2A.raw, "score", row);
+
+        cell(athlete.score2B.paceString, athlete.score2B.raw, "score", row);
+
+        cell(
+            athlete.score2.position.display,
+            athlete.score2.points + "pts",
+            "score",
+            row
+        );
+
         cell(
             athlete.score1A.paceString,
             athlete.score1A.raw,
@@ -239,17 +267,6 @@ function drawGrid() {
         cell(
             athlete.score1.position.display,
             athlete.score1.points + "pts",
-            "score",
-            row
-        );
-
-        cell(athlete.score2A.paceString, athlete.score2A.raw, "score", row);
-
-        cell(athlete.score2B.paceString, athlete.score2B.raw, "score", row);
-
-        cell(
-            athlete.score2.position.display,
-            athlete.score2.points + "pts",
             "score",
             row
         );
