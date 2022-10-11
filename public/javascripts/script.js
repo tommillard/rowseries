@@ -202,6 +202,7 @@ function cell(data1, data2, classList, appendTo) {
 function drawGrid() {
     var filteredData = filterData(rawData);
     var processedData = processData(filteredData);
+    console.log(processedData);
     var presentationData = formatData(processedData);
 
     for (var j = table.children.length - 1; j > 0; j--) {
@@ -294,16 +295,21 @@ function processData(raw) {
             scoreOverall: newIScore(),
             score1: newIScore(),
             score2: newIScore(),
+            score3: newIScore(),
             score1A: generateScore(athlete.score1A, "400m"),
             score1B: generateScore(athlete.score1B, "400m"),
             score2A: generateScore(athlete.score2A, "30:00"),
             score2B: generateScore(athlete.score2B, "6:00"),
+            score3A: generateScore(athlete.score3A, "100m"),
+            score3B: generateScore(athlete.score3B, "100m"),
         };
     });
     calculatePositions(scoredData, "score1A", true);
     calculatePositions(scoredData, "score1B", true);
     calculatePositions(scoredData, "score2A", true);
     calculatePositions(scoredData, "score2B", true);
+    calculatePositions(scoredData, "score3A", true);
+    calculatePositions(scoredData, "score3B", true);
 
     for (
         var _i = 0, scoredData_1 = scoredData;
@@ -313,11 +319,15 @@ function processData(raw) {
         var athlete = scoredData_1[_i];
         athlete.score1.points = athlete.score1A.points + athlete.score1B.points;
         athlete.score2.points = athlete.score2A.points + athlete.score2B.points;
+        athlete.score3.points = athlete.score3A.points + athlete.score3B.points;
         athlete.scoreOverall.points =
-            athlete.score1.points + athlete.score2.points;
+            athlete.score1.points +
+            athlete.score2.points +
+            athlete.score3.points;
     }
     calculatePositions(scoredData, "score1");
     calculatePositions(scoredData, "score2");
+    calculatePositions(scoredData, "score3");
     calculatePositions(scoredData, "scoreOverall");
     return scoredData;
     // loop through data, adding positions for each score...
@@ -342,17 +352,18 @@ function calculatePace(scoreString, distanceOrTime) {
             seconds: Infinity,
         };
     }
-    if (distanceOrTime.indexOf(":") >= 0) {
-        duration = convertTimeStringToTenths(distanceOrTime);
-        distance = parseInt(scoreString);
+    if (distanceOrTime.indexOf("m") >= 0) {
+        duration = convertTimeStringToTenths(scoreString);
+        distance = parseInt(distanceOrTime);
         paceSeconds = duration / (distance / 500);
         return {
             string: paceToString(paceSeconds),
             seconds: paceSeconds / 10,
         };
     } else {
-        duration = convertTimeStringToTenths(scoreString);
-        distance = parseInt(distanceOrTime);
+        duration = convertTimeStringToTenths(distanceOrTime);
+
+        distance = parseInt(scoreString);
         paceSeconds = duration / (distance / 500);
         return {
             string: paceToString(paceSeconds),
@@ -382,8 +393,6 @@ function formatData(raw) {
 
 function filterData(raw) {
     let filteredData = raw.filter((athlete) => {
-        console.log(athlete);
-        console.log(settings.filter);
         if (settings.filter === "all") {
             return true;
         }
@@ -436,7 +445,6 @@ function calculatePositions(data, orderingScore, calcPoints) {
 }
 function genPositionString(num) {
     let splitNumString = num.toString().split("");
-    console.log(num.toString().slice(-1));
     let end;
     switch (num.toString().slice(-1)) {
         case "1":
@@ -467,7 +475,6 @@ function convertTimeStringToTenths(timeString) {
     if (!timeString) {
         return 0;
     }
-    console.log(timeString);
     var splitString = timeString.split(":");
     splitString = splitString.filter(function (item) {
         return item.length;
@@ -483,7 +490,7 @@ function convertTimeStringToTenths(timeString) {
             parseInt(splitString[0]) * 60 * 10 + parseFloat(splitString[1]) * 10
         );
     } else if (splitString.length === 1) {
-        return parseFloat(splitString[0]) * 60 * 10;
+        return parseFloat(splitString[0]) * 10;
     }
     return undefined;
 }
