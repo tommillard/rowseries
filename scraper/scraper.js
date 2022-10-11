@@ -1,12 +1,4 @@
-/* var express = require("express");
-var router = express.Router();
 
-router.get("/", function (req, res, next) {
-  console.log("hello");
-  res.render("index", { title: "Express" });
-});
-
-module.exports = router; */
 
 const puppeteer = require("puppeteer");
 fs = require("fs-extra");
@@ -64,6 +56,12 @@ module.exports = function () {
               .textContent.trim(),
             score2B: item
               .querySelectorAll(".leaderboard-item__score--workout")[3]
+              .textContent.trim(),
+              score3A: item
+              .querySelectorAll(".leaderboard-item__score--workout")[4]
+              .textContent.trim(),
+            score3B: item
+              .querySelectorAll(".leaderboard-item__score--workout")[5]
               .textContent.trim(),
             category: item
               .closest(".competition-leaderboard")
