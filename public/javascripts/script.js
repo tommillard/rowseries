@@ -4,10 +4,9 @@ var rawData = [];
 var processedData = [];
 // data with sorts, filters applied.
 var presentationData = [];
-var settings = {
-    sortBy: "Overall",
-    filter: "all",
-};
+var settings;
+
+loadSettings();
 
 const tdrMembers = [
     "Tom Millard",
@@ -99,8 +98,12 @@ const divisions = [
     },
 ];
 
+var roundBar = rsElem("div", document.body, "rounds");
 var filterBar = rsElem("div", document.body, "filters");
 let table = rsElem("div", document.body, "table");
+let headerWrapper = rsElem("div", table, "header-Wrapper");
+
+drawRounds();
 drawFilters();
 drawHeader();
 
@@ -112,6 +115,7 @@ table.addEventListener("click", function (e) {
         e.target.classList.add("sort-Active");
         settings.sortBy = sortProp;
         drawGrid();
+        saveSettings();
     }
 });
 
@@ -123,8 +127,32 @@ filterBar.addEventListener("click", function (e) {
         e.target.classList.add("active");
         settings.filter = filterProp;
         drawGrid();
+        saveSettings();
     }
 });
+
+roundBar.addEventListener("click", function (e) {
+    let roundProp = e.target.getAttribute("data-round");
+    if (roundProp) {
+        e.target.classList.toggle("active");
+        if (e.target.classList.contains("active")) {
+            settings.includeRounds.push(roundProp);
+            // do sutff
+        } else {
+            settings.includeRounds.splice(
+                settings.includeRounds.indexOf(roundProp),
+                1
+            );
+        }
+        drawHeader();
+        drawGrid();
+        saveSettings();
+    }
+});
+
+function showRound(roundNum) {
+    return settings.includeRounds.indexOf(roundNum) >= 0;
+}
 
 function rsElem(type, appendTo, classNames, innerHTML) {
     var elem = document.createElement(type);
@@ -150,46 +178,119 @@ fetch("../json/scrape.json")
     });
 
 function drawFilters() {
-    let all = rsElem("a", filterBar, "all active", "All");
+    let all = rsElem("a", filterBar, "all", "All");
     all.setAttribute("data-filter", "all");
+    conditionalClass(all, "active", "all", settings.filter);
 
     let tdr = rsElem("a", filterBar, "tdr", "TDR");
     tdr.setAttribute("data-filter", "tdr");
+    conditionalClass(tdr, "active", "tdr", settings.filter);
 
     for (let division of divisions) {
         let filter = rsElem("a", filterBar, division.id, division.titleShort);
         filter.setAttribute("data-filter", division.id);
+        conditionalClass(filter, "active", division.id, settings.filter);
+    }
+}
+
+function drawRounds() {
+    let round4 = rsElem("a", roundBar, "r4", "Round 4");
+    round4.setAttribute("data-round", "4");
+    conditionalClass(round4, "active", "4", settings.includeRounds);
+
+    let round3 = rsElem("a", roundBar, "r3", "Round 3");
+    round3.setAttribute("data-round", "3");
+    conditionalClass(round3, "active", "3", settings.includeRounds);
+
+    let round2 = rsElem("a", roundBar, "r2", "Round 2");
+    round2.setAttribute("data-round", "2");
+    conditionalClass(round2, "active", "2", settings.includeRounds);
+
+    let round1 = rsElem("a", roundBar, "r1", "Round 1");
+    round1.setAttribute("data-round", "1");
+    conditionalClass(round1, "active", "1", settings.includeRounds);
+}
+
+function conditionalClass(element, activeClass, id, setting) {
+    if (id === setting) {
+        element.classList.add(activeClass);
+    }
+    if (Array.isArray(setting) && setting.indexOf(id) >= 0) {
+        element.classList.add(activeClass);
     }
 }
 
 function drawHeader() {
-    var header = rsElem("div", table, "header row");
-    let rankHeader = rsElem(
-        "span",
-        header,
-        "cell cell-Overall sort sort-Active",
-        "Rank"
-    );
+    headerWrapper.innerHTML = "";
+    var header = rsElem("div", headerWrapper, "header row");
+    let rankHeader = rsElem("span", header, "cell cell-Overall sort", "Rank");
     rankHeader.setAttribute("data-sort-prop", "Overall");
+    conditionalClass(rankHeader, "sort-Active", "Overall", settings.sortBy);
     rsElem("span", header, "cell cell-Name", "Athlete");
-    let a3Header = rsElem("span", header, "cell cell-Score sort", "3A");
-    a3Header.setAttribute("data-sort-prop", "3A");
-    let b3Header = rsElem("span", header, "cell cell-Score sort", "3B");
-    b3Header.setAttribute("data-sort-prop", "3B");
-    let r3Header = rsElem("span", header, "cell cell-Score sort", "R3");
-    r3Header.setAttribute("data-sort-prop", "3");
-    let a2Header = rsElem("span", header, "cell cell-Score sort", "2A");
-    a2Header.setAttribute("data-sort-prop", "2A");
-    let b2Header = rsElem("span", header, "cell cell-Score sort", "2B");
-    b2Header.setAttribute("data-sort-prop", "2B");
-    let r2Header = rsElem("span", header, "cell cell-Score sort", "R2");
-    r2Header.setAttribute("data-sort-prop", "2");
-    let a1Header = rsElem("span", header, "cell sort", "1A");
-    a1Header.setAttribute("data-sort-prop", "1A");
-    let b1Header = rsElem("span", header, "cell cell-Score sort", "1B");
-    b1Header.setAttribute("data-sort-prop", "1B");
-    let r1Header = rsElem("span", header, "cell cell-Score sort", "R1");
-    r1Header.setAttribute("data-sort-prop", "1");
+    if (showRound("4")) {
+        let a4Header = rsElem("span", header, "cell cell-Score sort", "4A");
+        a4Header.setAttribute("data-sort-prop", "4A");
+        conditionalClass(a4Header, "sort-Active", "4A", settings.sortBy);
+        let b4Header = rsElem("span", header, "cell cell-Score sort", "4B");
+        b4Header.setAttribute("data-sort-prop", "4B");
+        conditionalClass(b4Header, "sort-Active", "4B", settings.sortBy);
+        let r4Header = rsElem(
+            "span",
+            header,
+            "cell cell-Score cell-Summary sort",
+            "R4"
+        );
+        r4Header.setAttribute("data-sort-prop", "4");
+        conditionalClass(r4Header, "sort-Active", "4", settings.sortBy);
+    }
+    if (showRound("3")) {
+        let a3Header = rsElem("span", header, "cell cell-Score sort", "3A");
+        a3Header.setAttribute("data-sort-prop", "3A");
+        conditionalClass(a3Header, "sort-Active", "3A", settings.sortBy);
+        let b3Header = rsElem("span", header, "cell cell-Score sort", "3B");
+        b3Header.setAttribute("data-sort-prop", "3B");
+        conditionalClass(b3Header, "sort-Active", "3B", settings.sortBy);
+        let r3Header = rsElem(
+            "span",
+            header,
+            "cell cell-Score cell-Summary sort",
+            "R3"
+        );
+        r3Header.setAttribute("data-sort-prop", "3");
+        conditionalClass(r3Header, "sort-Active", "3", settings.sortBy);
+    }
+    if (showRound("2")) {
+        let a2Header = rsElem("span", header, "cell cell-Score sort", "2A");
+        a2Header.setAttribute("data-sort-prop", "2A");
+        conditionalClass(a2Header, "sort-Active", "2A", settings.sortBy);
+        let b2Header = rsElem("span", header, "cell cell-Score sort", "2B");
+        b2Header.setAttribute("data-sort-prop", "2B");
+        conditionalClass(b2Header, "sort-Active", "2B", settings.sortBy);
+        let r2Header = rsElem(
+            "span",
+            header,
+            "cell cell-Score cell-Summary sort",
+            "R2"
+        );
+        r2Header.setAttribute("data-sort-prop", "2");
+        conditionalClass(r2Header, "sort-Active", "2", settings.sortBy);
+    }
+    if (showRound("1")) {
+        let a1Header = rsElem("span", header, "cell sort", "1A");
+        a1Header.setAttribute("data-sort-prop", "1A");
+        conditionalClass(a1Header, "sort-Active", "1A", settings.sortBy);
+        let b1Header = rsElem("span", header, "cell cell-Score sort", "1B");
+        b1Header.setAttribute("data-sort-prop", "1B");
+        conditionalClass(b1Header, "sort-Active", "1B", settings.sortBy);
+        let r1Header = rsElem(
+            "span",
+            header,
+            "cell cell-Score cell-Summary sort",
+            "R1"
+        );
+        r1Header.setAttribute("data-sort-prop", "1");
+        conditionalClass(r1Header, "sort-Active", "1", settings.sortBy);
+    }
 }
 
 function cell(data1, data2, classList, appendTo) {
@@ -202,7 +303,6 @@ function cell(data1, data2, classList, appendTo) {
 function drawGrid() {
     var filteredData = filterData(rawData);
     var processedData = processData(filteredData);
-    console.log(processedData);
     var presentationData = formatData(processedData);
 
     for (var j = table.children.length - 1; j > 0; j--) {
@@ -234,43 +334,80 @@ function drawGrid() {
         );
         nameCell.style.setProperty("--catColour", athlete.category.colour);
 
-        cell(athlete.score3A.paceString, athlete.score3A.raw, "score", row);
+        if (showRound("4")) {
+            cell(athlete.score4A.paceString, athlete.score4A.raw, "score", row);
 
-        cell(athlete.score3B.paceString, athlete.score3B.raw, "score", row);
+            cell(athlete.score4B.paceString, athlete.score4B.raw, "score", row);
 
-        cell(
-            athlete.score3.position.display,
-            athlete.score3.points + "pts",
-            "score",
-            row
-        );
+            cell(
+                athlete.score4.position.display,
+                athlete.score4.points + "pts",
+                "score score-Summary",
+                row
+            );
+        }
 
-        cell(athlete.score2A.paceString, athlete.score2A.raw, "score", row);
+        if (showRound("3")) {
+            cell(athlete.score3A.paceString, athlete.score3A.raw, "score", row);
 
-        cell(athlete.score2B.paceString, athlete.score2B.raw, "score", row);
+            cell(athlete.score3B.paceString, athlete.score3B.raw, "score", row);
 
-        cell(
-            athlete.score2.position.display,
-            athlete.score2.points + "pts",
-            "score",
-            row
-        );
+            cell(
+                athlete.score3.position.display,
+                athlete.score3.points + "pts",
+                "score score-Summary",
+                row
+            );
+        }
 
-        cell(
-            athlete.score1A.paceString,
-            athlete.score1A.raw,
-            "cell-Overall",
-            row
-        );
+        if (showRound("2")) {
+            cell(athlete.score2A.paceString, athlete.score2A.raw, "score", row);
 
-        cell(athlete.score1B.paceString, athlete.score1B.raw, "score", row);
+            cell(athlete.score2B.paceString, athlete.score2B.raw, "score", row);
 
-        cell(
-            athlete.score1.position.display,
-            athlete.score1.points + "pts",
-            "score",
-            row
-        );
+            cell(
+                athlete.score2.position.display,
+                athlete.score2.points + "pts",
+                "score score-Summary",
+                row
+            );
+        }
+
+        if (showRound("1")) {
+            cell(
+                athlete.score1A.paceString,
+                athlete.score1A.raw,
+                "cell-Overall",
+                row
+            );
+
+            cell(athlete.score1B.paceString, athlete.score1B.raw, "score", row);
+
+            cell(
+                athlete.score1.position.display,
+                athlete.score1.points + "pts",
+                "score score-Summary",
+                row
+            );
+        }
+    }
+}
+
+function saveSettings() {
+    localStorage.setItem("prefs", JSON.stringify(settings));
+}
+
+function loadSettings() {
+    settings = localStorage.getItem("prefs");
+
+    if (settings) {
+        settings = JSON.parse(settings);
+    } else {
+        settings = {
+            sortBy: "Overall",
+            filter: "all",
+            includeRounds: ["1", "2", "3"],
+        };
     }
 }
 
@@ -296,12 +433,15 @@ function processData(raw) {
             score1: newIScore(),
             score2: newIScore(),
             score3: newIScore(),
+            score4: newIScore(),
             score1A: generateScore(athlete.score1A, "400m"),
             score1B: generateScore(athlete.score1B, "400m"),
             score2A: generateScore(athlete.score2A, "30:00"),
             score2B: generateScore(athlete.score2B, "6:00"),
             score3A: generateScore(athlete.score3A, "100m"),
             score3B: generateScore(athlete.score3B, "100m"),
+            score4A: generateScore(athlete.score4A, "1m"),
+            score4B: generateScore(athlete.score4B, "1m"),
         };
     });
     calculatePositions(scoredData, "score1A", true);
@@ -310,6 +450,8 @@ function processData(raw) {
     calculatePositions(scoredData, "score2B", true);
     calculatePositions(scoredData, "score3A", true);
     calculatePositions(scoredData, "score3B", true);
+    calculatePositions(scoredData, "score4A", true);
+    calculatePositions(scoredData, "score4B", true);
 
     for (
         var _i = 0, scoredData_1 = scoredData;
@@ -320,14 +462,30 @@ function processData(raw) {
         athlete.score1.points = athlete.score1A.points + athlete.score1B.points;
         athlete.score2.points = athlete.score2A.points + athlete.score2B.points;
         athlete.score3.points = athlete.score3A.points + athlete.score3B.points;
-        athlete.scoreOverall.points =
-            athlete.score1.points +
-            athlete.score2.points +
-            athlete.score3.points;
+        athlete.score4.points = athlete.score4A.points + athlete.score4B.points;
+
+        athlete.scoreOverall.points = 0;
+
+        if (showRound("1")) {
+            athlete.scoreOverall.points += athlete.score1.points;
+        }
+
+        if (showRound("2")) {
+            athlete.scoreOverall.points += athlete.score2.points;
+        }
+
+        if (showRound("3")) {
+            athlete.scoreOverall.points += athlete.score3.points;
+        }
+
+        if (showRound("4")) {
+            athlete.scoreOverall.points += athlete.score4.points;
+        }
     }
     calculatePositions(scoredData, "score1");
     calculatePositions(scoredData, "score2");
     calculatePositions(scoredData, "score3");
+    calculatePositions(scoredData, "score4");
     calculatePositions(scoredData, "scoreOverall");
     return scoredData;
     // loop through data, adding positions for each score...
@@ -444,7 +602,6 @@ function calculatePositions(data, orderingScore, calcPoints) {
     return data;
 }
 function genPositionString(num) {
-    let splitNumString = num.toString().split("");
     let end;
     switch (num.toString().slice(-1)) {
         case "1":
@@ -463,7 +620,6 @@ function genPositionString(num) {
             end = "th";
             break;
     }
-    console.log(end);
     return num.toString() + end;
 }
 function convertTimeStringToTenths(timeString) {

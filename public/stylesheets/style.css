@@ -18,7 +18,12 @@ h1 {
     border-collapse: collapse;
 }
 
-.filters {
+.header-Wrapper {
+    display: contents;
+}
+
+.filters,
+.rounds {
     padding: 0 5vw;
     height: 45px;
     display: inline-flex;
@@ -29,7 +34,8 @@ h1 {
     margin-bottom: 10px;
 }
 
-.filters a {
+.filters a,
+.rounds a {
     white-space: nowrap;
     margin-right: 10px;
     background: #ddd;
@@ -41,7 +47,8 @@ h1 {
     cursor: pointer;
 }
 
-.filters a.active {
+.filters a.active,
+.rounds a.active {
     background: #1c9797 !important;
     color: white;
 }
@@ -66,6 +73,14 @@ h1 {
     display: table-cell;
     padding: 10px;
     overflow: hidden;
+}
+
+.score-Summary,
+.cell-Summary {
+    border-right: 1px solid #444;
+}
+.cell-Overall {
+    min-width: 80px;
 }
 .row:nth-child(even) {
     background: #f2f2f2;
