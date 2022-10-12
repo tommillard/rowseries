@@ -419,9 +419,13 @@ function addDivisions(raw) {
         let tdrMember = tdrMembers.find(
             (tdrMember) => tdrMember.name === athlete.name
         );
-        athlete.tdr = typeof tdrMember != "undefined";
-        athlete.score3A = tdrMember.score3A || athlete.score3A;
+       
+        if(tdrMember) {
+           athlete.tdr = true;
+           athlete.score3A = tdrMember.score3A || athlete.score3A;
         athlete.score3B = tdrMember.score3B || athlete.score3B;
+        }
+        
         return athlete;
     });
 
