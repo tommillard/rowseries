@@ -9,18 +9,18 @@ var settings;
 loadSettings();
 
 const tdrMembers = [
-    { name: "Tom Millard", score3A: "", score3B: "12.8" },
-    { name: "Carnivore.Trucker.Ben", score3A: "", score3B: "12.8" },
-    { name: "Troy Frerichs", score3A: "", score3B: "12.8" },
-    { name: "jdmad7", score3A: "", score3B: "12.8" },
-    { name: "Starks", score3A: "", score3B: "12.8" },
-    { name: "Richard  Wood", score3A: "", score3B: "12.8" },
-    { name: "Matt Fuller", score3A: "", score3B: "12.8" },
-    { name: "Tony Maddocks", score3A: "", score3B: "12.8" },
-    { name: "Andrew Firth", score3A: "", score3B: "12.8" },
-    { name: "Sven Wittchen  TDR", score3A: "", score3B: "12.8" },
-    { name: "Samuel Fuller", score3A: "", score3B: "12.8" },
-    { name: "Alex Wright", score3A: "", score3B: "12.8" },
+    { name: "Tom Millard"},
+    { name: "Carnivore.Trucker.Ben" },
+    { name: "Troy Frerichs" },
+    { name: "jdmad7" },
+    { name: "Starks", score3A: "15.4", score3B: "17.4" },
+    { name: "Richard  Wood", score3A: "15.6", score3B: "17.0" },
+    { name: "Matt Fuller" },
+    { name: "Tony Maddocks" },
+    { name: "Andrew Firth" },
+    { name: "Sven Wittchen  TDR", score3A: "17.0", score3B: "18.3" },
+    { name: "Samuel Fuller" },
+    { name: "Alex Wright", score3A: "18.1", score3B: "19.1" },
 ];
 
 const divisions = [
