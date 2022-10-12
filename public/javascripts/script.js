@@ -424,7 +424,7 @@ function addDivisions(raw) {
             athlete.tdr = true;
         }
         
-        if(tdrMember && window.location.href.slice(-8) === "fullsend") {
+        if(tdrMember && window.location.href.slice(-8) !== "fullsend") {
             athlete.score3A = tdrMember.score3A || athlete.score3A;
             athlete.score3B = tdrMember.score3B || athlete.score3B;
         }
