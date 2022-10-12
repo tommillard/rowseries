@@ -12,7 +12,7 @@ const tdrMembers = [
     { name: "Tom Millard"},
     { name: "Carnivore.Trucker.Ben" },
     { name: "Troy Frerichs" },
-    { name: "jdmad7" },
+    { name: "jdmad7", score3A: "15.7", score3B: "17.3" },
     { name: "Starks", score3A: "15.4", score3B: "17.4" },
     { name: "Richard  Wood", score3A: "15.6", score3B: "17.0" },
     { name: "Matt Fuller" },
