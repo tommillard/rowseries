@@ -416,14 +416,18 @@ function addDivisions(raw) {
         athlete.category = divisions.find(
             (division) => athlete.category === division.title
         );
-        athlete.tdr = tdrMembers.find(
+        let tdrMember = tdrMembers.find(
             (tdrMember) => tdrMember.name === athlete.name
         );
+        athlete.tdr = typeof tdrMember != "undefined";
+        athlete.score3A = tdrMember.score3A || athlete.score3A;
+        athlete.score3B = tdrMember.score3B || athlete.score3B;
         return athlete;
     });
 
     return divisionedData;
 }
+
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
         return {
