@@ -9,18 +9,18 @@ var settings;
 loadSettings();
 
 const tdrMembers = [
-    "Tom Millard",
-    "Carnivore.Trucker.Ben",
-    "Troy Frerichs",
-    "jdmad7",
-    "Starks",
-    "Richard  Wood",
-    "Matt Fuller",
-    "Tony Maddocks",
-    "Andrew Firth",
-    "Sven Wittchen  TDR",
-    "Samuel Fuller",
-    "Alex Wright",
+    { name: "Tom Millard", score3A: "", score3B: "12.8" },
+    { name: "Carnivore.Trucker.Ben", score3A: "", score3B: "12.8" },
+    { name: "Troy Frerichs", score3A: "", score3B: "12.8" },
+    { name: "jdmad7", score3A: "", score3B: "12.8" },
+    { name: "Starks", score3A: "", score3B: "12.8" },
+    { name: "Richard  Wood", score3A: "", score3B: "12.8" },
+    { name: "Matt Fuller", score3A: "", score3B: "12.8" },
+    { name: "Tony Maddocks", score3A: "", score3B: "12.8" },
+    { name: "Andrew Firth", score3A: "", score3B: "12.8" },
+    { name: "Sven Wittchen  TDR", score3A: "", score3B: "12.8" },
+    { name: "Samuel Fuller", score3A: "", score3B: "12.8" },
+    { name: "Alex Wright", score3A: "", score3B: "12.8" },
 ];
 
 const divisions = [
@@ -416,7 +416,9 @@ function addDivisions(raw) {
         athlete.category = divisions.find(
             (division) => athlete.category === division.title
         );
-        athlete.tdr = tdrMembers.indexOf(athlete.name) >= 0;
+        athlete.tdr = tdrMembers.find(
+            (tdrMember) => tdrMember.name === athlete.name
+        );
         return athlete;
     });
 
