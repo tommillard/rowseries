@@ -13,14 +13,14 @@ const tdrMembers = [
     { name: "Carnivore.Trucker.Ben" },
     { name: "Troy Frerichs" },
     { name: "jdmad7"},
-    { name: "Starks", score3A: "15.7", score3B: "16.8" },
+    { name: "Starks"},
     { name: "Richard  Wood" },
     { name: "Matt Fuller" },
     { name: "Tony Maddocks" },
     { name: "Andrew Firth" },
-    { name: "Sven Wittchen  TDR", score3A: "17.0", score3B: "18.3" },
+    { name: "Sven Wittchen" },
     { name: "Samuel Fuller" },
-    { name: "Alex Wright", score3A: "18.1", score3B: "19.1" },
+    { name: "Alex Wright"},
 ];
 
 const divisions = [
