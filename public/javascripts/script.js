@@ -18,9 +18,9 @@ const tdrMembers = [
     { name: "Matt Fuller" },
     { name: "Tony Maddocks" },
     { name: "Andrew Firth" },
-    { name: "Sven Wittchen" },
+    { name: "Sven Wittchen  TDR",},
     { name: "Samuel Fuller" },
-    { name: "Alex Wright"},
+    { name: "Alex Wright",},
 ];
 
 const divisions = [
