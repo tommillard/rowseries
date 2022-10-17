@@ -453,8 +453,8 @@ function processData(raw) {
             score2B: generateScore(athlete.score2B, "6:00"),
             score3A: generateScore(athlete.score3A, "100m"),
             score3B: generateScore(athlete.score3B, "100m"),
-            score4A: generateScore(athlete.score4A, "1m"),
-            score4B: generateScore(athlete.score4B, "1m"),
+            score4A: generateScore(athlete.score4A, "6000m"),
+            score4B: generateScore(athlete.score4B, "2000m"),
         };
     });
     calculatePositions(scoredData, "score1A", true);
