@@ -23,7 +23,7 @@ const tdrMembers = [
     { name: "Sven Wittchen" },
     { name: "Matt Fuller" },
     { name: "Peter Kragh" },
-    { name: "Richard Wood" },
+    { name: "Richard  Wood" },
     { name: "James Wild" },
     { name: "Troy Frerichs" },
     { name: "John  Davies" },
