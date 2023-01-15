@@ -9,18 +9,18 @@ var settings;
 loadSettings();
 
 const tdrMembers = [
-    { name: "Tom Millard"},
+    { name: "Tom Millard" },
     { name: "Carnivore.Trucker.Ben" },
     { name: "Troy Frerichs" },
-    { name: "jdmad7"},
-    { name: "Starks"},
+    { name: "jdmad7" },
+    { name: "Starks" },
     { name: "Richard  Wood" },
     { name: "Matt Fuller" },
     { name: "Tony Maddocks" },
     { name: "Andrew Firth" },
-    { name: "Sven Wittchen  TDR",},
+    { name: "Sven Wittchen  TDR" },
     { name: "Samuel Fuller" },
-    { name: "Alex Wright",},
+    { name: "Alex Wright" },
 ];
 
 const divisions = [
@@ -168,7 +168,7 @@ function rsElem(type, appendTo, classNames, innerHTML) {
     return elem;
 }
 
-fetch("../json/scrape.json")
+fetch("../json/rowseries-2022.json")
     .then(function (response) {
         return response.json();
     })
@@ -419,16 +419,16 @@ function addDivisions(raw) {
         let tdrMember = tdrMembers.find(
             (tdrMember) => tdrMember.name === athlete.name
         );
-       
-        if(tdrMember) {
+
+        if (tdrMember) {
             athlete.tdr = true;
         }
-        
-        if(tdrMember && window.location.href.slice(-8) !== "fullsend") {
+
+        if (tdrMember && window.location.href.slice(-8) !== "fullsend") {
             athlete.score3A = tdrMember.score3A || athlete.score3A;
             athlete.score3B = tdrMember.score3B || athlete.score3B;
         }
-        
+
         return athlete;
     });
 

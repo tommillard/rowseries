@@ -17,9 +17,9 @@
     "puppeteer": "^18.0.5"
   },
   "prettier": {
-        "tabWidth": 4,
-        "arrowParens": "always",
-        "trailingComma": "es5",
-        "htmlWhitespaceSensitivity": "ignore"
-    }
+    "tabWidth": 4,
+    "arrowParens": "always",
+    "trailingComma": "es5",
+    "htmlWhitespaceSensitivity": "ignore"
+  }
 }

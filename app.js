@@ -4,7 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cron = require("node-cron");
-var scraper = require("./scraper/scraper");
+var scraper = require("./scraper/scrape-rowd-royalty-2023");
 
 var indexRouter = require("./routes/index");
 var scrapeRouter = require("./routes/scrape");
@@ -26,26 +26,24 @@ app.use("/scrape", scrapeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
+    // render the error page
+    res.status(err.status || 500);
+    res.render("error");
 });
-
-console.log("booting up");
 
 // schedule tasks to be run on the server
 cron.schedule("*/1 * * * *", function () {
-  console.log("scraping");
-  scraper();
+    //console.log("scraping");
+    //scraper();
 });
 
 module.exports = app;
