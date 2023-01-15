@@ -3,7 +3,7 @@ fs = require("fs-extra");
 
 module.exports = function () {
     const urlBase =
-        "https://compete.strongest.com/competitions/row-series-xii/leaderboard/";
+        "https://compete.strongest.com/competitions/rowd-royalty-indoor-rowing-competition-2023/leaderboard/";
 
     let data = {
         scrapedAt: 0,
@@ -11,18 +11,10 @@ module.exports = function () {
     };
 
     const urls = [
-        { url: "DJZHFR" },
-        { url: "SXASNE" },
-        { url: "DEZCTM" },
-        { url: "XYRAGX" },
-        { url: "HAKGEV" },
-        { url: "GQFHJH" },
-        { url: "FFSEEN" },
-        { url: "XENPXJ" },
-        { url: "GQRFBY" },
-        { url: "VXSTD" },
-        { url: "SRNZET" },
-        { url: "ZVHXSJ" },
+        { url: "WVFXR" },
+        { url: "EHFZM" },
+        { url: "GXTCAK" },
+        { url: "BPSZKP" },
     ];
 
     (async () => {
@@ -30,12 +22,23 @@ module.exports = function () {
             args: ["--no-sandbox", "--disable-setuid-sandbox"],
         });
         const page = await browser.newPage();
-        page.setViewport({ width: 1200, height: 1000 });
+        page.setViewport({ width: 1200, height: 8000 });
+
+        page.on("console", async (msg) => {
+            const msgArgs = msg.args();
+            for (let i = 0; i < msgArgs.length; ++i) {
+                console.log(await msgArgs[i].jsonValue());
+            }
+        });
 
         for (var url of urls) {
             console.log(`Scraping ${urlBase}${url.url}...`);
             await page.goto(`${urlBase}${url.url}`);
             await page.waitForSelector(".leaderboard-item--body");
+
+            let html = await page.$eval("html", (i) => i.innerHTML);
+
+            console.log(html);
 
             let newData = await page.$$eval(
                 ".leaderboard-item--body",
@@ -55,6 +58,7 @@ module.exports = function () {
                                     ".leaderboard-item__score--workout"
                                 )[1]
                                 .textContent.trim(),
+                            /*
                             score2A: item
                                 .querySelectorAll(
                                     ".leaderboard-item__score--workout"
@@ -84,7 +88,7 @@ module.exports = function () {
                                 .querySelectorAll(
                                     ".leaderboard-item__score--workout"
                                 )[7]
-                                .textContent.trim(),
+                                .textContent.trim(),*/
                             category: item
                                 .closest(".competition-leaderboard")
                                 .querySelector(".detail-header")
@@ -100,7 +104,7 @@ module.exports = function () {
         data.scrapedAt = new Date();
 
         await fs.writeFileSync(
-            "./public/json/scrape.json",
+            "./public/json/rowd-royalty-2023.json",
             JSON.stringify(data)
         );
 

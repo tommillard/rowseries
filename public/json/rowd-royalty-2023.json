@@ -1,0 +1,2399 @@
+{
+    "scrapedAt": "2023-01-15T15:50:16.877Z",
+    "athletes": [
+        {
+            "name": "Zach Fowle",
+            "score1A": "37.20",
+            "score1B": "13:54.80",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Eamonn Joyce",
+            "score1A": "40.50",
+            "score1B": "13:50.80",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Nathaniel Wright",
+            "score1A": "39.70",
+            "score1B": "13:57.60",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Ole Kristian Karlsen",
+            "score1A": "38.60",
+            "score1B": "14:21.10",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "David Rackstraw",
+            "score1A": "40.50",
+            "score1B": "14:02",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Daniel Winney",
+            "score1A": "39.70",
+            "score1B": "14:15.30",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "John Kenward",
+            "score1A": "39.60",
+            "score1B": "14:24.10",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Tim Mantsch",
+            "score1A": "38.80",
+            "score1B": "14:26.60",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jens Pippig",
+            "score1A": "42.10",
+            "score1B": "10:39.30",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Ian  Gallagher",
+            "score1A": "40.80",
+            "score1B": "14:12.10",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Lucas Goodman",
+            "score1A": "42.20",
+            "score1B": "13:52.20",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Ron Peterson",
+            "score1A": "42.40",
+            "score1B": "14:04.60",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Logan Gehlhausen",
+            "score1A": "39.90",
+            "score1B": "14:41.30",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Kevin Price",
+            "score1A": "41.70",
+            "score1B": "14:31.80",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jeff Doornweerd",
+            "score1A": "43.40",
+            "score1B": "14:09.20",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Paul Sanderson",
+            "score1A": "42.20",
+            "score1B": "14:31.80",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jaak Peterson",
+            "score1A": "41",
+            "score1B": "14:41.90",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Conrad Frank",
+            "score1A": "43.30",
+            "score1B": "14:35",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Ashael Plum",
+            "score1A": "40.50",
+            "score1B": "15:02",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jonathan  Bassett",
+            "score1A": "46.40",
+            "score1B": "10:18.10",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Alexandre Simon",
+            "score1A": "45.30",
+            "score1B": "14:25.80",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Ante Jurjević",
+            "score1A": "44",
+            "score1B": "14:33.60",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Eric Jude",
+            "score1A": "43.50",
+            "score1B": "14:46.70",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "James Hedges",
+            "score1A": "41.60",
+            "score1B": "15:02.80",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Pati Tumaalii",
+            "score1A": "44.20",
+            "score1B": "14:37.40",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Esko Tõnisson",
+            "score1A": "44",
+            "score1B": "14:44",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Tom Gray",
+            "score1A": "43.80",
+            "score1B": "14:45",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Mark Tremblay",
+            "score1A": "43.70",
+            "score1B": "14:49.50",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Bridger Williams",
+            "score1A": "41.10",
+            "score1B": "15:08.06",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Sean Weckel",
+            "score1A": "43",
+            "score1B": "14:56.40",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Andre Loogman",
+            "score1A": "43.70",
+            "score1B": "14:55.20",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Tony Whitley",
+            "score1A": "48.30",
+            "score1B": "11:06.20",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Nick Papsadora",
+            "score1A": "42.10",
+            "score1B": "15:11.20",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Johnny Pedlow",
+            "score1A": "44.30",
+            "score1B": "14:49.50",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Tim Zeddies",
+            "score1A": "40.70",
+            "score1B": "15:23.40",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jose Canosa",
+            "score1A": "46.40",
+            "score1B": "14:35.40",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jory Bulkley",
+            "score1A": "45.50",
+            "score1B": "14:52.10",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Diego  Cao",
+            "score1A": "47.70",
+            "score1B": "14:30.70",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Will Hoyer",
+            "score1A": "46.30",
+            "score1B": "14:49.90",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Josh Collins",
+            "score1A": "46.30",
+            "score1B": "14:50.50",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jacob Miehe",
+            "score1A": "44.50",
+            "score1B": "15:14.70",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Rob Grupe",
+            "score1A": "49.50",
+            "score1B": "14:32",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Mike Kiehn",
+            "score1A": "46.20",
+            "score1B": "15:07",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "David Clay",
+            "score1A": "43.30",
+            "score1B": "15:56.60",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Nick Tess",
+            "score1A": "44.60",
+            "score1B": "15:21.70",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Kevin Ward",
+            "score1A": "46",
+            "score1B": "15:19.40",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Dustin Secrest",
+            "score1A": "47.40",
+            "score1B": "15:04.40",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Romain Dazy",
+            "score1A": "45.80",
+            "score1B": "15:22.20",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "James Lavender",
+            "score1A": "45.80",
+            "score1B": "15:24.20",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Kevin  Cybularz",
+            "score1A": "48.90",
+            "score1B": "14:58",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Tyler Leopold",
+            "score1A": "47",
+            "score1B": "15:11.50",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jussi Koponen",
+            "score1A": "46.80",
+            "score1B": "15:16",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Doug Stefano",
+            "score1A": "47.80",
+            "score1B": "15:09.10",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Marc Levesque",
+            "score1A": "49.70",
+            "score1B": "14:57.50",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Rene Forestier",
+            "score1A": "46.70",
+            "score1B": "15:22.80",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "jason babinec",
+            "score1A": "47.50",
+            "score1B": "15:20.60",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Forrest Albaugh",
+            "score1A": "45.30",
+            "score1B": "16:21.30",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jacob Admiraal",
+            "score1A": "47.70",
+            "score1B": "15:21.30",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Todd Crosswhite",
+            "score1A": "49.70",
+            "score1B": "15:09.30",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "STEPHEN SCHUESSLER",
+            "score1A": "46",
+            "score1B": "15:29:00",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jonathan Niles",
+            "score1A": "48.60",
+            "score1B": "15:47.50",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Luke Dyer",
+            "score1A": "51.10",
+            "score1B": "15:15.20",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Prathap Naini",
+            "score1A": "46.60",
+            "score1B": "16:52.20",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Peter Wright",
+            "score1A": "49.50",
+            "score1B": "15:24",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Craig Schouten",
+            "score1A": "48.90",
+            "score1B": "15:47.60",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Shawnn Vincent",
+            "score1A": "46.90",
+            "score1B": "15:50.80*",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Terry Yez",
+            "score1A": "50.30",
+            "score1B": "15:55",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Bill Griffel",
+            "score1A": "48.10",
+            "score1B": "15:26:09",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Grant MacElhiney",
+            "score1A": "50.70",
+            "score1B": "15:48.90",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Joel Dunn",
+            "score1A": "50.30",
+            "score1B": "16:02",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Rob McMichael",
+            "score1A": "53.40",
+            "score1B": "15:47.60",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Scott Herold",
+            "score1A": "50.90",
+            "score1B": "16:05.90",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "John Cochran",
+            "score1A": "51.70",
+            "score1B": "16:04.10",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Craig Warbinton",
+            "score1A": "51.30",
+            "score1B": "16:11.90",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Michael Peck",
+            "score1A": "52.90",
+            "score1B": "16:52",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "John Gill",
+            "score1A": "53",
+            "score1B": "16:55.90",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Douglas Luo",
+            "score1A": "53.80",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Mark DePietro",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Christian Reuter",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Daniel Duckworth",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Samuel Fuller",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Niall ODonnchu",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Tony Maddocks",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Bryan Bunch",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "John Erskine",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Eric Asch",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Ryan Rosa",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Paul Erskine",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Scott Foster",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Spencer Davey",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Nishant  Hulwan",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Nathan Przybylo",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Zach Burgess",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Miguel Lopez",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Scott McLeod",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Eric Sloan",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Christopher Love",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Jonathan Burns",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Chris Weaver",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Dan Hicks",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Tall (5'11\"+/180cm+)"
+        },
+        {
+            "name": "Madelyn Brooker",
+            "score1A": "42",
+            "score1B": "15:00.90",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Morgan McGrath",
+            "score1A": "45.30",
+            "score1B": "15:14.10",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Egle Rebane",
+            "score1A": "47.70",
+            "score1B": "15:37.90",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Jenni Dean",
+            "score1A": "48.70",
+            "score1B": "15:27.30",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Ehea Schuerch",
+            "score1A": "48.80",
+            "score1B": "15:16.80",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Else Hiemstra",
+            "score1A": "50.70",
+            "score1B": "11:26.30",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Nyema Mitchell",
+            "score1A": "49.90",
+            "score1B": "13:11.20",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Emily Yeung",
+            "score1A": "48.70",
+            "score1B": "15:45",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Salem Giampietro",
+            "score1A": "48.80",
+            "score1B": "15:43.01",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Sarah Hopping Estrella",
+            "score1A": "47.70",
+            "score1B": "15:58.80",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Natalie Rogers",
+            "score1A": "49.30",
+            "score1B": "15:45.50",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Kim Kramer",
+            "score1A": "49",
+            "score1B": "15:51.70",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Nora Küüts",
+            "score1A": "49.50",
+            "score1B": "15:50.90",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Lindsay Robinson",
+            "score1A": "49.20",
+            "score1B": "16:03.50",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Paige Stephenson",
+            "score1A": "51.20",
+            "score1B": "15:41.40",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Gabby Gee",
+            "score1A": "47.70",
+            "score1B": "16:37",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Randi Goertzen",
+            "score1A": "50.50",
+            "score1B": "16:07.20",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Anneliese Clow",
+            "score1A": "50.50",
+            "score1B": "16:12.20",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Kristina Blaas",
+            "score1A": "55.70",
+            "score1B": "12:38.50",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Sherry Garcia",
+            "score1A": "55.90",
+            "score1B": "14:25.50",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Nicole Rogers",
+            "score1A": "52.50",
+            "score1B": "16:12.40",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Stéphanie  HUGUELET",
+            "score1A": "51.50",
+            "score1B": "16:29.40",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Andrea  Lewis-Coker",
+            "score1A": "1:51.40",
+            "score1B": "11:56.50",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Ellen Pazdzior",
+            "score1A": "54.30",
+            "score1B": "16:08",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Valerie Limbert",
+            "score1A": "54.20",
+            "score1B": "16:08.90",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Leslie  Allen",
+            "score1A": "51",
+            "score1B": "16:46.60",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Lisa Roberts",
+            "score1A": "53.40",
+            "score1B": "16:32.40",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Amy Dane",
+            "score1A": "53.80",
+            "score1B": "16:17.30",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Alex Decker",
+            "score1A": "52.70",
+            "score1B": "16:42",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Sarah Mathews",
+            "score1A": "53.10",
+            "score1B": "16:46.50",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Lisa Carey",
+            "score1A": "55.90",
+            "score1B": "16:09.40",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Candace Baker",
+            "score1A": "55.20",
+            "score1B": "16:35",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Ashley Macko",
+            "score1A": "52.60",
+            "score1B": "17:04",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Adriane Casalotti",
+            "score1A": "53.50",
+            "score1B": "17:02.60",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Brittany Smith",
+            "score1A": "54.70",
+            "score1B": "16:56.10",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Anne Harvey",
+            "score1A": "55.30",
+            "score1B": "16:56",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Rachel Faller",
+            "score1A": "56.10",
+            "score1B": "16:39.20",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Julia Mangia",
+            "score1A": "52.80",
+            "score1B": "16:33:06",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Karolina Blazevic",
+            "score1A": "54:00",
+            "score1B": "16:34.70",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Siera Talbott",
+            "score1A": "55.40",
+            "score1B": "17:30.60",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Jeanine Hopping",
+            "score1A": "55.70",
+            "score1B": "17:09.60",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Vicki Carlock",
+            "score1A": "57.20",
+            "score1B": "17:01.50",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Laurel Angell",
+            "score1A": "59.60",
+            "score1B": "17:38.40",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Allison Wickens",
+            "score1A": "57.10",
+            "score1B": "17:57.80",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Laura McDonald",
+            "score1A": "56:03",
+            "score1B": "17:35",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Sheila Reed",
+            "score1A": "1:59.60",
+            "score1B": "17:38.80",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Jennifer Miner",
+            "score1A": "1:01.60",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Lauren Ritter",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Cheri O'Gara",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Amanda Hall",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Donna Wilson",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Julia Bryan",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Nina Thölking",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Becca Malone",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Jessica Olson",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Petrina Clingman",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Melissa McWilliam",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Nina Egan",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Jill Hardy",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Brooke Byrd",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Julie Bailey",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Erin Ensor",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Katie Forde",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Adelle Tudor",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Magda Podlipny",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "DEBERA SCHELEBO",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Wendi Wilson",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Erin Ellis",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Amanda Steeper",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Carina Achman",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Lauren Snow",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Rebecca Bates",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Alisha Mertens",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Kristin Ledington",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Gina Kiefer",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Jess Randles",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Michelle Lazorchak",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Katie Johnson",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Makenzie Donaldson",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Amy Tarbutton",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Kim  Johnson",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Ariana  Anderson",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Lucy Rann",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Meg Densmore",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Taylor Frazier",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Hadewij Slootweg",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Jessica Fisher",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Olena Buriak",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Jennifer Pacheco",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Kindra Goodman",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Malin Faraasen",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Kirsten  Kline",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Carin Dodsley",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Holly Larrimore",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Ashley Gold",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Pam Hysong",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Kathryn Gill",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Michelle  Angelo",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Anne McCormick",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Joanne Shenton",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Tall (5'6\"+ / 168cm+)"
+        },
+        {
+            "name": "Neeoli Field",
+            "score1A": "50.20",
+            "score1B": "15:42.70",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Alisha Eskew",
+            "score1A": "50",
+            "score1B": "16:23.60",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Deidra Burns",
+            "score1A": "51.20",
+            "score1B": "16:16.20",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Marissa Arakelian",
+            "score1A": "51.70",
+            "score1B": "16:15.50",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Colleen Forestier",
+            "score1A": "50.70",
+            "score1B": "16:24.30",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Lesley Lampen",
+            "score1A": "50.40",
+            "score1B": "16:24.80",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Nikki Udicki",
+            "score1A": "52",
+            "score1B": "16:17.10",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Samantha  Hawkins",
+            "score1A": "54",
+            "score1B": "16:07.20",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Kiki van der Linden",
+            "score1A": "53.60",
+            "score1B": "16:34.30",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Jen Smith",
+            "score1A": "53.40",
+            "score1B": "16:43.50",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Julie Heier",
+            "score1A": "58.60",
+            "score1B": "12:39.10",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Katariina Nokka",
+            "score1A": "54.10",
+            "score1B": "16:24.80",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Anjuli Cunningham",
+            "score1A": "53.70",
+            "score1B": "16:55.80",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Meg Segal",
+            "score1A": "54.50",
+            "score1B": "16:28",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Blair Santaspirt",
+            "score1A": "55.80",
+            "score1B": "16:25.90",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Dana Carney",
+            "score1A": "53.80",
+            "score1B": "17:00.80",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Linda Frizzell",
+            "score1A": "53.70",
+            "score1B": "17:35.90",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Juliet Schutte",
+            "score1A": "54.60",
+            "score1B": "16:55.70",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Skye Pigott",
+            "score1A": "57.80",
+            "score1B": "16:37.60",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Sarah  Andrews",
+            "score1A": "55.90",
+            "score1B": "17:00.70",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Julia Schonberg",
+            "score1A": "--",
+            "score1B": "11:49.10",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Danielle Wain",
+            "score1A": "59.30",
+            "score1B": "17:20.30",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Mahogane Reed",
+            "score1A": "54.30",
+            "score1B": "18:22.90",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Ashley Larson",
+            "score1A": "53.90",
+            "score1B": "16:26:00",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Lindsey Todesco",
+            "score1A": "59.30",
+            "score1B": "17:39",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Katie Harris",
+            "score1A": "59.50",
+            "score1B": "17:46",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Christine Shea",
+            "score1A": "1:02.80",
+            "score1B": "17:51.80",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Linda Rendle",
+            "score1A": "1:02.80",
+            "score1B": "17:57.70",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Debbie Koepke",
+            "score1A": "59.80",
+            "score1B": "18:20.50",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Mary Gonzalez",
+            "score1A": "2:01.40",
+            "score1B": "17:34.20",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Amy Vatsvog",
+            "score1A": "59:09",
+            "score1B": "17:29.70",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Jennifer  Ryan",
+            "score1A": "59.20",
+            "score1B": "17:12.04*",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "LIA BYERS",
+            "score1A": "1:04.60",
+            "score1B": "18:01.10",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Zoe Cohen",
+            "score1A": "1:03.40",
+            "score1B": "18:14.40",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Jaime Wolfe",
+            "score1A": "1:06",
+            "score1B": "19:10",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Hannah Michaelsen",
+            "score1A": "1:07.50",
+            "score1B": "19:15.70",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Jo-anne Crowther",
+            "score1A": "1:08.80",
+            "score1B": "19:13.30",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Katie Higgins",
+            "score1A": "18:04.40",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Elizabeth Hannigan",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Anne Helzer",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Janay Simmons",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Kari Mullen",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Piia Autonen-Laakso",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Tracey Bailey",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Suzy Ralls",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Liv Bellanti",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Conni Bond",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "PATTI KUHLMAN",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Amy Jeffryes",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Heather Kahler",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Heather  Smith",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Laura Ghioldi",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Caline LyBarger",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Marja Liedes-Kauppila",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Shawn Weiss",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Amanda Heffernan",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Amanda Hull",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Maria Lopez",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Renee  Christie",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "TL Rosenquist",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Julie Sodestrom",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Jarka Giangiulio",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Nancy E Cook",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Jessica  Phister",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Samantha McLean",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Tracey Van Beek",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Leigha  Eldridge",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Kendra Andrews",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Melanie  Murphy",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Rachael  Mackenzie",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Suzie Nasca",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Nikki Smith",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Natalie Marcom",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Suzanne  Wolfs",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Emily Delay",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Laura Meyers",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "michelle kenny",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Leslie Stobbart",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Leann Seifried",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Meagan Mylan",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Kathleen Walters",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Margaret Greenhall",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Donna McNamara",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Tristen Magallanes",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Heather  Brass",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Yvonne  Howard",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Tammy Perez",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Christine Mandilag",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Joan  L",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Bryonna Henry",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Heather Rauser",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Brittney Schmidt",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Eleanor Cler",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Latricia Major",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Katrina  Howard",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Stephanie Davis",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Shaunise  Phelps",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Denise Paine",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Catherine  Rovina",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "Tuuli Larven",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Women - Standard (<5'6\" / <168cm)"
+        },
+        {
+            "name": "John  Davies",
+            "score1A": "41.30",
+            "score1B": "14:12.90",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Rob Phillips",
+            "score1A": "39.30",
+            "score1B": "14:34.20",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Edward Goins",
+            "score1A": "42.10",
+            "score1B": "11:04.60",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Benjamin Becerra",
+            "score1A": "41.40",
+            "score1B": "14:47.70",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Jason Evans",
+            "score1A": "43",
+            "score1B": "14:47.10",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Even Poltan",
+            "score1A": "44.90",
+            "score1B": "14:48.60",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Matthew Franklin",
+            "score1A": "44.40",
+            "score1B": "14:55.80",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Steven McNider",
+            "score1A": "42.40",
+            "score1B": "15:23.10",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Joey Rojan",
+            "score1A": "45.30",
+            "score1B": "15:02.20",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Joel Brannigan",
+            "score1A": "47.10",
+            "score1B": "14:50.10",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Andrew  Foley",
+            "score1A": "46.50",
+            "score1B": "15:10.80",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Mark Petersen",
+            "score1A": "46.90",
+            "score1B": "15:08.60",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Josh Christensen",
+            "score1A": "43.60",
+            "score1B": "15:28.50",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Rick Copley",
+            "score1A": "45.90",
+            "score1B": "15:21.20",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Anthony Walpole",
+            "score1A": "44.90",
+            "score1B": "15:27",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Michael Barbone",
+            "score1A": "45.40",
+            "score1B": "15:26.70",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Matt Conner",
+            "score1A": "46",
+            "score1B": "15:24.60",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Cory Reynolds",
+            "score1A": "46.90",
+            "score1B": "15:24.50",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Edward Sonnier",
+            "score1A": "48.20",
+            "score1B": "15:12.20",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Adam Hawkins",
+            "score1A": "44.30",
+            "score1B": "15:57.60",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Aiden Keegan",
+            "score1A": "55.40",
+            "score1B": "12:33.10",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Jon Melson",
+            "score1A": "1:22.40",
+            "score1B": "9:43.90",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Matthew Sharpe",
+            "score1A": "1:50.30",
+            "score1B": "5:56.40",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Nicholas Weidmayer",
+            "score1A": "49.50",
+            "score1B": "15:13.20",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Kevin van Besouw",
+            "score1A": "44.50",
+            "score1B": "16:18.20",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Dion Mancenido",
+            "score1A": "47.70",
+            "score1B": "15:31",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Billy  Sickley",
+            "score1A": "48.30",
+            "score1B": "15:28",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "David McGovern",
+            "score1A": "50.30",
+            "score1B": "15:23.70",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Jason Everly",
+            "score1A": "47.60",
+            "score1B": "15:55.70",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Padraic Finnerty",
+            "score1A": "47.60",
+            "score1B": "16:03.10",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "James  Thomas",
+            "score1A": "48.70",
+            "score1B": "15:52",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Tom Miranda",
+            "score1A": "48.40",
+            "score1B": "16:03",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Robert  Irving",
+            "score1A": "50.20",
+            "score1B": "15:40.70",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Matthew Hittle",
+            "score1A": "50.60",
+            "score1B": "15:33.70",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Nash Quines",
+            "score1A": "48.90",
+            "score1B": "16:45.50",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Robert Dawson",
+            "score1A": "49.90",
+            "score1B": "16:25.10",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Andrew Colvin",
+            "score1A": "51.80",
+            "score1B": "16:04.80",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Matthew  O'Sullivan",
+            "score1A": "1:46.20",
+            "score1B": "15:45.50",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Zachary  Stillions",
+            "score1A": "53.10",
+            "score1B": "16:21.80",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Brenton McDonald",
+            "score1A": "50.60",
+            "score1B": "16:48.40",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "edward king",
+            "score1A": "50.70",
+            "score1B": "17:00.20",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Chris Abrahams",
+            "score1A": "53.60",
+            "score1B": "16:58.60",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "mike donahue",
+            "score1A": "56:00",
+            "score1B": "16:35.70",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Tim Zulker",
+            "score1A": "1:00",
+            "score1B": "17:32.60",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Wilson Onu",
+            "score1A": "1:01",
+            "score1B": "18:12",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "David Lazarus",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "M. Smrstik",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Robert  Hamberg",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Mike Fallaize",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Paul Hayden",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "DANIEL STILLER",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "John Bissert",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Pierce Brady",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Brandon Mason",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Sergio Sandoval Berrocal",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Jacob Großner",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Dale Hetherington",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Jon Bader",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Greg Skiver",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Pat Thorpe",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Carey Hummel",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "TOM TINGLE",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Michael Manning",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Jon Muir",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Matt Moren",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Michael Alveari",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Robert Davis",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Daniel Viger",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Randy Martinez",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Francesco Battaglia",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Simon Frost",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Matt Bahen",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Adam Dixon",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Chris Cambly",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Frank McDougall",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Mark Adams",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Jack Marinelli",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Claude Nyvoll",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Ben Boehm",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Keaton Nyvoll",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Cohen Nyvoll",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Tom Dolly",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Tim Henry",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Steve Matcha",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Greg Krouse",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Colby Faulkes",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Ethan Kuhl",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Sam Cler",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Cody Moore",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Brandon Perard",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Shayne Higdon",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Jason Vermeer",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Dwayne Harris",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Dennis Mahoney",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Hank Kurzawski",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Andreas Baum",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Ryan Thornton",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Keith  Atneosen",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        },
+        {
+            "name": "Andrew Ferrier",
+            "score1A": "--",
+            "score1B": "--",
+            "category": "Men - Standard (<5'11 / <180cm)"
+        }
+    ]
+}
