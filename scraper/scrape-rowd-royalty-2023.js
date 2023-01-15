@@ -24,41 +24,74 @@ module.exports = function () {
         const page = await browser.newPage();
         page.setViewport({ width: 1200, height: 8000 });
 
-        page.on("console", async (msg) => {
-            const msgArgs = msg.args();
-            for (let i = 0; i < msgArgs.length; ++i) {
-                console.log(await msgArgs[i].jsonValue());
-            }
-        });
-
         for (var url of urls) {
             console.log(`Scraping ${urlBase}${url.url}...`);
             await page.goto(`${urlBase}${url.url}`);
             await page.waitForSelector(".leaderboard-item--body");
 
-            let html = await page.$eval("html", (i) => i.innerHTML);
+            await grabData(page, data);
+            await page.evaluate(() => {
+                window.scrollBy(0, 5000);
+            });
+            await page.waitForSelector(".leaderboard-item--body");
+            await page.waitForTimeout(2000);
 
-            console.log(html);
+            await grabData(page, data);
 
-            let newData = await page.$$eval(
-                ".leaderboard-item--body",
-                (items) => {
-                    return items.map((item) => {
-                        return {
-                            name: item
-                                .querySelector(".leaderboard-item__name")
-                                .textContent.trim(),
-                            score1A: item
-                                .querySelectorAll(
-                                    ".leaderboard-item__score--workout"
-                                )[0]
-                                .textContent.trim(),
-                            score1B: item
-                                .querySelectorAll(
-                                    ".leaderboard-item__score--workout"
-                                )[1]
-                                .textContent.trim(),
-                            /*
+            await page.evaluate(() => {
+                window.scrollBy(0, 5000);
+            });
+            await page.waitForSelector(".leaderboard-item--body");
+            await page.waitForTimeout(2000);
+
+            await grabData(page, data);
+
+            await page.evaluate(() => {
+                window.scrollBy(0, 5000);
+            });
+            await page.waitForSelector(".leaderboard-item--body");
+            await page.waitForTimeout(2000);
+
+            await grabData(page, data);
+        }
+
+        let uniqueRecord = [];
+        data.athletes = data.athletes.reduce((accumulator, current) => {
+            if (
+                uniqueRecord.indexOf(current.name + "-" + current.category) < 0
+            ) {
+                uniqueRecord.push(current.name + "-" + current.category);
+                accumulator.push(current);
+            }
+            return accumulator;
+        }, []);
+        data.scrapedAt = new Date();
+
+        await fs.writeFileSync(
+            "./public/json/rowd-royalty-2023.json",
+            JSON.stringify(data)
+        );
+
+        console.log("Scrape Complete");
+
+        await browser.close();
+    })();
+};
+
+async function grabData(page, data) {
+    let newData = await page.$$eval(".leaderboard-item--body", (items) => {
+        return items.map((item) => {
+            return {
+                name: item
+                    .querySelector(".leaderboard-item__name")
+                    ?.textContent.trim(),
+                score1A: item
+                    .querySelectorAll(".leaderboard-item__score--workout")?.[0]
+                    ?.textContent.trim(),
+                score1B: item
+                    .querySelectorAll(".leaderboard-item__score--workout")?.[1]
+                    ?.textContent.trim(),
+                /*
                             score2A: item
                                 .querySelectorAll(
                                     ".leaderboard-item__score--workout"
@@ -89,27 +122,35 @@ module.exports = function () {
                                     ".leaderboard-item__score--workout"
                                 )[7]
                                 .textContent.trim(),*/
-                            category: item
-                                .closest(".competition-leaderboard")
-                                .querySelector(".detail-header")
-                                .textContent.trim(),
-                        };
-                    });
+                category: item
+                    .closest(".competition-leaderboard")
+                    ?.querySelector(".detail-header")
+                    ?.textContent.trim(),
+            };
+        });
+    });
+
+    data.athletes = data.athletes.concat(newData);
+
+    return;
+}
+
+async function autoScroll(page) {
+    await page.evaluate(async () => {
+        await new Promise((resolve) => {
+            window.scrollBy(0, distance);
+            var totalHeight = 0;
+            var distance = 500;
+            var timer = setInterval(() => {
+                var scrollHeight = document.body.scrollHeight;
+                window.scrollBy(0, distance);
+                totalHeight += distance;
+
+                if (totalHeight >= scrollHeight - window.innerHeight) {
+                    clearInterval(timer);
+                    resolve();
                 }
-            );
-
-            data.athletes = data.athletes.concat(newData);
-        }
-
-        data.scrapedAt = new Date();
-
-        await fs.writeFileSync(
-            "./public/json/rowd-royalty-2023.json",
-            JSON.stringify(data)
-        );
-
-        console.log("Scrape Complete");
-
-        await browser.close();
-    })();
-};
+            }, 100);
+        });
+    });
+}

@@ -112,6 +112,9 @@ h1 {
     font-size: 12px;
     color: #757575;
 }
+.cell.adjusted span {
+    color: red;
+}
 .cell.name span:before {
     width: 3px;
     background: var(--catColour);

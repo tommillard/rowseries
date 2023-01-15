@@ -11,7 +11,6 @@ loadSettings();
 const tdrMembers = [
     { name: "Nathaniel Wright" },
     { name: "Ian  Gallagher" },
-    { name: "Carnivore.Trucker.Ben" },
     { name: "Mark Tremblay" },
     { name: "Samuel Fuller" },
     { name: "Niall ODonnchu" },
@@ -343,7 +342,16 @@ function drawGrid() {
                 row
             );
 
-            cell(athlete.score1B.paceString, athlete.score1B.raw, "score", row);
+            let hey = cell(
+                athlete.score1B.paceString,
+                athlete.score1B.raw,
+                "score",
+                row
+            );
+
+            if (athlete.score1B.adjusted) {
+                hey.classList.add("adjusted");
+            }
 
             cell(
                 athlete.score1.position.display,
@@ -400,7 +408,6 @@ function addDivisions(raw) {
 
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
-        console.log(athlete.name);
         let score = {
             name: athlete.name,
             category: athlete.category,
@@ -422,7 +429,10 @@ function processData(raw) {
         };
 
         if (score.score1B.paceSeconds < score.score1A.paceSeconds) {
+            console.log("yo");
             score.score1B = { ...generateScore(athlete.score1B, "3000m") };
+            score.score1B.adjusted = true;
+            score.adjusted = true;
         }
         return score;
     });
