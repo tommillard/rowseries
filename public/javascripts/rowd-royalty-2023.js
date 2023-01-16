@@ -29,6 +29,7 @@ const tdrMembers = [
     { name: "John  Davies" },
     { name: "Benjamin Becerra" },
     { name: "Simon Frost" },
+    { name: "Tom Millard" },
 ];
 
 const divisions = [
