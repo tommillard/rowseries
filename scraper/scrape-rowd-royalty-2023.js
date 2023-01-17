@@ -205,6 +205,7 @@ async function grabData(page, scrapePage, data) {
                                 )[7]
                                 .textContent.trim(),*/
                     category: scrapePage.division,
+                    subcategory: scrapePage.group,
                 };
             });
         },
