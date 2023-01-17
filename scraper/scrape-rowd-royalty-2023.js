@@ -105,30 +105,30 @@ module.exports = function () {
             await page.goto(`${urlBase}${scrapePage.url}`);
             await page.waitForSelector(".leaderboard-item--body");
 
-            await grabData(page, data);
-            await page.evaluate(() => {
-                window.scrollBy(0, 5000);
-            });
-            await page.waitForSelector(".leaderboard-item--body");
-            await page.waitForTimeout(2000);
-
-            await grabData(page, data);
-
-            await page.evaluate(() => {
-                window.scrollBy(0, 5000);
-            });
-            await page.waitForSelector(".leaderboard-item--body");
-            await page.waitForTimeout(2000);
-
-            await grabData(page, data);
-
-            await page.evaluate(() => {
-                window.scrollBy(0, 5000);
-            });
-            await page.waitForSelector(".leaderboard-item--body");
-            await page.waitForTimeout(2000);
-
             await grabData(page, scrapePage, data);
+            /* await page.evaluate(() => {
+                window.scrollBy(0, 5000);
+            });
+            await page.waitForSelector(".leaderboard-item--body");
+            await page.waitForTimeout(2000);
+
+            await grabData(page, data);
+
+            await page.evaluate(() => {
+                window.scrollBy(0, 5000);
+            });
+            await page.waitForSelector(".leaderboard-item--body");
+            await page.waitForTimeout(2000);
+
+            await grabData(page, data);
+
+            await page.evaluate(() => {
+                window.scrollBy(0, 5000);
+            });
+            await page.waitForSelector(".leaderboard-item--body");
+            await page.waitForTimeout(2000);
+
+            await grabData(page, scrapePage, data); */
         }
 
         let uniqueRecord = [];
@@ -155,19 +155,25 @@ module.exports = function () {
 };
 
 async function grabData(page, scrapePage, data) {
-    let newData = await page.$$eval(".leaderboard-item--body", (items) => {
-        return items.map((item) => {
-            return {
-                name: item
-                    .querySelector(".leaderboard-item__name")
-                    ?.textContent.trim(),
-                score1A: item
-                    .querySelectorAll(".leaderboard-item__score--workout")?.[0]
-                    ?.textContent.trim(),
-                score1B: item
-                    .querySelectorAll(".leaderboard-item__score--workout")?.[1]
-                    ?.textContent.trim(),
-                /*
+    let newData = await page.$$eval(
+        ".leaderboard-item--body",
+        (items, scrapePage) => {
+            return items.map((item) => {
+                return {
+                    name: item
+                        .querySelector(".leaderboard-item__name")
+                        ?.textContent.trim(),
+                    score1A: item
+                        .querySelectorAll(
+                            ".leaderboard-item__score--workout"
+                        )?.[0]
+                        ?.textContent.trim(),
+                    score1B: item
+                        .querySelectorAll(
+                            ".leaderboard-item__score--workout"
+                        )?.[1]
+                        ?.textContent.trim(),
+                    /*
                             score2A: item
                                 .querySelectorAll(
                                     ".leaderboard-item__score--workout"
@@ -198,10 +204,12 @@ async function grabData(page, scrapePage, data) {
                                     ".leaderboard-item__score--workout"
                                 )[7]
                                 .textContent.trim(),*/
-                category: scrapePage.division,
-            };
-        });
-    });
+                    category: scrapePage.division,
+                };
+            });
+        },
+        scrapePage
+    );
 
     data.athletes = data.athletes.concat(newData);
 
