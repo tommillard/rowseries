@@ -46,8 +46,8 @@ app.use(function (err, req, res, next) {
 
 // schedule tasks to be run on the server
 cron.schedule("*/1 * * * *", function () {
-    //console.log("scraping");
-    //scraper();
+    console.log("scraping");
+    scraper();
 });
 
 module.exports = app;
