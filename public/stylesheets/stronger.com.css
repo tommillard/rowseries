@@ -22,7 +22,8 @@ h1 {
     display: contents;
 }
 
-.filters,
+.categoryFilters,
+.subCategoryFilters,
 .rounds {
     padding: 0 5vw;
     height: 45px;
@@ -34,7 +35,8 @@ h1 {
     margin-bottom: 10px;
 }
 
-.filters a,
+.categoryFilters a,
+.subCategoryFilters a,
 .rounds a {
     white-space: nowrap;
     margin-right: 10px;
@@ -47,7 +49,8 @@ h1 {
     cursor: pointer;
 }
 
-.filters a.active,
+.categoryFilters a.active,
+.subCategoryFilters a.active,
 .rounds a.active {
     background: #1c9797 !important;
     color: white;
