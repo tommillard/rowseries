@@ -158,7 +158,7 @@ function drawFilters() {
 }
 
 function drawRounds() {
-    let round4 = rsElem("a", roundBar, "r4", "Round 4");
+    /*let round4 = rsElem("a", roundBar, "r4", "Round 4");
     round4.setAttribute("data-round", "4");
     conditionalClass(round4, "active", "4", settings.includeRounds);
 
@@ -172,7 +172,7 @@ function drawRounds() {
 
     let round1 = rsElem("a", roundBar, "r1", "Round 1");
     round1.setAttribute("data-round", "1");
-    conditionalClass(round1, "active", "1", settings.includeRounds);
+    conditionalClass(round1, "active", "1", settings.includeRounds);*/
 }
 
 function conditionalClass(element, activeClass, id, setting) {
