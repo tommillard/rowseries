@@ -126,6 +126,7 @@ async function grabData(page, data) {
                     .closest(".competition-leaderboard")
                     ?.querySelector(".detail-header")
                     ?.textContent.trim(),
+                subCategory: "",
             };
         });
     });
