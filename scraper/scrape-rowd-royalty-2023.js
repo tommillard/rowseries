@@ -19,12 +19,12 @@ module.exports = function () {
         {
             url: "WVFXR?a%5B0%5D=RPHWAE",
             division: "Men - Tall (5'11\"+/180cm+)",
-            group: "<40-49",
+            group: "40-49",
         },
         {
             url: "WVFXR?a%5B0%5D=KYKGYV",
             division: "Men - Tall (5'11\"+/180cm+)",
-            group: "<50-59",
+            group: "50-59",
         },
         {
             url: "WVFXR?a%5B0%5D=NCAWGV",
@@ -39,12 +39,12 @@ module.exports = function () {
         {
             url: "EHFZM?a%5B0%5D=RPHWAE",
             division: "Women - Tall (5'6\"+ / 168cm+)",
-            group: "<40-49",
+            group: "40-49",
         },
         {
             url: "EHFZM?a%5B0%5D=KYKGYV",
             division: "Women - Tall (5'6\"+ / 168cm+)",
-            group: "<50-59",
+            group: "50-59",
         },
         {
             url: "EHFZM?a%5B0%5D=NCAWGV",
@@ -59,12 +59,12 @@ module.exports = function () {
         {
             url: "GXTCAK?a%5B0%5D=RPHWAE",
             division: "Women - Standard (<5'6\" / <168cm)",
-            group: "<40-49",
+            group: "40-49",
         },
         {
             url: "GXTCAK?a%5B0%5D=KYKGYV",
             division: "Women - Standard (<5'6\" / <168cm)",
-            group: "<50-59",
+            group: "50-59",
         },
         {
             url: "GXTCAK?a%5B0%5D=NCAWGV",
@@ -79,12 +79,12 @@ module.exports = function () {
         {
             url: "BPSZKP?a%5B0%5D=RPHWAE",
             division: "Men - Standard (<5'11 / <180cm)",
-            group: "<40-49",
+            group: "40-49",
         },
         {
             url: "BPSZKP?a%5B0%5D=KYKGYV",
             division: "Men - Standard (<5'11 / <180cm)",
-            group: "<50-59",
+            group: "50-59",
         },
         {
             url: "BPSZKP?a%5B0%5D=NCAWGV",
@@ -205,7 +205,7 @@ async function grabData(page, scrapePage, data) {
                                 )[7]
                                 .textContent.trim(),*/
                     category: scrapePage.division,
-                    subcategory: scrapePage.group,
+                    subCategory: scrapePage.group,
                 };
             });
         },

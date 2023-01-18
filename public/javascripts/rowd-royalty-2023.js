@@ -30,9 +30,10 @@ const tdrMembers = [
     { name: "Benjamin Becerra" },
     { name: "Simon Frost" },
     { name: "Tom Millard" },
+    { name: "Jess Randles" },
 ];
 
-const divisions = [
+const categories = [
     {
         title: "Men - Standard (<5'11 / <180cm)",
         titleShort: "Men Short",
@@ -59,13 +60,38 @@ const divisions = [
     },
 ];
 
+const subCategories = [
+    {
+        title: "<40",
+        colour: "#D10046",
+        id: "u40",
+    },
+    {
+        title: "40-49",
+        colour: "#428BCA",
+        id: "u50",
+    },
+    {
+        title: "50-59",
+        colour: "#F0AD4E",
+        id: "u60",
+    },
+    {
+        title: ">60",
+        colour: "#D695BE",
+        id: "u70",
+    },
+];
+
 var roundBar = rsElem("div", document.body, "rounds");
-var filterBar = rsElem("div", document.body, "filters");
+var categoryFilter = rsElem("div", document.body, "categoryFilters");
+var subCategoryFilter = rsElem("div", document.body, "subCategoryFilters");
 let table = rsElem("div", document.body, "table");
 let headerWrapper = rsElem("div", table, "header-Wrapper");
 
 drawRounds();
-drawFilters();
+drawCategoryFilters();
+drawSubCategoryFilters();
 drawHeader();
 
 table.addEventListener("click", function (e) {
@@ -80,13 +106,29 @@ table.addEventListener("click", function (e) {
     }
 });
 
-filterBar.addEventListener("click", function (e) {
-    let filterProp = e.target.getAttribute("data-filter");
-    if (filterProp) {
-        let activeSort = document.body.querySelector(".filters .active");
-        activeSort?.classList.remove("active");
+categoryFilter.addEventListener("click", function (e) {
+    let categoryFilterProp = e.target.getAttribute("data-filter");
+    if (categoryFilterProp) {
+        let activeCategoryFilter = document.body.querySelector(
+            ".categoryFilters .active"
+        );
+        activeCategoryFilter?.classList.remove("active");
         e.target.classList.add("active");
-        settings.filter = filterProp;
+        settings.categoryFilter = categoryFilterProp;
+        drawGrid();
+        saveSettings();
+    }
+});
+
+subCategoryFilter.addEventListener("click", function (e) {
+    let subCategoryFilterProp = e.target.getAttribute("data-filter");
+    if (subCategoryFilterProp) {
+        let activeCategoryFilter = document.body.querySelector(
+            ".subCategoryFilters .active"
+        );
+        activeCategoryFilter?.classList.remove("active");
+        e.target.classList.add("active");
+        settings.subCategoryFilter = subCategoryFilterProp;
         drawGrid();
         saveSettings();
     }
@@ -141,19 +183,51 @@ fetch("../json/rowd-royalty-2023.json")
         drawGrid();
     });
 
-function drawFilters() {
-    let all = rsElem("a", filterBar, "all", "All");
+function drawCategoryFilters() {
+    let all = rsElem("a", categoryFilter, "all", "All");
     all.setAttribute("data-filter", "all");
-    conditionalClass(all, "active", "all", settings.filter);
+    conditionalClass(all, "active", "all", settings.categoryFilter);
 
-    let tdr = rsElem("a", filterBar, "tdr", "TDR");
+    let tdr = rsElem("a", categoryFilter, "tdr", "TDR");
     tdr.setAttribute("data-filter", "tdr");
-    conditionalClass(tdr, "active", "tdr", settings.filter);
+    conditionalClass(tdr, "active", "tdr", settings.categoryFilter);
 
-    for (let division of divisions) {
-        let filter = rsElem("a", filterBar, division.id, division.titleShort);
+    for (let division of categories) {
+        let filter = rsElem(
+            "a",
+            categoryFilter,
+            division.id,
+            division.titleShort
+        );
         filter.setAttribute("data-filter", division.id);
-        conditionalClass(filter, "active", division.id, settings.filter);
+        conditionalClass(
+            filter,
+            "active",
+            division.id,
+            settings.categoryFilter
+        );
+    }
+}
+
+function drawSubCategoryFilters() {
+    let all = rsElem("a", subCategoryFilter, "all", "All");
+    all.setAttribute("data-filter", "all");
+    conditionalClass(all, "active", "all", settings.subCategoryFilter);
+    console.log(settings);
+    for (let subCategory of subCategories) {
+        let filter = rsElem(
+            "a",
+            subCategoryFilter,
+            subCategory.id,
+            subCategory.title
+        );
+        filter.setAttribute("data-filter", subCategory.id);
+        conditionalClass(
+            filter,
+            "active",
+            subCategory.id,
+            settings.subCategoryFilter
+        );
     }
 }
 
@@ -366,40 +440,41 @@ function drawGrid() {
 }
 
 function saveSettings() {
-    localStorage.setItem("prefs", JSON.stringify(settings));
+    localStorage.setItem("rr-prefs", JSON.stringify(settings));
 }
 
 function loadSettings() {
-    settings = localStorage.getItem("prefs");
+    settings = localStorage.getItem("rr-prefs");
 
     if (settings) {
         settings = JSON.parse(settings);
     } else {
         settings = {
             sortBy: "Overall",
-            filter: "all",
-            includeRounds: ["1", "2", "3"],
+            categoryFilter: "all",
+            subCategoryFilter: "all",
+            includeRounds: ["1"],
         };
     }
 }
 
 function addDivisions(raw) {
     var divisionedData = raw.map(function (athlete) {
-        athlete.category = divisions.find(
+        athlete.category = categories.find(
             (division) =>
                 athlete.category.slice(0, 10) === division.title.slice(0, 10)
         );
+
+        athlete.subCategory = subCategories.find(
+            (subcat) => subcat.title === athlete.subCategory
+        );
+
         let tdrMember = tdrMembers.find(
             (tdrMember) => tdrMember.name === athlete.name
         );
 
         if (tdrMember) {
             athlete.tdr = true;
-        }
-
-        if (tdrMember && window.location.href.slice(-8) !== "fullsend") {
-            athlete.score3A = tdrMember.score3A || athlete.score3A;
-            athlete.score3B = tdrMember.score3B || athlete.score3B;
         }
 
         return athlete;
@@ -431,7 +506,6 @@ function processData(raw) {
         };
 
         if (score.score1B.paceSeconds < score.score1A.paceSeconds) {
-            console.log("yo");
             score.score1B = { ...generateScore(athlete.score1B, "3000m") };
             score.score1B.adjusted = true;
             score.adjusted = true;
@@ -553,16 +627,24 @@ function formatData(raw) {
 }
 
 function filterData(raw) {
-    let filteredData = raw.filter((athlete) => {
-        if (settings.filter === "all") {
+    let categoryFilteredData = raw.filter((athlete) => {
+        if (settings.categoryFilter === "all") {
             return true;
         }
-        if (settings.filter === "tdr" && athlete.tdr) {
+        if (settings.categoryFilter === "tdr" && athlete.tdr) {
             return true;
         }
-        return settings.filter === athlete.category.id;
+        return settings.categoryFilter === athlete.category.id;
     });
-    return filteredData;
+
+    let subCategoryFilteredData = categoryFilteredData.filter((athlete) => {
+        if (settings.subCategoryFilter === "all") {
+            return true;
+        }
+        return settings.subCategoryFilter === athlete.subCategory.id;
+    });
+
+    return subCategoryFilteredData;
 }
 
 function calculatePositions(data, orderingScore, calcPoints) {
