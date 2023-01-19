@@ -5,7 +5,7 @@ body {
         Tahoma, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Open Sans,
         sans-serif;
     background: #222;
-    --smallText: 12px;
+    --smallText: 11px;
     --mediumText: 13px;
     --padding: 10px;
 }
