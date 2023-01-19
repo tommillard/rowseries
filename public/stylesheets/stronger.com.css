@@ -116,6 +116,14 @@ h1 {
     color: #222;
 }
 
+.categoryFilters a.active:after {
+    opacity: 0.9;
+}
+
+.subCategoryFilters a.active:after {
+    opacity: 0.8;
+}
+
 .row {
     display: table-row;
 }
