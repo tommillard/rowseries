@@ -6,6 +6,9 @@ var processedData = [];
 var presentationData = [];
 var settings;
 
+let sheetUrl =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vTdTPcsawsVs-QJzqDUvvuZHOmyhVpismQP5CqkrUhdQ88YO6VqhQvi-5u2tuYxv_O1sZXCjG98hEhq/pub?output=csv";
+
 loadSettings();
 
 const tdrMembers = [
