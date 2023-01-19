@@ -140,6 +140,10 @@ subCategoryFilter.addEventListener("click", function (e) {
 
 roundBar.addEventListener("click", function (e) {
     let roundProp = e.target.getAttribute("data-round");
+    console.log(e.target);
+    if (e.target.hasAttribute("disabled")) {
+        return;
+    }
     if (roundProp) {
         e.target.classList.toggle("active");
         if (e.target.classList.contains("active")) {
@@ -158,7 +162,7 @@ roundBar.addEventListener("click", function (e) {
 });
 
 function showRound(roundNum) {
-    if (roundNum !== "1") {
+    if (roundNum !== "1" && roundNum != "2") {
         return false;
     }
     return settings.includeRounds.indexOf(roundNum) >= 0;
@@ -184,12 +188,12 @@ fetch("../json/rowd-royalty-2023.json")
     })
     .then(function (j) {
         Papa.parse(sheetUrl, {
-            download:true,
+            download: true,
             complete: (results) => {
                 console.log(results);
                 rawData = addDivisions(j.athletes);
                 drawGrid();
-            }
+            },
         });
     });
 
@@ -223,7 +227,6 @@ function drawSubCategoryFilters() {
     let all = rsElem("a", subCategoryFilter, "all", "All");
     all.setAttribute("data-filter", "all");
     conditionalClass(all, "active", "all", settings.subCategoryFilter);
-    console.log(settings);
     for (let subCategory of subCategories) {
         let filter = rsElem(
             "a",
@@ -253,10 +256,12 @@ function drawRounds() {
     let round3 = rsElem("a", roundBar, "r3", "R3");
     round3.setAttribute("data-round", "3");
     conditionalClass(round3, "active", "3", settings.includeRounds);
+    round3.setAttribute("disabled", "");
 
     let round4 = rsElem("a", roundBar, "r4", "R4");
     round4.setAttribute("data-round", "4");
     conditionalClass(round4, "active", "4", settings.includeRounds);
+    round4.setAttribute("disabled", "");
 }
 
 function conditionalClass(element, activeClass, id, setting) {
@@ -314,6 +319,9 @@ function drawHeader() {
         let b2Header = rsElem("span", header, "cell cell-Score sort", "2B");
         b2Header.setAttribute("data-sort-prop", "2B");
         conditionalClass(b2Header, "sort-Active", "2B", settings.sortBy);
+        let b3Header = rsElem("span", header, "cell cell-Score sort", "2C");
+        b2Header.setAttribute("data-sort-prop", "2C");
+        conditionalClass(b3Header, "sort-Active", "2C", settings.sortBy);
         let r2Header = rsElem(
             "span",
             header,
@@ -410,7 +418,14 @@ function drawGrid() {
         if (showRound("2")) {
             cell(athlete.score2A.paceString, athlete.score2A.raw, "score", row);
 
-            cell(athlete.score2B.paceString, athlete.score2B.raw, "score", row);
+            cell(
+                athlete.score2B.paceString,
+                athlete.score2B.raw + "m",
+                "score",
+                row
+            );
+
+            cell(athlete.score2C.paceString, athlete.score2C.raw, "score", row);
 
             cell(
                 athlete.score2.position.display,
@@ -458,7 +473,7 @@ function loadSettings() {
             sortBy: "Overall",
             categoryFilter: "all",
             subCategoryFilter: "all",
-            includeRounds: ["1"],
+            includeRounds: ["1", "2"],
         };
     }
 }
@@ -501,9 +516,10 @@ function processData(raw) {
             score3: newIScore(),
             score4: newIScore(),
             score1A: generateScore(athlete.score1A, "250m"),
-            score1B: generateScore(athlete.score1B, "3000m", 6 * 45),
-            //score2A: generateScore(athlete.score2A, "30:00"),
-            //score2B: generateScore(athlete.score2B, "6:00"),
+            score1B: generateScore(athlete.score1B, "3000m", -6 * 45),
+            score2A: generateScore(athlete.score2A, "800m"),
+            score2B: generateScore(athlete.score2B, "15:00", 0, -1200),
+            score2C: generateScore(athlete.score2C, "400m"),
             //score3A: generateScore(athlete.score3A, "100m"),
             //score3B: generateScore(athlete.score3B, "100m"),
             //score4A: generateScore(athlete.score4A, "6000m"),
@@ -519,8 +535,9 @@ function processData(raw) {
     });
     calculatePositions(scoredData, "score1A", true);
     calculatePositions(scoredData, "score1B", true);
-    //calculatePositions(scoredData, "score2A", true);
-    //calculatePositions(scoredData, "score2B", true);
+    calculatePositions(scoredData, "score2A", true);
+    calculatePositions(scoredData, "score2B", true);
+    calculatePositions(scoredData, "score2C", true);
     //calculatePositions(scoredData, "score3A", true);
     //calculatePositions(scoredData, "score3B", true);
     //calculatePositions(scoredData, "score4A", true);
@@ -533,7 +550,10 @@ function processData(raw) {
     ) {
         var athlete = scoredData_1[_i];
         athlete.score1.points = athlete.score1A.points + athlete.score1B.points;
-        //athlete.score2.points = athlete.score2A.points + athlete.score2B.points;
+        athlete.score2.points =
+            athlete.score2A.points +
+            athlete.score2B.points +
+            athlete.score2C.points;
         //athlete.score3.points = athlete.score3A.points + athlete.score3B.points;
         //athlete.score4.points = athlete.score4A.points + athlete.score4B.points;
 
@@ -563,15 +583,25 @@ function processData(raw) {
     return scoredData;
     // loop through data, adding positions for each score...
 }
-function generateScore(scoreString, distanceOrTime, includedRestSecs) {
+function generateScore(
+    scoreString,
+    distanceOrTime,
+    timeAdjust,
+    distanceAdjust
+) {
     return {
         raw: scoreString,
-        paceString: calculatePace(scoreString, distanceOrTime, includedRestSecs)
-            .string,
+        paceString: calculatePace(
+            scoreString,
+            distanceOrTime,
+            timeAdjust,
+            distanceAdjust
+        ).string,
         paceSeconds: calculatePace(
             scoreString,
             distanceOrTime,
-            includedRestSecs
+            timeAdjust,
+            distanceAdjust
         ).seconds,
         points: 0,
         position: {
@@ -580,10 +610,17 @@ function generateScore(scoreString, distanceOrTime, includedRestSecs) {
         },
     };
 }
-function calculatePace(scoreString, distanceOrTime, includedRestSecs) {
-    includedRestSecs =
-        typeof includedRestSecs == "undefined" ? 0 : includedRestSecs;
+function calculatePace(
+    scoreString,
+    distanceOrTime,
+    timeAdjust,
+    distanceAdjust
+) {
+    timeAdjust = typeof timeAdjust == "undefined" ? 0 : timeAdjust;
+    distanceAdjust = typeof distanceAdjust == "undefined" ? 0 : distanceAdjust;
+
     var duration, distance, paceSeconds;
+
     if (scoreString === "--") {
         return {
             string: "--",
@@ -591,19 +628,16 @@ function calculatePace(scoreString, distanceOrTime, includedRestSecs) {
         };
     }
     if (distanceOrTime.indexOf("m") >= 0) {
-        duration =
-            convertTimeStringToTenths(scoreString) - includedRestSecs * 10;
-        distance = parseInt(distanceOrTime);
+        duration = convertTimeStringToTenths(scoreString) + timeAdjust * 10;
+        distance = parseInt(distanceOrTime) + distanceAdjust;
         paceSeconds = duration / (distance / 500);
         return {
             string: paceToString(paceSeconds),
             seconds: paceSeconds / 10,
         };
     } else {
-        duration =
-            convertTimeStringToTenths(distanceOrTime) - includedRestSecs * 10;
-
-        distance = parseInt(scoreString);
+        duration = convertTimeStringToTenths(distanceOrTime) + timeAdjust * 10;
+        distance = parseInt(scoreString) + distanceAdjust;
         paceSeconds = duration / (distance / 500);
         return {
             string: paceToString(paceSeconds),

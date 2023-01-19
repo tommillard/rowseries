@@ -131,7 +131,7 @@ module.exports = function () {
             await grabData(page, scrapePage, data); */
         }
 
-        let uniqueRecord = [];
+        /* let uniqueRecord = [];
         data.athletes = data.athletes.reduce((accumulator, current) => {
             if (
                 uniqueRecord.indexOf(current.name + "-" + current.category) < 0
@@ -140,7 +140,8 @@ module.exports = function () {
                 accumulator.push(current);
             }
             return accumulator;
-        }, []);
+        }, []); */
+
         data.scrapedAt = new Date();
 
         await fs.writeFileSync(
@@ -173,18 +174,23 @@ async function grabData(page, scrapePage, data) {
                             ".leaderboard-item__score--workout"
                         )?.[1]
                         ?.textContent.trim(),
-                    /*
-                            score2A: item
-                                .querySelectorAll(
-                                    ".leaderboard-item__score--workout"
-                                )[2]
-                                .textContent.trim(),
-                            score2B: item
-                                .querySelectorAll(
-                                    ".leaderboard-item__score--workout"
-                                )[3]
-                                .textContent.trim(),
-                            score3A: item
+
+                    score2A: item
+                        .querySelectorAll(
+                            ".leaderboard-item__score--workout"
+                        )[2]
+                        .textContent.trim(),
+                    score2B: item
+                        .querySelectorAll(
+                            ".leaderboard-item__score--workout"
+                        )[3]
+                        .textContent.trim(),
+                    score2C: item
+                        .querySelectorAll(
+                            ".leaderboard-item__score--workout"
+                        )[4]
+                        .textContent.trim(),
+                    /*        score3A: item
                                 .querySelectorAll(
                                     ".leaderboard-item__score--workout"
                                 )[4]
