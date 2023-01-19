@@ -10,6 +10,14 @@ body {
     --padding: 10px;
 }
 
+@media screen and (min-width: 680px) {
+    body {
+        --smallText: 12px;
+        --mediumText: 15px;
+        --padding: 20px;
+    }
+}
+
 * {
     box-sizing: border-box;
 }
