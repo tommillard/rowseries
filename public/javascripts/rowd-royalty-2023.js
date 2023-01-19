@@ -11,6 +11,13 @@ let sheetUrl =
 
 loadSettings();
 
+Papa.parse(sheetUrl, {
+    download:true,
+    complete: (results) => {
+        console.log(results);
+    }
+});
+
 const tdrMembers = [
     { name: "Nathaniel Wright" },
     { name: "Ian  Gallagher" },
