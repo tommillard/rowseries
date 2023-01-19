@@ -1,21 +1,37 @@
 body {
     padding: 0;
     margin: 0;
-    padding-top: 3vh;
     font: 14px -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI,
         Tahoma, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Open Sans,
         sans-serif;
+    background: #222;
+    --smallText: 12px;
+    --mediumText: 13px;
+    --padding: 10px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 h1 {
-    padding-left: 5vw;
+    padding: var(--padding);
+    font-size: 19px;
+    color: #eee;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    font-weight: 800;
 }
 
-.table {
+.tableWrapper {
     width: 100%;
-    overflow-x: auto;
+    overflow-x: scroll;
+    margin-top: 10px;
+}
+.table {
     display: table;
     border-collapse: collapse;
+    min-width: 100%;
 }
 
 .header-Wrapper {
@@ -25,47 +41,77 @@ h1 {
 .categoryFilters,
 .subCategoryFilters,
 .rounds {
-    padding: 0 5vw;
-    height: 45px;
     display: inline-flex;
     align-items: center;
     max-width: 100%;
     overflow-x: auto;
     align-items: stretch;
+    justify-content: flex-start;
+    overflow-x: auto;
+    width: 100%;
+    white-space: nowrap;
+    padding-left: 5px;
     margin-bottom: 10px;
+}
+
+.categoryFilters::-webkit-scrollbar {
+    display: none;
 }
 
 .categoryFilters a,
 .subCategoryFilters a,
 .rounds a {
-    white-space: nowrap;
-    margin-right: 10px;
-    background: #ddd;
+    text-align: center;
+    min-width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 10px;
-    border-radius: 5px;
+    text-transform: uppercase;
     cursor: pointer;
+    font-weight: 700;
+    font-size: var(--smallText);
+    flex-wrap: nowrap;
+    flex: 0 0 auto;
+    padding: 5px 15px;
+    position: relative;
+    color: #ddd;
+}
+
+.categoryFilters a:after,
+.subCategoryFilters a:after,
+.rounds a:after {
+    content: "";
+    inset: 5px;
+    position: absolute;
+    background: #3d3d3d;
+    border-radius: 22.5px;
+    z-index: -1;
 }
 
 .categoryFilters a.active,
 .subCategoryFilters a.active,
 .rounds a.active {
-    background: #1c9797 !important;
-    color: white;
+    color: #000;
+}
+
+.categoryFilters a.active:after,
+.subCategoryFilters a.active:after,
+.rounds a.active:after {
+    background: #37dada !important;
+    color: #222;
 }
 
 .row {
     display: table-row;
 }
 .row.tdr {
-    background: #c5ebeb !important;
+    background: #105151 !important;
 }
 
 .header.row {
     box-shadow: 0;
-    background: #555;
+    background: rgb(255 255 255 / 5%);
     color: white;
     height: 45px;
     position: sticky;
@@ -74,68 +120,76 @@ h1 {
 
 .cell {
     display: table-cell;
-    padding: 10px;
+    padding: 15px 10px;
     overflow: hidden;
 }
 
 .score-Summary,
 .cell-Summary {
-    border-right: 1px solid #444;
+    border-right: 1px solid #fff;
 }
 .cell-Overall {
-    min-width: 80px;
+    min-width: 70px;
 }
-.row:nth-child(even) {
-    background: #f2f2f2;
+.row:nth-child(odd) {
+    background: rgb(255 255 255 /5%);
 }
 .header .cell {
-    font-size: 15px;
+    font-size: var(--smallText);
+    text-transform: uppercase;
+    font-weight: 700;
     line-height: 35px;
 }
 
 .cell.name {
-    max-width: 150px;
+    max-width: 140px;
     position: relative;
 }
 .cell:first-child {
-    padding-left: 5vw;
+    padding-left: 10px;
 }
 .cell:last-child {
-    padding-right: 5vw;
+    padding-right: 10px;
 }
 .cell.name p {
     font-weight: bold;
 }
 .cell p {
-    font-size: 16px;
+    font-size: var(--mediumText);
+    white-space: nowrap;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.3;
+    color: #fff;
 }
 .cell span {
-    font-size: 12px;
-    color: #757575;
+    font-size: var(--smallText);
+    color: #aaa;
+}
+
+.tdr .cell span {
+    color: #80d1d1;
 }
 .cell.adjusted span {
     color: red;
 }
 .cell.name span:before {
-    width: 3px;
+    width: 2px;
     background: var(--catColour);
     display: block;
     content: "";
     border-radius: 1px;
     position: absolute;
     left: 2px;
-    top: 13px;
-    bottom: 9px;
+    top: 17px;
+    bottom: 17px;
 }
 .sort {
     cursor: pointer;
 }
 .sort-Active {
     font-weight: 700;
-    color: white;
-    background: #1c9797;
+    color: black;
+    background: #37dada;
     position: relative;
 }
 .sort-Active:after {
@@ -143,5 +197,5 @@ h1 {
     transform: rotate(135deg);
     font-size: 22px;
     position: absolute;
-    bottom: 13px;
+    bottom: 19px;
 }

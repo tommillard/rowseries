@@ -14,7 +14,7 @@ module.exports = function () {
         {
             url: "WVFXR?a%5B0%5D=JXVBMJ",
             division: "Men - Tall (5'11\"+/180cm+)",
-            group: "<40",
+            group: "-40",
         },
         {
             url: "WVFXR?a%5B0%5D=RPHWAE",
@@ -29,12 +29,12 @@ module.exports = function () {
         {
             url: "WVFXR?a%5B0%5D=NCAWGV",
             division: "Men - Tall (5'11\"+/180cm+)",
-            group: ">60",
+            group: "60+",
         },
         {
             url: "EHFZM?a%5B0%5D=JXVBMJ",
             division: "Women - Tall (5'6\"+ / 168cm+)",
-            group: "<40",
+            group: "-40",
         },
         {
             url: "EHFZM?a%5B0%5D=RPHWAE",
@@ -49,12 +49,12 @@ module.exports = function () {
         {
             url: "EHFZM?a%5B0%5D=NCAWGV",
             division: "Women - Tall (5'6\"+ / 168cm+)",
-            group: ">60",
+            group: "60+",
         },
         {
             url: "GXTCAK?a%5B0%5D=JXVBMJ",
             division: "Women - Standard (<5'6\" / <168cm)",
-            group: "<40",
+            group: "-40",
         },
         {
             url: "GXTCAK?a%5B0%5D=RPHWAE",
@@ -69,12 +69,12 @@ module.exports = function () {
         {
             url: "GXTCAK?a%5B0%5D=NCAWGV",
             division: "Women - Standard (<5'6\" / <168cm)",
-            group: ">60",
+            group: "60+",
         },
         {
             url: "BPSZKP?a%5B0%5D=JXVBMJ",
             division: "Men - Standard (<5'11 / <180cm)",
-            group: "<40",
+            group: "-40",
         },
         {
             url: "BPSZKP?a%5B0%5D=RPHWAE",
@@ -89,7 +89,7 @@ module.exports = function () {
         {
             url: "BPSZKP?a%5B0%5D=NCAWGV",
             division: "Men - Standard (<5'11 / <180cm)",
-            group: ">60",
+            group: "60+",
         },
     ];
 

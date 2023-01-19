@@ -62,7 +62,7 @@ const categories = [
 
 const subCategories = [
     {
-        title: "<40",
+        title: "-40",
         colour: "#D10046",
         id: "u40",
     },
@@ -77,7 +77,7 @@ const subCategories = [
         id: "u60",
     },
     {
-        title: ">60",
+        title: "60+",
         colour: "#D695BE",
         id: "u70",
     },
@@ -86,7 +86,8 @@ const subCategories = [
 var roundBar = rsElem("div", document.body, "rounds");
 var categoryFilter = rsElem("div", document.body, "categoryFilters");
 var subCategoryFilter = rsElem("div", document.body, "subCategoryFilters");
-let table = rsElem("div", document.body, "table");
+let tableWrapper = rsElem("div", document.body, "tableWrapper");
+let table = rsElem("div", tableWrapper, "table");
 let headerWrapper = rsElem("div", table, "header-Wrapper");
 
 drawRounds();
@@ -232,21 +233,21 @@ function drawSubCategoryFilters() {
 }
 
 function drawRounds() {
-    /*let round4 = rsElem("a", roundBar, "r4", "Round 4");
-    round4.setAttribute("data-round", "4");
-    conditionalClass(round4, "active", "4", settings.includeRounds);
+    let round1 = rsElem("a", roundBar, "r1", "R1");
+    round1.setAttribute("data-round", "1");
+    conditionalClass(round1, "active", "1", settings.includeRounds);
 
-    let round3 = rsElem("a", roundBar, "r3", "Round 3");
-    round3.setAttribute("data-round", "3");
-    conditionalClass(round3, "active", "3", settings.includeRounds);
-
-    let round2 = rsElem("a", roundBar, "r2", "Round 2");
+    let round2 = rsElem("a", roundBar, "r2", "R2");
     round2.setAttribute("data-round", "2");
     conditionalClass(round2, "active", "2", settings.includeRounds);
 
-    let round1 = rsElem("a", roundBar, "r1", "Round 1");
-    round1.setAttribute("data-round", "1");
-    conditionalClass(round1, "active", "1", settings.includeRounds);*/
+    let round3 = rsElem("a", roundBar, "r3", "R3");
+    round3.setAttribute("data-round", "3");
+    conditionalClass(round3, "active", "3", settings.includeRounds);
+
+    let round4 = rsElem("a", roundBar, "r4", "R4");
+    round4.setAttribute("data-round", "4");
+    conditionalClass(round4, "active", "4", settings.includeRounds);
 }
 
 function conditionalClass(element, activeClass, id, setting) {
@@ -411,12 +412,7 @@ function drawGrid() {
         }
 
         if (showRound("1")) {
-            cell(
-                athlete.score1A.paceString,
-                athlete.score1A.raw,
-                "cell-Overall",
-                row
-            );
+            cell(athlete.score1A.paceString, athlete.score1A.raw, "score", row);
 
             let hey = cell(
                 athlete.score1B.paceString,
