@@ -141,7 +141,7 @@ subCategoryFilter.addEventListener("click", function (e) {
 
 roundBar.addEventListener("click", function (e) {
     let roundProp = e.target.getAttribute("data-round");
-    console.log(e.target);
+    
     if (e.target.hasAttribute("disabled")) {
         return;
     }
@@ -190,7 +190,7 @@ fetch("../json/rowd-royalty-2023.json")
     .then(function (j) {
         rawData = addDivisions(j.athletes);
         drawGrid();
-        /*Papa.parse(sheetUrl, {
+        Papa.parse(sheetUrl, {
             download: true,
             complete: (results) => {
                 addScoresToTDRMembers(results.data);
@@ -198,10 +198,10 @@ fetch("../json/rowd-royalty-2023.json")
                 drawGrid();
             },
             error: () => {
-                rawData = addDivisions(j.athletes);
-                drawGrid();
+                //rawData = addDivisions(j.athletes);
+                //drawGrid();
             }
-        });*/
+        });
     });
     
 function addScoresToTDRMembers(ssScores) {
@@ -211,11 +211,14 @@ function addScoresToTDRMembers(ssScores) {
         if(correctRow) {
             tdrMember.score1A = correctRow[1];
             tdrMember.score1B = correctRow[2];
-             tdrMember.score2A = correctRow[3];
+            tdrMember.score2A = correctRow[3];
             tdrMember.score2B = correctRow[4];
+            tdrMember.score2C = correctRow[5];
             
         }
     });
+    
+    console.log(tdrMembers);
 }
 
 function drawCategoryFilters() {
@@ -516,6 +519,7 @@ function addDivisions(raw) {
 
         if (tdrMember) {
             athlete.tdr = true;
+            athlete.score1A = tdrMember.score1A || athlete.score1A;
         }
 
         return athlete;
@@ -527,7 +531,7 @@ function addDivisions(raw) {
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
         if(athlete.name === "Benjamin Becerra") {
-        console.log("B");
+            console.log("B");
         }
         let time2A = convertTimeStringToTenths(athlete.score2A || "0") / 10;
         let time2C = convertTimeStringToTenths(athlete.score2C || "0") / 10;
@@ -553,12 +557,13 @@ function processData(raw) {
         };
 
         if (score.score1B.paceSeconds < score.score1A.paceSeconds) {
-            score.score1B = { ...generateScore(athlete.score1B, "3000m") };
-            score.score1B.adjusted = true;
-            score.adjusted = true;
+            //score.score1B = { ...generateScore(athlete.score1B, "3000m") };
+            //score.score1B.adjusted = true;
+            //score.adjusted = true;
         }
         return score;
     });
+    
     calculatePositions(scoredData, "score1A", true);
     calculatePositions(scoredData, "score1B", true);
     calculatePositions(scoredData, "score2A", true);
