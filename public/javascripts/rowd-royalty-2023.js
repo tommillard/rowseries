@@ -13,7 +13,7 @@ loadSettings();
 
 const tdrMembers = [
     { name: "Nathaniel Wright" },
-    { name: "Ian  Gallagher" },
+    { name: "Ian Gallagher" },
     { name: "Mark Tremblay" },
     { name: "Samuel Fuller" },
     { name: "Niall ODonnchu" },
@@ -26,10 +26,10 @@ const tdrMembers = [
     { name: "Sven Wittchen" },
     { name: "Matt Fuller" },
     { name: "Peter Kragh" },
-    { name: "Richard  Wood" },
+    { name: "Richard Wood" },
     { name: "James Wild" },
     { name: "Troy Frerichs" },
-    { name: "John  Davies" },
+    { name: "John Davies" },
     { name: "Benjamin Becerra" },
     { name: "Simon Frost" },
     { name: "Tom Millard" },
@@ -186,12 +186,26 @@ fetch("../json/rowd-royalty-2023.json")
         Papa.parse(sheetUrl, {
             download:true,
             complete: (results) => {
-                console.log(results);
+                addScoresToTDRMembers(results.data);
                 rawData = addDivisions(j.athletes);
                 drawGrid();
             }
         });
     });
+    
+function addScoresToTDRMembers(ssScores) {
+    tdrMembers.forEach(tdrMember => {
+        let correctRow = ssScores.find(scoreline => scoreline[0] === tdrMember.name);
+        
+        if(correctRow) {
+            tdrMember.score1A = correctRow[1];
+            tdrMember.score1B = correctRow[2];
+             tdrMember.score2A = correctRow[3];
+            tdrMember.score2B = correctRow[4];
+            
+        }
+    });
+}
 
 function drawCategoryFilters() {
     let all = rsElem("a", categoryFilter, "all", "All");
