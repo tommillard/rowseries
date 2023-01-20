@@ -4,7 +4,7 @@ body {
     font: 14px -apple-system, BlinkMacSystemFont, Helvetica Neue, Segoe UI,
         Tahoma, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Open Sans,
         sans-serif;
-    background: #222;
+    background: #111;
     --smallText: 11px;
     --mediumText: 13px;
     --padding: 10px;
@@ -131,6 +131,7 @@ a[disabled] {
 
 .row {
     display: table-row;
+    background: rgb(255 255 255 / 15%);
 }
 .row.tdr {
     background: #105151 !important;
@@ -138,7 +139,7 @@ a[disabled] {
 
 .header.row {
     box-shadow: 0;
-    background: rgb(255 255 255 / 5%);
+    background: rgb(255 255 255 / 15%);
     color: white;
     height: 45px;
     position: sticky;
@@ -159,7 +160,7 @@ a[disabled] {
     min-width: 70px;
 }
 .row:nth-child(odd) {
-    background: rgb(255 255 255 /5%);
+    background: rgb(255 255 255 /10%);
 }
 .header .cell {
     font-size: var(--smallText);
