@@ -323,7 +323,7 @@ function drawHeader() {
         b2Header.setAttribute("data-sort-prop", "2B");
         conditionalClass(b2Header, "sort-Active", "2B", settings.sortBy);
         let b3Header = rsElem("span", header, "cell cell-Score sort", "2C");
-        b2Header.setAttribute("data-sort-prop", "2C");
+        b3Header.setAttribute("data-sort-prop", "2C");
         conditionalClass(b3Header, "sort-Active", "2C", settings.sortBy);
         let r2Header = rsElem(
             "span",
@@ -508,8 +508,8 @@ function addDivisions(raw) {
 
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
-        let time2A = convertTimeStringToTenths(athlete.score2A || "0");
-        let time2C = convertTimeStringToTenths(athlete.score2C || "0");
+        let time2A = convertTimeStringToTenths(athlete.score2A || "0") / 10;
+        let time2C = convertTimeStringToTenths(athlete.score2C || "0") / 10;
         let score = {
             name: athlete.name,
             category: athlete.category,
