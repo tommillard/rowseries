@@ -512,6 +512,9 @@ function addDivisions(raw) {
 
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
+        if(athlete.name === "Benjamin Becerra") {
+        console.log("B");
+        }
         let time2A = convertTimeStringToTenths(athlete.score2A || "0") / 10;
         let time2C = convertTimeStringToTenths(athlete.score2C || "0") / 10;
         let score = {
