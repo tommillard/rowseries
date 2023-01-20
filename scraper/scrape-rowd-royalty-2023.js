@@ -165,7 +165,7 @@ async function grabData(page, scrapePage, data) {
                 return {
                     name: item
                         .querySelector(".leaderboard-item__name")
-                        ?.textContent.trim()athlete.replace("  ", " "),
+                        ?.textContent.trim().replace("  ", " "),
                     score1A: item
                         .querySelectorAll(
                             ".leaderboard-item__score--workout"
