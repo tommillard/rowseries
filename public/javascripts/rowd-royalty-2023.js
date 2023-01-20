@@ -5,6 +5,7 @@ var processedData = [];
 // data with sorts, filters applied.
 var presentationData = [];
 var settings;
+var gSheetTimeout;
 
 let sheetUrl =
     "https://docs.google.com/spreadsheets/d/e/2PACX-1vTdTPcsawsVs-QJzqDUvvuZHOmyhVpismQP5CqkrUhdQ88YO6VqhQvi-5u2tuYxv_O1sZXCjG98hEhq/pub?output=csv";
@@ -182,12 +183,14 @@ function rsElem(type, appendTo, classNames, innerHTML) {
     return elem;
 }
 
-fetch("../json/rowd-royalty-2023.json")
+fetch("../json-data/rowd-royalty-2023.json")
     .then(function (response) {
         return response.json();
     })
     .then(function (j) {
-        Papa.parse(sheetUrl, {
+        rawData = addDivisions(j.athletes);
+        drawGrid();
+        /*Papa.parse(sheetUrl, {
             download: true,
             complete: (results) => {
                 console.log(results);
@@ -196,8 +199,9 @@ fetch("../json/rowd-royalty-2023.json")
             },
             error: () => {
                 rawData = addDivisions(j.athletes);
-                drawGrid();}
-        });
+                drawGrid();
+            }
+        });*/
     });
 
 function drawCategoryFilters() {

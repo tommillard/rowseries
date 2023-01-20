@@ -143,9 +143,11 @@ module.exports = function () {
         }, []); */
 
         data.scrapedAt = new Date();
+        
+        await fs.ensureDirSync("./public/json-data");
 
         await fs.writeFileSync(
-            "./public/json/rowd-royalty-2023.json",
+            "./public/json-data/rowd-royalty-2023.json",
             JSON.stringify(data)
         );
 
