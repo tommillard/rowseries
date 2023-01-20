@@ -754,7 +754,7 @@ function convertTimeStringToTenths(timeString) {
     // 5
     // :30
     // 8.5
-    if (!timeString) {
+    if (!timeString|| timeString == "--") {
         return 0;
     }
     var splitString = timeString.split(":");
