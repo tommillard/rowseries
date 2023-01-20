@@ -514,7 +514,7 @@ function addDivisions(raw) {
         );
 
         let tdrMember = tdrMembers.find(
-            (tdrMember) => tdrMember.name === athlete.name
+            (tdrMember) => tdrMember.name === athlete.name.replace("  ", " ");
         );
 
         if (tdrMember) {
