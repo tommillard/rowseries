@@ -520,6 +520,10 @@ function addDivisions(raw) {
         if (tdrMember) {
             athlete.tdr = true;
             athlete.score1A = tdrMember.score1A || athlete.score1A;
+            athlete.score1B = tdrMember.score1B || athlete.score1B;
+            athlete.score2A = tdrMember.score2A || athlete.score2A;
+            athlete.score2B = tdrMember.score2B || athlete.score2B;
+            athlete.score2C = tdrMember.score2C || athlete.score2C;
         }
 
         return athlete;
