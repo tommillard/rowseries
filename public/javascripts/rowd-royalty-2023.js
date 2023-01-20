@@ -505,6 +505,8 @@ function addDivisions(raw) {
 
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
+        let time2A = convertTimeStringToTenths(athlete.score2A || "0");
+        let time2C = convertTimeStringToTenths(athlete.score2C || "0");
         let score = {
             name: athlete.name,
             category: athlete.category,
@@ -518,7 +520,7 @@ function processData(raw) {
             score1A: generateScore(athlete.score1A, "250m"),
             score1B: generateScore(athlete.score1B, "3000m", -6 * 45),
             score2A: generateScore(athlete.score2A, "800m"),
-            score2B: generateScore(athlete.score2B, "15:00", 0, -1200),
+            score2B: generateScore(athlete.score2B, "15:00", -time2A-time2C, -1200),
             score2C: generateScore(athlete.score2C, "400m"),
             //score3A: generateScore(athlete.score3A, "100m"),
             //score3B: generateScore(athlete.score3B, "100m"),
