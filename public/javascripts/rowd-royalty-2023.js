@@ -62,6 +62,12 @@ const categories = [
         colour: "#D695BE",
         id: "wt",
     },
+    {
+        title: "Fuller v Walpole",
+        titleShort: "FvW",
+        colour: "#8E44AD",
+        id: "fvw",
+    },
 ];
 
 const subCategories = [
@@ -705,9 +711,15 @@ function filterData(raw) {
         if (settings.categoryFilter === "all") {
             return true;
         }
+        
         if (settings.categoryFilter === "tdr" && athlete.tdr) {
             return true;
         }
+        
+        if (settings.categoryFilter === "fvw" && (athlete.name === "Matt Fuller" || athlete.name == "Anthony Walpole")) {
+            return athlete;
+        }
+        
         return settings.categoryFilter === athlete.category.id;
     });
 
