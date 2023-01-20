@@ -188,8 +188,8 @@ fetch("../json/rowd-royalty-2023.json")
         return response.json();
     })
     .then(function (j) {
-        rawData = addDivisions(j.athletes);
-        drawGrid();
+        //rawData = addDivisions(j.athletes);
+        //drawGrid();
         Papa.parse(sheetUrl, {
             download: true,
             complete: (results) => {
