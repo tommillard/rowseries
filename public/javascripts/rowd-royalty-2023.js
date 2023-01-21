@@ -575,11 +575,11 @@ function processData(raw) {
         return score;
     });
 
-    calculatePositions(scoredData, "score1A", true);
-    calculatePositions(scoredData, "score1B", true);
-    calculatePositions(scoredData, "score2A", true);
-    calculatePositions(scoredData, "score2B", true);
-    calculatePositions(scoredData, "score2C", true);
+    calculatePositions(scoredData, "score1A", "paceSeconds", true);
+    calculatePositions(scoredData, "score1B", "paceSeconds", true);
+    calculatePositions(scoredData, "score2A", "paceSeconds", true);
+    calculatePositions(scoredData, "score2B", "paceSeconds", true);
+    calculatePositions(scoredData, "score2C", "paceSeconds", true);
     //calculatePositions(scoredData, "score3A", true);
     //calculatePositions(scoredData, "score3B", true);
     //calculatePositions(scoredData, "score4A", true);
@@ -617,11 +617,11 @@ function processData(raw) {
             athlete.scoreOverall.points += athlete.score4.points;
         }
     }
-    calculatePositions(scoredData, "score1");
-    calculatePositions(scoredData, "score2");
-    calculatePositions(scoredData, "score3");
-    calculatePositions(scoredData, "score4");
-    calculatePositions(scoredData, "scoreOverall");
+    calculatePositions(scoredData, "score1", "paceSeconds");
+    calculatePositions(scoredData, "score2", "paceSeconds");
+    calculatePositions(scoredData, "score3", "paceSeconds");
+    calculatePositions(scoredData, "score4", "paceSeconds");
+    calculatePositions(scoredData, "scoreOverall", "paceSeconds");
     return scoredData;
     // loop through data, adding positions for each score...
 }
@@ -645,13 +645,14 @@ function generateScore(
             timeAdjust,
             distanceAdjust
         ).seconds,
+        distance: distanceOrTime.indexOf("m") > 0 ? parseInt(distanceOrTime): parseInt(scoreStr),
         points: 0,
         position: {
             display: "",
             index: 0,
         },
     };
-}
+}ng
 function calculatePace(
     scoreString,
     distanceOrTime,
@@ -738,13 +739,13 @@ function filterData(raw) {
     return subCategoryFilteredData;
 }
 
-function calculatePositions(data, orderingScore, calcPoints) {
+function calculatePositions(data, orderingScore, orderingProperty, calcPoints) {
     data = data.sort(function (a, b) {
         var aScore = a[orderingScore];
         var bScore = b[orderingScore];
         return (
-            (aScore.paceSeconds || aScore.points) -
-            (bScore.paceSeconds || bScore.points)
+            (aScore[orderingProperty] || aScore.points) -
+            (bScore[orderingProperty] || bScore.points)
         );
     });
     var position = 0;
