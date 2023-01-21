@@ -580,7 +580,7 @@ function processData(raw) {
     calculatePositions(scoredData, "score1A", "paceSeconds", true);
     calculatePositions(scoredData, "score1B", "paceSeconds", true);
     calculatePositions(scoredData, "score2A", "paceSeconds", true);
-    calculatePositions(scoredData, "score2B", "paceSeconds", true);
+    calculatePositions(scoredData, "score2B", "distance", true);
     calculatePositions(scoredData, "score2C", "paceSeconds", true);
     //calculatePositions(scoredData, "score3A", true);
     //calculatePositions(scoredData, "score3B", true);
