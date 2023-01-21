@@ -567,6 +567,8 @@ function processData(raw) {
             //score4B: generateScore(athlete.score4B, "2000m"),
         };
 
+        console.log(score);
+
         if (score.score1B.paceSeconds < score.score1A.paceSeconds) {
             //score.score1B = { ...generateScore(athlete.score1B, "3000m") };
             //score.score1B.adjusted = true;
@@ -631,6 +633,14 @@ function generateScore(
     timeAdjust,
     distanceAdjust
 ) {
+    let distance =
+        distanceOrTime.indexOf("m") > 0
+            ? parseInt(distanceOrTime)
+            : parseInt(scoreString);
+
+    if (isNaN(distance)) {
+        distance = 0;
+    }
     return {
         raw: scoreString,
         paceString: calculatePace(
@@ -645,14 +655,14 @@ function generateScore(
             timeAdjust,
             distanceAdjust
         ).seconds,
-        distance: distanceOrTime.indexOf("m") > 0 ? parseInt(distanceOrTime): parseInt(scoreStr),
+        distance: distance,
         points: 0,
         position: {
             display: "",
             index: 0,
         },
     };
-}ng
+}
 function calculatePace(
     scoreString,
     distanceOrTime,
