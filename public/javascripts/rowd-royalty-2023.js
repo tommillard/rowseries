@@ -52,7 +52,7 @@ const categories = [
     },
     {
         title: "Fuller v Walpole",
-        titleShort: "FvW",
+        titleShort: "F v W",
         colour: "#8E44AD",
         id: "fvw",
     },

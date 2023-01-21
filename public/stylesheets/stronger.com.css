@@ -92,6 +92,10 @@ h1 {
     color: #ddd;
 }
 
+a.fvw {
+    text-transform: none;
+}
+
 a[disabled] {
     opacity: 0.3;
     cursor: default;
