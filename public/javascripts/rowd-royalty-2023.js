@@ -51,6 +51,12 @@ const categories = [
         id: "mt",
     },
     {
+        title: "Fuller v Walpole",
+        titleShort: "FvW",
+        colour: "#8E44AD",
+        id: "fvw",
+    },
+    {
         title: "Women - Standard (<5'6\" / <168cm)",
         titleShort: "Women Short",
         colour: "#F0AD4E",
@@ -61,12 +67,6 @@ const categories = [
         titleShort: "Women Tall",
         colour: "#D695BE",
         id: "wt",
-    },
-    {
-        title: "Fuller v Walpole",
-        titleShort: "FvW",
-        colour: "#8E44AD",
-        id: "fvw",
     },
 ];
 
@@ -147,7 +147,7 @@ subCategoryFilter.addEventListener("click", function (e) {
 
 roundBar.addEventListener("click", function (e) {
     let roundProp = e.target.getAttribute("data-round");
-    
+
     if (e.target.hasAttribute("disabled")) {
         return;
     }
@@ -206,24 +206,25 @@ fetch("../json/rowd-royalty-2023.json")
             error: () => {
                 //rawData = addDivisions(j.athletes);
                 //drawGrid();
-            }
+            },
         });
     });
-    
+
 function addScoresToTDRMembers(ssScores) {
-    tdrMembers.forEach(tdrMember => {
-        let correctRow = ssScores.find(scoreline => scoreline[0] === tdrMember.name);
-        
-        if(correctRow) {
+    tdrMembers.forEach((tdrMember) => {
+        let correctRow = ssScores.find(
+            (scoreline) => scoreline[0] === tdrMember.name
+        );
+
+        if (correctRow) {
             tdrMember.score1A = correctRow[1];
             tdrMember.score1B = correctRow[2];
             tdrMember.score2A = correctRow[3];
             tdrMember.score2B = correctRow[4];
             tdrMember.score2C = correctRow[5];
-            
         }
     });
-    
+
     console.log(tdrMembers);
 }
 
@@ -540,7 +541,7 @@ function addDivisions(raw) {
 
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
-        if(athlete.name === "Benjamin Becerra") {
+        if (athlete.name === "Benjamin Becerra") {
             console.log("B");
         }
         let time2A = convertTimeStringToTenths(athlete.score2A || "0") / 10;
@@ -558,7 +559,7 @@ function processData(raw) {
             score1A: generateScore(athlete.score1A, "250m"),
             score1B: generateScore(athlete.score1B, "3000m", -6 * 45),
             score2A: generateScore(athlete.score2A, "800m"),
-            score2B: generateScore(athlete.score2B, "15:00", +time2A+time2C),
+            score2B: generateScore(athlete.score2B, "15:00", +time2A + time2C),
             score2C: generateScore(athlete.score2C, "400m"),
             //score3A: generateScore(athlete.score3A, "100m"),
             //score3B: generateScore(athlete.score3B, "100m"),
@@ -573,7 +574,7 @@ function processData(raw) {
         }
         return score;
     });
-    
+
     calculatePositions(scoredData, "score1A", true);
     calculatePositions(scoredData, "score1B", true);
     calculatePositions(scoredData, "score2A", true);
@@ -711,15 +712,19 @@ function filterData(raw) {
         if (settings.categoryFilter === "all") {
             return true;
         }
-        
+
         if (settings.categoryFilter === "tdr" && athlete.tdr) {
             return true;
         }
-        
-        if (settings.categoryFilter === "fvw" && (athlete.name === "Matt Fuller" || athlete.name == "Anthony Walpole")) {
+
+        if (
+            settings.categoryFilter === "fvw" &&
+            (athlete.name === "Matt Fuller" ||
+                athlete.name == "Anthony Walpole")
+        ) {
             return athlete;
         }
-        
+
         return settings.categoryFilter === athlete.category.id;
     });
 
@@ -799,7 +804,7 @@ function convertTimeStringToTenths(timeString) {
     // 5
     // :30
     // 8.5
-    if (!timeString|| timeString == "--") {
+    if (!timeString || timeString == "--") {
         return 0;
     }
     var splitString = timeString.split(":");
