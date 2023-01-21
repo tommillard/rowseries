@@ -224,8 +224,6 @@ function addScoresToTDRMembers(ssScores) {
             tdrMember.score2C = correctRow[5];
         }
     });
-
-    console.log(tdrMembers);
 }
 
 function drawCategoryFilters() {
@@ -541,9 +539,6 @@ function addDivisions(raw) {
 
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
-        if (athlete.name === "Benjamin Becerra") {
-            console.log("B");
-        }
         let time2A = convertTimeStringToTenths(athlete.score2A || "0") / 10;
         let time2C = convertTimeStringToTenths(athlete.score2C || "0") / 10;
         let score = {
@@ -566,8 +561,6 @@ function processData(raw) {
             //score4A: generateScore(athlete.score4A, "6000m"),
             //score4B: generateScore(athlete.score4B, "2000m"),
         };
-
-        console.log(score);
 
         if (score.score1B.paceSeconds < score.score1A.paceSeconds) {
             //score.score1B = { ...generateScore(athlete.score1B, "3000m") };
@@ -758,6 +751,10 @@ function calculatePositions(data, orderingScore, orderingProperty, calcPoints) {
             (bScore[orderingProperty] || bScore.points)
         );
     });
+    if (orderingProperty === "distance") {
+        data.reverse();
+    }
+
     var position = 0;
     var score = -1;
     for (var i = 0; i <= data.length - 1; i++) {
