@@ -31,7 +31,6 @@ const tdrMembers = [
     { name: "James Wild" },
     { name: "Troy Frerichs" },
     { name: "John Davies" },
-    { name: "Benjamin Becerra" },
     { name: "Simon Frost" },
     { name: "Tom Millard" },
     { name: "Jess Randles" },
