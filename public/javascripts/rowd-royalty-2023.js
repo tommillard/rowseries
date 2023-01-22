@@ -222,8 +222,6 @@ function addScoresToTDRMembers(ssScores) {
             tdrMember.score2C = correctRow[3];
         }
     });
-
-    console.log(tdrMembers);
 }
 
 function drawCategoryFilters() {
@@ -539,9 +537,6 @@ function addDivisions(raw) {
 
 function processData(raw) {
     var scoredData = raw.map(function (athlete) {
-        if (athlete.name === "Benjamin Becerra") {
-            console.log("B");
-        }
         let time2A = convertTimeStringToTenths(athlete.score2A || "0") / 10;
         let time2C = convertTimeStringToTenths(athlete.score2C || "0") / 10;
         let score = {
@@ -576,7 +571,7 @@ function processData(raw) {
     calculatePositions(scoredData, "score1A", "paceSeconds", true);
     calculatePositions(scoredData, "score1B", "paceSeconds", true);
     calculatePositions(scoredData, "score2A", "paceSeconds", true);
-    calculatePositions(scoredData, "score2B", "paceSeconds", true);
+    calculatePositions(scoredData, "score2B", "distance", true);
     calculatePositions(scoredData, "score2C", "paceSeconds", true);
     //calculatePositions(scoredData, "score3A", true);
     //calculatePositions(scoredData, "score3B", true);
@@ -629,6 +624,14 @@ function generateScore(
     timeAdjust,
     distanceAdjust
 ) {
+    let distance =
+        distanceOrTime.indexOf("m") > 0
+            ? parseInt(distanceOrTime)
+            : parseInt(scoreString);
+
+    if (isNaN(distance)) {
+        distance = 0;
+    }
     return {
         raw: scoreString,
         paceString: calculatePace(
@@ -643,14 +646,14 @@ function generateScore(
             timeAdjust,
             distanceAdjust
         ).seconds,
-        distance: distanceOrTime.indexOf("m") > 0 ? parseInt(distanceOrTime): parseInt(scoreStr),
+        distance: distance,
         points: 0,
         position: {
             display: "",
             index: 0,
         },
     };
-}ng
+}
 function calculatePace(
     scoreString,
     distanceOrTime,
@@ -746,6 +749,10 @@ function calculatePositions(data, orderingScore, orderingProperty, calcPoints) {
             (bScore[orderingProperty] || bScore.points)
         );
     });
+    if (orderingProperty === "distance") {
+        data.reverse();
+    }
+
     var position = 0;
     var score = -1;
     for (var i = 0; i <= data.length - 1; i++) {
