@@ -147,7 +147,7 @@ subCategoryFilter.addEventListener("click", function (e) {
 
 roundBar.addEventListener("click", function (e) {
     let roundProp = e.target.getAttribute("data-round");
-
+    console.log(e.target);
     if (e.target.hasAttribute("disabled")) {
         return;
     }
@@ -163,6 +163,13 @@ roundBar.addEventListener("click", function (e) {
             );
         }
         drawHeader();
+        drawGrid();
+        saveSettings();
+    }
+
+    if (e.target.hasAttribute("data-private")) {
+        settings.usePrivate = !settings.usePrivate;
+        e.target.classList.toggle("active", settings.usePrivate);
         drawGrid();
         saveSettings();
     }
@@ -291,6 +298,15 @@ function drawRounds() {
     round4.setAttribute("data-round", "4");
     conditionalClass(round4, "active", "4", settings.includeRounds);
     round4.setAttribute("disabled", "");
+
+    let privateScoreBtn = rsElem(
+        "a",
+        roundBar,
+        "privateScores",
+        "Private Scores"
+    );
+    privateScoreBtn.setAttribute("data-private", "");
+    conditionalClass(privateScoreBtn, "active", true, settings.usePrivate);
 }
 
 function conditionalClass(element, activeClass, id, setting) {
@@ -503,6 +519,7 @@ function loadSettings() {
             categoryFilter: "all",
             subCategoryFilter: "all",
             includeRounds: ["1", "2"],
+            usePrivate: false,
         };
     }
 }
