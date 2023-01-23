@@ -31,7 +31,6 @@ const tdrMembers = [
     { name: "James Wild" },
     { name: "Troy Frerichs" },
     { name: "John Davies" },
-    { name: "Benjamin Becerra" },
     { name: "Simon Frost" },
     { name: "Tom Millard" },
     { name: "Jess Randles" },
@@ -224,11 +223,9 @@ function addScoresToTDRMembers(ssScores) {
         );
 
         if (correctRow) {
-            tdrMember.score1A = correctRow[1];
-            tdrMember.score1B = correctRow[2];
-            tdrMember.score2A = correctRow[3];
-            tdrMember.score2B = correctRow[4];
-            tdrMember.score2C = correctRow[5];
+            tdrMember.score2A = correctRow[1];
+            tdrMember.score2B = correctRow[2];
+            tdrMember.score2C = correctRow[3];
         }
     });
 }
