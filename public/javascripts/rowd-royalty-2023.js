@@ -12,6 +12,10 @@ let sheetUrl =
 
 loadSettings();
 
+settings.usePrivate = true;
+
+saveSettings();
+
 const tdrMembers = [
     { name: "Nathaniel Wright" },
     { name: "Ian Gallagher" },
@@ -205,6 +209,7 @@ fetch("../json/rowd-royalty-2023.json")
         Papa.parse(sheetUrl, {
             download: true,
             complete: (results) => {
+                console.log(results);
                 addScoresToTDRMembers(results.data);
                 rawData = addDivisions(j.athletes);
                 drawGrid();
@@ -219,7 +224,7 @@ fetch("../json/rowd-royalty-2023.json")
 function addScoresToTDRMembers(ssScores) {
     tdrMembers.forEach((tdrMember) => {
         let correctRow = ssScores.find(
-            (scoreline) => scoreline[0] === tdrMember.name
+            (scoreline) => scoreline[0].trim() === tdrMember.name
         );
 
         if (correctRow) {
@@ -516,7 +521,7 @@ function loadSettings() {
             categoryFilter: "all",
             subCategoryFilter: "all",
             includeRounds: ["1", "2"],
-            usePrivate: false,
+            usePrivate: true,
         };
     }
 }
