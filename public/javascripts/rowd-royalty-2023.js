@@ -168,7 +168,7 @@ roundBar.addEventListener("click", function (e) {
 });
 
 function showRound(roundNum) {
-    if (roundNum !== "1" && roundNum != "2") {
+    if (roundNum !== "1" && roundNum != "2" && roundNum != "3") {
         return false;
     }
     return settings.includeRounds.indexOf(roundNum) >= 0;
@@ -216,9 +216,7 @@ function addScoresToTDRMembers(ssScores) {
         );
 
         if (correctRow) {
-            tdrMember.score2A = correctRow[1];
-            tdrMember.score2B = correctRow[2];
-            tdrMember.score2C = correctRow[3];
+            tdrMember.score3A = correctRow[1];
         }
     });
 }
@@ -282,8 +280,7 @@ function drawRounds() {
     let round3 = rsElem("a", roundBar, "r3", "R3");
     round3.setAttribute("data-round", "3");
     conditionalClass(round3, "active", "3", settings.includeRounds);
-    round3.setAttribute("disabled", "");
-
+ 
     let round4 = rsElem("a", roundBar, "r4", "R4");
     round4.setAttribute("data-round", "4");
     conditionalClass(round4, "active", "4", settings.includeRounds);
@@ -326,9 +323,6 @@ function drawHeader() {
         let a3Header = rsElem("span", header, "cell cell-Score sort", "3A");
         a3Header.setAttribute("data-sort-prop", "3A");
         conditionalClass(a3Header, "sort-Active", "3A", settings.sortBy);
-        let b3Header = rsElem("span", header, "cell cell-Score sort", "3B");
-        b3Header.setAttribute("data-sort-prop", "3B");
-        conditionalClass(b3Header, "sort-Active", "3B", settings.sortBy);
         let r3Header = rsElem(
             "span",
             header,
@@ -431,8 +425,6 @@ function drawGrid() {
         if (showRound("3")) {
             cell(athlete.score3A.paceString, athlete.score3A.raw, "score", row);
 
-            cell(athlete.score3B.paceString, athlete.score3B.raw, "score", row);
-
             cell(
                 athlete.score3.position.display,
                 athlete.score3.points + "pts",
@@ -499,7 +491,7 @@ function loadSettings() {
             sortBy: "Overall",
             categoryFilter: "all",
             subCategoryFilter: "all",
-            includeRounds: ["1", "2"],
+            includeRounds: ["1", "2", "3"],
         };
     }
 }
@@ -526,6 +518,7 @@ function addDivisions(raw) {
             athlete.score2A = tdrMember.score2A || athlete.score2A;
             athlete.score2B = tdrMember.score2B || athlete.score2B;
             athlete.score2C = tdrMember.score2C || athlete.score2C;
+            athlete.score3A = tdrMember.score3A || athlete.score3A;
         }
 
         return athlete;
@@ -553,7 +546,7 @@ function processData(raw) {
             score2A: generateScore(athlete.score2A, "800m"),
             score2B: generateScore(athlete.score2B, "15:00", +time2A + time2C),
             score2C: generateScore(athlete.score2C, "400m"),
-            //score3A: generateScore(athlete.score3A, "100m"),
+            score3A: generateScore(athlete.score3A, "2000m"),
             //score3B: generateScore(athlete.score3B, "100m"),
             //score4A: generateScore(athlete.score4A, "6000m"),
             //score4B: generateScore(athlete.score4B, "2000m"),
@@ -562,7 +555,7 @@ function processData(raw) {
         if (score.score1B.paceSeconds < score.score1A.paceSeconds) {
             //score.score1B = { ...generateScore(athlete.score1B, "3000m") };
             //score.score1B.adjusted = true;
-            //score.adjusted = true;
+            //score.adjusted = true; 
         }
         return score;
     });
@@ -572,7 +565,7 @@ function processData(raw) {
     calculatePositions(scoredData, "score2A", "paceSeconds", true);
     calculatePositions(scoredData, "score2B", "distance", true);
     calculatePositions(scoredData, "score2C", "paceSeconds", true);
-    //calculatePositions(scoredData, "score3A", true);
+    calculatePositions(scoredData, "score3A", "paceSeconds", true);
     //calculatePositions(scoredData, "score3B", true);
     //calculatePositions(scoredData, "score4A", true);
     //calculatePositions(scoredData, "score4B", true);
@@ -587,8 +580,8 @@ function processData(raw) {
         athlete.score2.points =
             athlete.score2A.points +
             athlete.score2B.points +
-            athlete.score2C.points;
-        //athlete.score3.points = athlete.score3A.points + athlete.score3B.points;
+            athlete.score2C.points; 
+        athlete.score3.points = athlete.score3A.points;
         //athlete.score4.points = athlete.score4A.points + athlete.score4B.points;
 
         athlete.scoreOverall.points = 0;

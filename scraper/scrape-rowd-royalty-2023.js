@@ -192,11 +192,11 @@ async function grabData(page, scrapePage, data) {
                             ".leaderboard-item__score--workout"
                         )[4]
                         .textContent.trim(),
-                    /*        score3A: item
+                    score3A: item
                                 .querySelectorAll(
                                     ".leaderboard-item__score--workout"
-                                )[4]
-                                .textContent.trim(),
+                                )[5]
+                                .textContent.trim(),/*
                             score3B: item
                                 .querySelectorAll(
                                     ".leaderboard-item__score--workout"
