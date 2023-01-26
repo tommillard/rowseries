@@ -64,6 +64,10 @@ h1 {
     border-bottom: 1px solid rgb(255 255 255 / 5%);
 }
 
+.rounds {
+    /*padding-right: 150px;*/
+}
+
 .subCategoryFilters {
     border-bottom: none;
 }
@@ -99,6 +103,12 @@ a.fvw {
 a[disabled] {
     opacity: 0.3;
     cursor: default;
+}
+
+a[data-private] {
+    position: absolute;
+    right: 0;
+    display: none;
 }
 
 .categoryFilters a:after,

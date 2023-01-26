@@ -12,6 +12,10 @@ let sheetUrl =
 
 loadSettings();
 
+settings.usePrivate = true;
+
+saveSettings();
+
 const tdrMembers = [
     { name: "Nathaniel Wright" },
     { name: "Ian Gallagher" },
@@ -146,7 +150,7 @@ subCategoryFilter.addEventListener("click", function (e) {
 
 roundBar.addEventListener("click", function (e) {
     let roundProp = e.target.getAttribute("data-round");
-
+    console.log(e.target);
     if (e.target.hasAttribute("disabled")) {
         return;
     }
@@ -162,6 +166,13 @@ roundBar.addEventListener("click", function (e) {
             );
         }
         drawHeader();
+        drawGrid();
+        saveSettings();
+    }
+
+    if (e.target.hasAttribute("data-private")) {
+        settings.usePrivate = !settings.usePrivate;
+        e.target.classList.toggle("active", settings.usePrivate);
         drawGrid();
         saveSettings();
     }
@@ -198,6 +209,7 @@ fetch("../json/rowd-royalty-2023.json")
         Papa.parse(sheetUrl, {
             download: true,
             complete: (results) => {
+                console.log(results);
                 addScoresToTDRMembers(results.data);
                 rawData = addDivisions(j.athletes);
                 drawGrid();
@@ -212,7 +224,7 @@ fetch("../json/rowd-royalty-2023.json")
 function addScoresToTDRMembers(ssScores) {
     tdrMembers.forEach((tdrMember) => {
         let correctRow = ssScores.find(
-            (scoreline) => scoreline[0] === tdrMember.name
+            (scoreline) => scoreline[0].trim() === tdrMember.name
         );
 
         if (correctRow) {
@@ -285,6 +297,15 @@ function drawRounds() {
     round4.setAttribute("data-round", "4");
     conditionalClass(round4, "active", "4", settings.includeRounds);
     round4.setAttribute("disabled", "");
+
+    let privateScoreBtn = rsElem(
+        "a",
+        roundBar,
+        "privateScores",
+        "Private Scores"
+    );
+    privateScoreBtn.setAttribute("data-private", "");
+    conditionalClass(privateScoreBtn, "active", true, settings.usePrivate);
 }
 
 function conditionalClass(element, activeClass, id, setting) {
@@ -492,6 +513,7 @@ function loadSettings() {
             categoryFilter: "all",
             subCategoryFilter: "all",
             includeRounds: ["1", "2", "3"],
+            usePrivate: true,
         };
     }
 }
