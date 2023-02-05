@@ -143,7 +143,7 @@ module.exports = function () {
         }, []); */
 
         data.scrapedAt = new Date();
-        
+
         await fs.ensureDirSync("./public/json");
 
         await fs.writeFileSync(
@@ -165,7 +165,8 @@ async function grabData(page, scrapePage, data) {
                 return {
                     name: item
                         .querySelector(".leaderboard-item__name")
-                        ?.textContent.trim().replace("  ", " "),
+                        ?.textContent.trim()
+                        .replace("  ", " "),
                     score1A: item
                         .querySelectorAll(
                             ".leaderboard-item__score--workout"
@@ -193,25 +194,25 @@ async function grabData(page, scrapePage, data) {
                         )[4]
                         .textContent.trim(),
                     score3A: item
-                                .querySelectorAll(
-                                    ".leaderboard-item__score--workout"
-                                )[5]
-                                .textContent.trim(),/*
-                            score3B: item
-                                .querySelectorAll(
-                                    ".leaderboard-item__score--workout"
-                                )[5]
-                                .textContent.trim(),
-                            score4A: item
-                                .querySelectorAll(
-                                    ".leaderboard-item__score--workout"
-                                )[6]
-                                .textContent.trim(),
-                            score4B: item
-                                .querySelectorAll(
-                                    ".leaderboard-item__score--workout"
-                                )[7]
-                                .textContent.trim(),*/
+                        .querySelectorAll(
+                            ".leaderboard-item__score--workout"
+                        )[5]
+                        .textContent.trim(),
+                    score4A: item
+                        .querySelectorAll(
+                            ".leaderboard-item__score--workout"
+                        )[7]
+                        .textContent.trim(),
+                    score4B: item
+                        .querySelectorAll(
+                            ".leaderboard-item__score--workout"
+                        )[8]
+                        .textContent.trim(),
+                    score4C: item
+                        .querySelectorAll(
+                            ".leaderboard-item__score--workout"
+                        )[6]
+                        .textContent.trim(),
                     category: scrapePage.division,
                     subCategory: scrapePage.group,
                 };
