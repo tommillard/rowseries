@@ -199,24 +199,69 @@ async function grabData(page, scrapePage, data) {
                         )[5]
                         .textContent.trim(),
                     score4A: item
-                        .querySelectorAll(
-                            ".leaderboard-item__score--workout"
-                        )[7]
-                        .textContent.trim(),
+                        .querySelectorAll(".leaderboard-item__score--workout")
+                        [
+                            getColumnNumber("4A", scrapePage.division)
+                        ].textContent.trim(),
                     score4B: item
-                        .querySelectorAll(
-                            ".leaderboard-item__score--workout"
-                        )[8]
-                        .textContent.trim(),
+                        .querySelectorAll(".leaderboard-item__score--workout")
+                        [
+                            getColumnNumber("4B", scrapePage.division)
+                        ].textContent.trim(),
                     score4C: item
-                        .querySelectorAll(
-                            ".leaderboard-item__score--workout"
-                        )[6]
-                        .textContent.trim(),
+                        .querySelectorAll(".leaderboard-item__score--workout")
+                        [
+                            getColumnNumber("4C", scrapePage.division)
+                        ].textContent.trim(),
                     category: scrapePage.division,
                     subCategory: scrapePage.group,
                 };
             });
+
+            function getColumnNumber(workout, division) {
+                if (workout === "4A") {
+                    if (division === "Women - Tall (5'6\"+ / 168cm+)") {
+                        return 8;
+                    }
+                    if (division === "Men - Standard (<5'11 / <180cm)") {
+                        return 6;
+                    }
+                    if (division === "Men - Tall (5'11\"+/180cm+)") {
+                        return 7;
+                    }
+                    if (division === "Women - Standard (<5'6\" / <168cm)") {
+                        return 7;
+                    }
+                }
+                if (workout === "4B") {
+                    if (division === "Women - Tall (5'6\"+ / 168cm+)") {
+                        return 6;
+                    }
+                    if (division === "Men - Standard (<5'11 / <180cm)") {
+                        return 8;
+                    }
+                    if (division === "Men - Tall (5'11\"+/180cm+)") {
+                        return 8;
+                    }
+                    if (division === "Women - Standard (<5'6\" / <168cm)") {
+                        return 8;
+                    }
+                }
+                if (workout === "4C") {
+                    if (division === "Women - Tall (5'6\"+ / 168cm+)") {
+                        return 7;
+                    }
+                    if (division === "Men - Standard (<5'11 / <180cm)") {
+                        return 7;
+                    }
+                    if (division === "Men - Tall (5'11\"+/180cm+)") {
+                        return 6;
+                    }
+                    if (division === "Women - Standard (<5'6\" / <168cm)") {
+                        return 6;
+                    }
+                }
+            }
         },
         scrapePage
     );
