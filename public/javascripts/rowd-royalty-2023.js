@@ -303,7 +303,7 @@ function drawRounds() {
     let round4 = rsElem("a", roundBar, "r4", "R4");
     round4.setAttribute("data-round", "4");
     conditionalClass(round4, "active", "4", settings.includeRounds);
-    round4.setAttribute("disabled", "");
+    //round4.setAttribute("disabled", "");
 
     let privateScoreBtn = rsElem(
         "a",
