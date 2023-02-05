@@ -179,7 +179,12 @@ roundBar.addEventListener("click", function (e) {
 });
 
 function showRound(roundNum) {
-    if (roundNum !== "1" && roundNum != "2" && roundNum != "3") {
+    if (
+        roundNum !== "1" &&
+        roundNum != "2" &&
+        roundNum != "3" &&
+        roundNum != "4"
+    ) {
         return false;
     }
     return settings.includeRounds.indexOf(roundNum) >= 0;
@@ -228,7 +233,9 @@ function addScoresToTDRMembers(ssScores) {
         );
 
         if (correctRow) {
-            tdrMember.score3A = correctRow[1];
+            tdrMember.score4A = correctRow[1];
+            tdrMember.score4B = correctRow[2];
+            tdrMember.score4C = correctRow[3];
         }
     });
 }
@@ -292,7 +299,7 @@ function drawRounds() {
     let round3 = rsElem("a", roundBar, "r3", "R3");
     round3.setAttribute("data-round", "3");
     conditionalClass(round3, "active", "3", settings.includeRounds);
- 
+
     let round4 = rsElem("a", roundBar, "r4", "R4");
     round4.setAttribute("data-round", "4");
     conditionalClass(round4, "active", "4", settings.includeRounds);
@@ -331,6 +338,9 @@ function drawHeader() {
         let b4Header = rsElem("span", header, "cell cell-Score sort", "4B");
         b4Header.setAttribute("data-sort-prop", "4B");
         conditionalClass(b4Header, "sort-Active", "4B", settings.sortBy);
+        let c4Header = rsElem("span", header, "cell cell-Score sort", "4C");
+        c4Header.setAttribute("data-sort-prop", "4C");
+        conditionalClass(c4Header, "sort-Active", "4C", settings.sortBy);
         let r4Header = rsElem(
             "span",
             header,
@@ -434,6 +444,8 @@ function drawGrid() {
             cell(athlete.score4A.paceString, athlete.score4A.raw, "score", row);
 
             cell(athlete.score4B.paceString, athlete.score4B.raw, "score", row);
+
+            cell(athlete.score4B.paceString, athlete.score4C.raw, "score", row);
 
             cell(
                 athlete.score4.position.display,
@@ -541,6 +553,9 @@ function addDivisions(raw) {
             athlete.score2B = tdrMember.score2B || athlete.score2B;
             athlete.score2C = tdrMember.score2C || athlete.score2C;
             athlete.score3A = tdrMember.score3A || athlete.score3A;
+            athlete.score4A = tdrMember.score4A || athlete.score4A;
+            athlete.score4B = tdrMember.score4B || athlete.score4B;
+            athlete.score4C = tdrMember.score4C || athlete.score4C;
         }
 
         return athlete;
@@ -569,16 +584,11 @@ function processData(raw) {
             score2B: generateScore(athlete.score2B, "15:00", +time2A + time2C),
             score2C: generateScore(athlete.score2C, "400m"),
             score3A: generateScore(athlete.score3A, "2000m"),
-            //score3B: generateScore(athlete.score3B, "100m"),
-            //score4A: generateScore(athlete.score4A, "6000m"),
-            //score4B: generateScore(athlete.score4B, "2000m"),
+            score4A: generateScore(athlete.score4A, "1000m"),
+            score4B: generateScore(athlete.score4B, "1000m"),
+            score4C: generateScore(athlete.score4C, "5000m"),
         };
 
-        if (score.score1B.paceSeconds < score.score1A.paceSeconds) {
-            //score.score1B = { ...generateScore(athlete.score1B, "3000m") };
-            //score.score1B.adjusted = true;
-            //score.adjusted = true; 
-        }
         return score;
     });
 
@@ -588,9 +598,9 @@ function processData(raw) {
     calculatePositions(scoredData, "score2B", "distance", true);
     calculatePositions(scoredData, "score2C", "paceSeconds", true);
     calculatePositions(scoredData, "score3A", "paceSeconds", true);
-    //calculatePositions(scoredData, "score3B", true);
-    //calculatePositions(scoredData, "score4A", true);
-    //calculatePositions(scoredData, "score4B", true);
+    calculatePositions(scoredData, "score4A", "paceSeconds", true);
+    calculatePositions(scoredData, "score4B", "paceSeconds", true);
+    calculatePositions(scoredData, "score4C", "paceSeconds", true);
 
     for (
         var _i = 0, scoredData_1 = scoredData;
@@ -602,9 +612,12 @@ function processData(raw) {
         athlete.score2.points =
             athlete.score2A.points +
             athlete.score2B.points +
-            athlete.score2C.points; 
+            athlete.score2C.points;
         athlete.score3.points = athlete.score3A.points;
-        //athlete.score4.points = athlete.score4A.points + athlete.score4B.points;
+        athlete.score4.points =
+            athlete.score4A.points +
+            athlete.score4B.points +
+            athlete.score4C.points;
 
         athlete.scoreOverall.points = 0;
 
