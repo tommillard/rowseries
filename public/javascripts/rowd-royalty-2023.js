@@ -445,7 +445,7 @@ function drawGrid() {
 
             cell(athlete.score4B.paceString, athlete.score4B.raw, "score", row);
 
-            cell(athlete.score4B.paceString, athlete.score4C.raw, "score", row);
+            cell(athlete.score4C.paceString, athlete.score4C.raw, "score", row);
 
             cell(
                 athlete.score4.position.display,
